@@ -20,7 +20,7 @@
 
   ## more info on configuring this file: https://docs.netlify.com/configure-builds/file-based-configuration/
   
-  [[redirects]]
-  from = "/*"
-  to = "/index.html
-  status = 404
+  #[[redirects]]
+  #from = "/*"
+  #to = "/index.html
+  #status = 404
