@@ -10,7 +10,11 @@
   #  from = "/*"
   #  to = "/index.html"
   #  status = 200
-
+ #[[redirects]]
+  #from = "/*"
+  #to = "/index.html
+  #status = 404
+  
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
   #[dev]
@@ -20,7 +24,4 @@
 
   ## more info on configuring this file: https://docs.netlify.com/configure-builds/file-based-configuration/
   
-  #[[redirects]]
-  #from = "/*"
-  #to = "/index.html
-  #status = 404
+ 
