@@ -1,0 +1,133 @@
+
+
+
+
+<div class="buy_container  pb-5">
+  <div class="nav_section d-flex justify-content-between align-items-center">
+    <a href="" class="logo">NUKLEON</a>
+    <div class="button_holder">
+      <button class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
+      <button class="btn text-light">BnB Balance: {{setwalletBalance}}</button>
+    </div>
+  </div>
+
+  <div class="main_buy d-flex">
+    <div class="buy_card">
+      <p class="card_content">Daily Claim</p>
+      <h1 class="highlight">{{dailyClaim}}</h1>
+      <div class="card_content">
+        
+        </div> 
+      <div class="hold_btn">
+        <button [disabled]="ready" (click)="handleEvent()" class="btn primary_btn">Claim</button>
+        <button class="btn">Withdraw</button>
+      </div>
+    </div>
+    <div class="buy_card">
+      <p class="card_content text">Total Referrals : 8</p>
+      <div class="card_content text">Referrals Balance: 200,000</div>
+      <div class="hold_btn">
+        <button class="btn primary_btn">Withdraw</button>
+        <button (click)="copyLink()" class="btn">Copy link</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="buy_section d-flex flex-column align-items-lg-center justify-content-lg-between">
+    <div class="buy_nuk">
+      <h4 class="item_title">Buy Nuk</h4>
+
+      <div class="input_container">
+        <input [formControl]="amountToBuy"  name="" placeholder="Enter Amount (BNB)" />
+        <button (click)="handleSale()" class="cta">Buy</button>
+      </div>
+    </div>
+
+    <div class="stake">
+      <h4 class="item_title mb-3">Stakes</h4>
+
+      <div class="hold_inputs">
+        <div class="heading">{{setStakeBalance}} {{setContractInfo.tokenSymbol}}</div>
+
+        <div class="input_container">
+          <input [formControl]="amountToStake"  name="" placeholder="Enter Amount" />
+          <button (click)="handleStake()" class="cta">Stake</button>
+        </div>
+        <div class="input_container">
+          <input [formControl]="amountTowithdraw"  name="" placeholder="Withdraw Staked" />
+          <button  (click)="withdraw()" class="cta">Withdraw</button>
+        </div>
+
+        <button  disabled (click)="getReward()" class="cta">Claim Rewards</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+    <button (click)="switchN()">switch Wallet network</button>
+    <button (click)="addToken()">Add token to Wallet</button>
+    <button (click)="contranDetails()">Connect wallect</button>
+  </div>
+  
+  <p>Wallet Balance {{setwalletBalance}} BNB</p>
+  <p>{{setContractInfo.tokenName}} {{(setContractInfo.tokenSymbol)}}</p>
+  <p>Wallet Balance {{setBalanceInfo.balance}} {{(setContractInfo.tokenSymbol)}}</p>
+  <p>total supply {{setContractInfo.totalSupply}} {{(setContractInfo.tokenSymbol)}}</p>
+  
+  <p>0.0000001 BNB = 1 {{(setContractInfo.tokenName)}}({{(setContractInfo.tokenSymbol)}})</p>
+  
+  
+  <input placeholder="AmountToBuy in BNB"  [formControl]="amountToBuy" />
+   <button (click)="handleSale()"> submit</button>
+  
+  
+   <button (click)="getReward">getReward</button>
+  <div>
+    
+      <input placeholder="AmountToStake" [formControl]="amountToStake"  />
+  
+      <button  (click)="handleStake()"> submit</button>
+  
+  </div>
+  
+  <p>Withdraw</p>
+  
+    <input placeholder="AmountTowithdraw" [formControl]="amountTowithdraw"  />
+  
+    <button (click)="withdraw()"> submit</button>
+  
+  
+  <button (click)="getReward">getReward</button>
+  <div>
+  <input placeholder="Token to clam"  [formControl]="amountToClaim" />
+   <button (click)="handleClaim()"> submit</button>
+  </div>
+  <p>Total reward token {{setTotalStak}} {{setContractInfo.tokenSymbol}}</p>
+  
+  <p>Staked Balance {{setStakeBalance}} {{setContractInfo.tokenSymbol}}</p>
+  <p> you have earned {{setearnd}} {{setContractInfo.tokenSymbol}}</p>
+  
+  <p>Referral ID</p>
+  <p>http://localhost:4200/app/{{setWalletAddress}}</p>
+  <button (click)="getStakeDetails">refresh </button> -->
+

@@ -1,0 +1,20 @@
+footer {
+    height: 70%;
+    width: 100%;
+    background: linear-gradient(to bottom, #000006d0, #000000d7), url(/img/foot.png);
+    margin-top: 30rem;
+    background-size: cover;
+    background-position: center center; }
+    footer .logo {
+      color: #eee;
+      font-size: 4rem; }
+    footer .menu_container .menu_title {
+      color: #3b90ff;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem; }
+    footer .menu_container .menu_link {
+      text-decoration: none;
+      color: #eee;
+      font-size: 1.3rem;
+      margin-bottom: 1rem; }
