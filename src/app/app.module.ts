@@ -20,15 +20,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 const routes: Routes = [{ path: 'app', component: DappComponent},
-  { path: 'app/:id', component: DappComponent,
-  resolve:{app:ResolverService} },
+  { path: 'app/:id', component: DappComponent,resolve:{app:ResolverService} },
   { path: '**', component: HomeComponent},
+  
 ];
 
 @NgModule({
   declarations: [
    
-     AppComponent, DappComponent,HomeComponent,
+      DappComponent,HomeComponent,AppComponent,
   ],
   imports: [ RouterModule.forRoot(routes),
     BrowserModule,ReactiveFormsModule,

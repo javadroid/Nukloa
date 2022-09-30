@@ -13,6 +13,7 @@ export class ResolverService implements Resolve<any> {
     const {id}=route.params
     
 return this.http.e(id).subscribe((res)=>{
+  console.log("tessast",res)
   if(res[0]){
   
   }else{

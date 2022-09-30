@@ -79,5 +79,13 @@ e(id:string){
   return collectionData(q, { idField: 'id' });
 }
 
+z(id:string){
+  const citiesRef = collection(this.firestore, "user");
+
+  // Create a query against the collection.
+  const q = query(citiesRef, where("referredby", "==", id));
+  return collectionData(q, { idField: 'id' });
+}
+
 }
 

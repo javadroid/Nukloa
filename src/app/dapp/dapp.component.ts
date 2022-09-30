@@ -44,6 +44,7 @@ export class DappComponent implements OnInit {
   notify = '';
   ready=true
   dailyClaim=0;
+  refferal=0;
 
    current = new Date();
    timestamp =this.current.getTime();
@@ -99,7 +100,7 @@ export class DappComponent implements OnInit {
                const givenTimestamop= res[0].start + oldTime
                   
                   if(givenTimestamop>=ExpetedTimestamp){
-                      this.ready=false
+                      this.ready=true
                       return;
                       
                   }
@@ -107,7 +108,12 @@ export class DappComponent implements OnInit {
                      console.log('test',res[0])
                      return;
                 })
-                 return;
+                this.store.z(account[0]).subscribe((res:any[])=>{
+                  
+                  this.refferal=res.length
+
+                  this.amountToClaim.setValue(String(this.refferal*30000))
+                })
  }
 
   async handleEvent(){
@@ -164,7 +170,7 @@ let s=0
         
         let ids:any[]=[this.route.snapshot.params]
         
-        console.log("id",this.setBalanceInfo.address)
+       
         
         if(ids[0].id && ids[0].id!=account[0]){
           this.user = {
@@ -183,7 +189,7 @@ let s=0
             dailyBonus:0,
           }
         }
-
+        console.log("id",this.user)
                
           
         this.store.e(account[0]).subscribe((res:any)=>{
@@ -359,7 +365,7 @@ let s=0
   }
 
  
-  addToken = async () => {
+  async addToken() {
     const tokenImage = 'https://i.ibb.co/QQ79cYn/Whats-App-Image-2022-08-21-at-3-04-36-PM.jpg';
     await this.winRef.window.ethereum.request({
       method: 'wallet_watchAsset',
@@ -402,6 +408,7 @@ let s=0
     const signer = await provider.getSigner(account[0])
     const Erc20 = new ethers.Contract(this.CLAIMCONTRACTADDRESS, claim, signer)
     await Erc20.connect(signer)
+    console.log(this.amountToClaim.value)
     const amountToBuy = ethers.utils.parseEther(this.amountToClaim.value!)
     const waits=await Erc20['buyTokens'](account[0], amountToBuy)
     const receipt = await waits.wait();

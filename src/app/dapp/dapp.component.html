@@ -6,7 +6,8 @@
   <div class="nav_section d-flex justify-content-between align-items-center">
     <a routerLink="/" class="logo">NUKLEON</a>
     <div class="button_holder">
-      <button class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
+      <button (click)="addToken()" class="btn text-light"> click here to add token to wallect ==></button>
+      <button (click)="addToken()" class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
       <button class="btn text-light">BnB Balance: {{setwalletBalance}}</button>
     </div>
   </div>
@@ -24,10 +25,10 @@
       </div>
     </div>
     <div class="buy_card">
-      <p class="card_content text">Total Referrals : 8</p>
-      <div class="card_content text">Referrals Balance: 200,000</div>
+      <p class="card_content text">Total Referrals : {{refferal}}</p>
+      <div class="card_content text">Referrals Balance: {{refferal*30000}}</div>
       <div class="hold_btn">
-        <button class="btn primary_btn">Withdraw</button>
+        <button (click)=" handleClaim()" class="btn primary_btn">Withdraw</button>
         <button (click)="copyLink()" class="btn">Copy link</button>
       </div>
     </div>
