@@ -81,7 +81,7 @@ export class DappComponent implements OnInit {
    
     if(this.setWalletAddress){
      
-      const url= "http://localhost:4200/app/"+this.setWalletAddress
+      const url= "https://nukleon.netlify.app/app/"+this.setWalletAddress
       this.clipboardApi.copyFromContent(url)
       this.toastr.success("Referral link copied");
     }else  this.toastr.error("Please connect wallet");

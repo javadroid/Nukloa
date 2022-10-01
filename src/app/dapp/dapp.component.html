@@ -8,10 +8,12 @@
     <div class="button_holder">
       <button (click)="addToken()" class="btn text-light"> click here to add token to wallect ==></button>
       <button (click)="addToken()" class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
-      <button class="btn text-light">BnB Balance: {{setwalletBalance}}</button>
+      <button (click)="ngOnInit()" class="btn text-light">BnB Balance: {{setwalletBalance}}</button>
+     
     </div>
+    
   </div>
-
+  <button (click)="ngOnInit()" class="btn text-light">reload page</button>
   <div class="main_buy d-flex">
     <div class="buy_card">
       <p class="card_content">Daily Claim</p>
@@ -28,8 +30,9 @@
       <p class="card_content text">Total Referrals : {{refferal}}</p>
       <div class="card_content text">Referrals Balance: {{refferal*30000}}</div>
       <div class="hold_btn">
-        <button (click)=" handleClaim()" class="btn primary_btn">Withdraw</button>
-        <button (click)="copyLink()" class="btn">Copy link</button>
+        
+        <button (click)="copyLink()" class="btn primary_btn">Copy link</button>
+        <button (click)=" handleClaim()" class="btn">Withdraw</button>
       </div>
     </div>
   </div>
