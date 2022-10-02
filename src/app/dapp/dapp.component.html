@@ -23,7 +23,7 @@
         </div> 
       <div class="hold_btn">
         <button [disabled]="ready" (click)="handleEvent()" class="btn primary_btn">Claim</button>
-        <button class="btn">Withdraw</button>
+        <button disabled class="btn">Withdraw</button>
       </div>
     </div>
     <div class="buy_card">
@@ -32,7 +32,7 @@
       <div class="hold_btn">
         
         <button (click)="copyLink()" class="btn primary_btn">Copy link</button>
-        <button (click)=" handleClaim()" class="btn">Withdraw</button>
+        <button disabled (click)=" handleClaim()" class="btn">Withdraw</button>
       </div>
     </div>
   </div>
