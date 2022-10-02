@@ -19,7 +19,7 @@
       <p class="card_content">Daily Claim</p>
       <h1 class="highlight">{{dailyClaim}}</h1>
       <div class="card_content">
-        
+        <countdown [config]="config"></countdown>
         </div> 
       <div class="hold_btn">
         <button [disabled]="ready" (click)="handleEvent()" class="btn primary_btn">Claim</button>

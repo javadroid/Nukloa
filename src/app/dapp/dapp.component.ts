@@ -40,7 +40,7 @@ export class DappComponent implements OnInit {
   amountTowithdraw=new FormControl('');
   amountToStake=new FormControl('');
   amountToClaim=new FormControl('');
-  config: CountdownConfig = { leftTime: 10, notify: [2, 5] };
+  config: CountdownConfig = {  };
   notify = '';
   ready=true
   dailyClaim=0;
@@ -96,13 +96,21 @@ export class DappComponent implements OnInit {
 
               this.current=new Date(this.newTimestamp)
               const oldTime= this.timestamp-res[0].start
-               const ExpetedTimestamp=res[0].start + (1 * 60 * 1000)
+               const ExpetedTimestamp=res[0].start + (1000 * 60 * 60 * 12)
                const givenTimestamop= res[0].start + oldTime
                   
-                  if(givenTimestamop>=ExpetedTimestamp){
-                      this.ready=true
+               const displayTime=ExpetedTimestamp-givenTimestamop
+              
+                const min=displayTime/1000
+                const hour=displayTime/(60*60*1000)
+                  if(this.timestamp>=ExpetedTimestamp){
+                      this.ready=false
+                      this.config= { leftTime: 0, format: 'mm:ss:ms' };
                       return;
                       
+                  }else{
+                    console.log("display",Math.round(min));
+                    this.config= { leftTime: Math.round(min), format: 'hh:mm:ss' };
                   }
                     
                      console.log('test',res[0])
@@ -118,32 +126,36 @@ export class DappComponent implements OnInit {
 
   async handleEvent(){
     const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
-let s=0
+
 
     
     this.store.e(account[0]).subscribe((res:any)=>{  
-        const daiyclick= res[0].dailyBonus+10000
-        const  current = new Date();
-        const timestamp =this.current.getTime();
+        
+       
       this.ready=true
       
-      this.user = {
       
-        start:timestamp,
-       
-        dailyBonus:daiyclick
-        
-      }
-      
-         this.store.updates(res[0].id,this.user)
-        // console.log(this.user);
-        return;
-  
-        
+      localStorage.setItem("id", res[0].id);
+      localStorage.setItem("user", res[0].dailyBonus);     
     })
+    
+   const res= localStorage.getItem("id");
+   const daiyclicks= localStorage.getItem("user");
+  const currents = new Date();
+  const timestamps =currents.getTime();
+   if(res && daiyclicks){
+    this.user = {
+      
+      start:timestamps,
+     
+      dailyBonus:Number(daiyclicks)+10000
+      
+    }
+    console.log("user",daiyclicks+10000);
+    console.log("res",res);
+    this.store.updates(res,this.user)
+   }
 
-  
-    return;
    
   }
   async contranDetails() {
