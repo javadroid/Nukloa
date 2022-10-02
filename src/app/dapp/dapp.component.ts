@@ -109,6 +109,7 @@ export class DappComponent implements OnInit {
                       return;
                       
                   }else{
+                    this.ready=true
                     console.log("display",Math.round(min));
                     this.config= { leftTime: Math.round(min), format: 'hh:mm:ss' };
                   }
@@ -130,11 +131,7 @@ export class DappComponent implements OnInit {
 
     
     this.store.e(account[0]).subscribe((res:any)=>{  
-        
-       
-      this.ready=true
-      
-      
+
       localStorage.setItem("id", res[0].id);
       localStorage.setItem("user", res[0].dailyBonus);     
     })
