@@ -188,7 +188,7 @@ export class DappComponent implements OnInit {
           this.user = {
             walletAddress: account[0],
             referredby:ids[0].id,
-            start:this.timestamp,
+            start:0,
             referredBonus:0,
             dailyBonus:0,
           }
@@ -196,7 +196,7 @@ export class DappComponent implements OnInit {
           this.user = {
             walletAddress: account[0],
             referredby:'null',
-            start:this.timestamp,
+            start:0,
             referredBonus:0,
             dailyBonus:0,
           }
