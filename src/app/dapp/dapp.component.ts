@@ -168,7 +168,7 @@ export class DappComponent implements OnInit {
         const tokenSymbol = await erc20['symbol']()
         const totalSupply = await erc20['totalSupply']()
         const decimals = await erc20['decimals']()
-        this.setBalanceInfo = { address: account[0], balance: balance / 10 ** 18 }
+        this.setBalanceInfo = { address: account[0], balance: Math.round(balance / 10 ** 18) }
         this.setContractInfo = {
           address: this.CONTRACTADDRESS,
           tokenName,
@@ -253,9 +253,9 @@ export class DappComponent implements OnInit {
         const stakeEarn = await erc20['earned'](account[0]);
 
 
-        this.setStakeBalance = String(stakeBalance/10**18)
-        this.setTotalStak = String(stakeTotal/10**18)
-        this.setearnd = String(stakeEarn/10**18)
+        this.setStakeBalance = String(Math.round(stakeBalance/10**18))
+        this.setTotalStak = String(Math.round(stakeTotal/10**18))
+        this.setearnd = String(Math.round(stakeEarn/10**18))
 
       } catch (error) {
         console.log(error)
