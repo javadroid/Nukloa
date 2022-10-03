@@ -55,11 +55,9 @@ export class DappComponent implements OnInit {
   }
   ngOnInit(): void {
     
-    this.getWalletBalance()
-    this.getStakeDetails()
-    this.contranDetails()
+    
     this.switchN()
-    this.check()
+    
     
       
   }
@@ -207,9 +205,14 @@ export class DappComponent implements OnInit {
            
             if(res[0]){
 
-              
+              this.getWalletBalance()
+              this.getStakeDetails()
+              this.check()
             }else{
               this.store.create(this.user)
+              this.getWalletBalance()
+              this.getStakeDetails()
+              this.check()
             }
         })
       } catch (error) {
@@ -329,7 +332,10 @@ export class DappComponent implements OnInit {
       const chainId = await provider.request({ method: 'eth_chainId' });
 
       if (chainId === binanceTestChainId) {
-
+        this.contranDetails()
+        this.getWalletBalance()
+        this.getStakeDetails()
+        this.check()
         console.log("Bravo!, you are on the correct network");
       } else {
 
@@ -340,6 +346,10 @@ export class DappComponent implements OnInit {
             method: 'wallet_switchEthereumChain',
             params: [{ chainId: binanceTestChainId }],
           });
+          this.contranDetails()
+          this.getWalletBalance()
+          this.getStakeDetails()
+          this.check()
           console.log("You have succefully switched to Binance Test network")
 
         } catch (switchError: any) {
