@@ -23,7 +23,7 @@
         </div> 
       <div class="hold_btn">
         <button [disabled]="ready" (click)="handleEvent()" class="btn primary_btn">Claim</button>
-        <button disabled class="btn">Withdraw</button>
+        <button  class="btn">Withdraw</button>
       </div>
     </div>
     <div class="buy_card">
@@ -32,7 +32,8 @@
       <div class="hold_btn">
         
         <button (click)="copyLink()" class="btn primary_btn">Copy link</button>
-        <button disabled (click)=" handleClaim()" class="btn">Withdraw</button>
+        <button 
+         (click)=" handleClaim()" class="btn">Withdraw</button>
       </div>
     </div>
   </div>
@@ -62,7 +63,7 @@
           <button  (click)="withdraw()" class="cta">Withdraw</button>
         </div>
 
-        <button  disabled (click)="getReward()" class="cta">Claim Rewards</button>
+        <button   (click)="getReward()" class="cta">Claim Rewards</button>
       </div>
     </div>
   </div>
