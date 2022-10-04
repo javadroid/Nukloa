@@ -326,7 +326,7 @@ export class DappComponent implements OnInit {
     
 
   } catch (error:any) {
-    this.toastr.error(error!.error.data.message);
+    this.toastr.error(error!.data.message);
   }
     
 

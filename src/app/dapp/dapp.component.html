@@ -40,7 +40,7 @@
 
   <div class="buy_section d-flex flex-column align-items-lg-center justify-content-lg-between">
     <div class="buy_nuk">
-      <h4 class="item_title">Buy Nuk</h4><strong><p style="color: rgba(80, 73, 73, 0.753)" >0.0000001 BNB = 1 {{(setContractInfo.tokenSymbol)}}</p></strong>
+      <h4 class="item_title">Buy Nuk</h4><strong><h3 style="color: rgba(80, 73, 73, 0.753)" >0.0000001 BNB = 1 {{(setContractInfo.tokenSymbol)}}</h3></strong>
 
       <div class="input_container">
         <input [formControl]="amountToBuy"  name="" placeholder="Enter Amount in (BNB)" />
@@ -49,11 +49,12 @@
     </div>
 
     <div class="stake">
-      <h4 class="item_title mb-3">Stakes</h4>
+      <h4 class="item_title mb-3">Stake Balance: {{setStakeBalance}} {{setContractInfo.tokenSymbol}}</h4>
 
       <div class="hold_inputs">
-        <div class="heading">{{setStakeBalance}} {{setContractInfo.tokenSymbol}}</div>
-
+        <h4><span style="color: rgb(143, 32, 32);">note:</span> you can only withdraw staked token after stake period ends <span style="color: rgb(19, 121, 33);">but then you can withdraw rewards😃</span></h4>
+        <div class="heading">Rewards: {{setStakeBalance}} {{setContractInfo.tokenSymbol}} </div>
+        
         <div class="input_container">
           <input [formControl]="amountToStake"  name="" placeholder="Enter Amount" />
           <button (click)="handleStake()" class="cta">Stake</button>
@@ -62,7 +63,7 @@
           <input [formControl]="amountTowithdraw"  name="" placeholder="Withdraw Staked" />
           <button  (click)="withdraw()" class="cta">Withdraw</button>
         </div>
-
+       
         <button   (click)="getReward()" class="cta">Claim Rewards</button>
       </div>
     </div>
