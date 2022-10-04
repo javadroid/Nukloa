@@ -288,19 +288,21 @@ export class DappComponent implements OnInit {
   }
 
  async getReward() {
-  try {
-  const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
-    await provider.send("eth_requestAccounts", [])
-    const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
-    const signer = await provider.getSigner(account[0])
-    const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
-    await erc20.connect(signer)
 
-    await erc20['getReward']()
-    this.ngOnInit()
-  } catch (error:any) {
-    this.toastr.error(error!.error.data.message);
-  }
+  this.toastr.error("Rewards coming soon");
+  // try {
+  // const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
+  //   await provider.send("eth_requestAccounts", [])
+  //   const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+  //   const signer = await provider.getSigner(account[0])
+  //   const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
+  //   await erc20.connect(signer)
+
+  //   await erc20['getReward']().wait()
+  //   this.ngOnInit()
+  // } catch (error:any) {
+  //   this.toastr.error(error!.error.data.message);
+  // }
     
 
   }
@@ -438,27 +440,28 @@ export class DappComponent implements OnInit {
   }
 
   async handleClaim() {
-try {
-   const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
-    const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
-    await provider.send("eth_requestAccounts", [])
-    const signer = await provider.getSigner(account[0])
-    const Erc20 = new ethers.Contract(this.CLAIMCONTRACTADDRESS, claim, signer)
-    await Erc20.connect(signer)
-    console.log(this.amountToClaim.value)
-    const amountToBuy = ethers.utils.parseEther(this.amountToClaim.value!)
-    const waits=await Erc20['buyTokens'](account[0], amountToBuy)
-    const receipt = await waits.wait();
-  
-    if(receipt){
+    this.toastr.error("claim coming soon");
+    // try {
+    //   const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+    //     const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
+    //     await provider.send("eth_requestAccounts", [])
+    //     const signer = await provider.getSigner(account[0])
+    //     const Erc20 = new ethers.Contract(this.CLAIMCONTRACTADDRESS, claim, signer)
+    //     await Erc20.connect(signer)
+    //     console.log(this.amountToClaim.value)
+    //     const amountToBuy = ethers.utils.parseEther(this.amountToClaim.value!)
+    //     const waits=await Erc20['buyTokens'](account[0], amountToBuy)
+    //     const receipt = await waits.wait();
       
-      this.approve(this.amountToClaim.value!)
-      this.ngOnInit()
-    }
-} catch (error:any) {
-  this.toastr.error(error!.error.data.message);
-}
-   
+    //     if(receipt){
+          
+    //       this.approve(this.amountToClaim.value!)
+    //       this.ngOnInit()
+    //     }
+    // } catch (error:any) {
+    //   this.toastr.error(error!.error.data.message);
+    // }
+      
     
   }
   async handleStake() {
