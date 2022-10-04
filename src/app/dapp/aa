@@ -1,0 +1,17 @@
+Error: cannot estimate gas; transaction may fail or may require manual gas limit
+[See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] 
+(reason="execution reverted: ERC20: transfer amount exceeds balance", 
+method="estimateGas", transaction={"from":"0xf28C4e2c5f3fc9B71a1319FEAF6538dE860f6511","
+to":"0x8DC4d4D66AdCb05aFc0284E7bC74716E9eb5d444","data":"0xa694fc3a000000000000000000000
+000000000000000000000000006046f37e5945c0000","accessList":null}, e
+rror={"code":-32603,"message":"Internal JSON-RPC error.","data":{"code":3,"message":"execution reverted: ERC20: transfer amount exceeds balance","data":"0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002645524332303a207472616e7366657220616d6f756e7420657863656564732062616c616e63650000000000000000000000000000000000000000000000000000"},"stack":"{\n  \"code\": -32603,\n  \"message\": \"Internal JSON-RPC error.\",\n  \"data\": {\n    \"code\": 3,\n    \"message\": \"execution reverted: ERC20: transfer amount exceeds balance\",\n    \"data\": \"0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002645524332303a207472616e7366657220616d6f756e7420657863656564732062616c616e63650000000000000000000000000000000000000000000000000000\"\n  },\n  \"stack\": \"Error: Internal JSON-RPC error.\\n    at new n (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/common-2.js:1:308657)\\n    at a (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/common-2.js:1:311413)\\n    at Object.internal (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/common-2.js:1:312023)\\n    at c (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/background-1.js:12:100028)\\n    at chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/background-1.js:12:101060\\n    at async chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/common-4.js:17:83886\"\n}\n  at new n (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/common-2.js:1:308657)\n  at a (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/common-2.js:1:311413)\n  at Object.internal (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/common-2.js:1:312023)\n  at c (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/background-1.js:12:100028)\n  at chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/background-1.js:12:101060\n  at async chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/common-4.js:17:83886"}, code=UNPREDICTABLE_GAS_LIMIT, version=providers/5.7.1)
+    at Logger.makeError(index.js: 224: 23)
+    at Logger.throwError(index.js: 233: 20)
+    at checkError(json - rpc - provider.js: 76: 20)
+    at Web3Provider.<anonymous>(json - rpc - provider.js: 575: 24)
+    at Generator.throw(<anonymous>)
+    at rejected (json-rpc-provider.js:6:47)
+    at _ZoneDelegate.invoke (zone.js:372:26)
+    at Object.onInvoke (core.mjs:26291:33)
+    at _ZoneDelegate.invoke (zone.js:371:52)
+    at Zone.run (zone.js:134:43)

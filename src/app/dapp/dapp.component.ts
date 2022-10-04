@@ -215,8 +215,8 @@ export class DappComponent implements OnInit {
               this.check()
             }
         })
-      } catch (error) {
-        console.log(error)
+      } catch (error:any) {
+        this.toastr.error(error!.error.data.message);
       }
     }
   }
@@ -235,9 +235,8 @@ export class DappComponent implements OnInit {
         console.log(mainBalance)
 
         
-
-      } catch (error) {
-        console.log(error)
+      } catch (error:any) {
+        this.toastr.error(error!.error.data.message);
       }
     }
 
@@ -260,8 +259,8 @@ export class DappComponent implements OnInit {
         this.setTotalStak = String(Math.round(stakeTotal/10**18))
         this.setearnd = String(Math.round(stakeEarn/10**18))
 
-      } catch (error) {
-        console.log(error)
+      } catch (error:any) {
+        this.toastr.error(error!.error.data.message);
       }
     }
 
@@ -270,8 +269,8 @@ export class DappComponent implements OnInit {
 
 
  async withdraw() {
-    
-    const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
+  try {
+  const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
     await provider.send("eth_requestAccounts", [])
     const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     const signer = await provider.getSigner(account[0])
@@ -281,12 +280,16 @@ export class DappComponent implements OnInit {
 
     await erc20['withdraw'](amountToBuy)
     this.ngOnInit()
+  } catch (error:any) {
+    this.toastr.error(error!.error.data.message);
+  }
+    
 
   }
 
  async getReward() {
-
-    const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
+  try {
+  const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
     await provider.send("eth_requestAccounts", [])
     const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     const signer = await provider.getSigner(account[0])
@@ -295,12 +298,16 @@ export class DappComponent implements OnInit {
 
     await erc20['getReward']()
     this.ngOnInit()
+  } catch (error:any) {
+    this.toastr.error(error!.error.data.message);
+  }
+    
 
   }
 
  async approve(any:any) {
-    
-    const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
+  try {
+  const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
     await provider.send("eth_requestAccounts", [])
     const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     const signer = await provider.getSigner(account[0])
@@ -316,6 +323,10 @@ export class DappComponent implements OnInit {
     }
     
 
+  } catch (error:any) {
+    this.toastr.error(error!.error.data.message);
+  }
+    
 
   }
 
@@ -326,7 +337,7 @@ export class DappComponent implements OnInit {
 
     if (!provider) {
 
-      console.log("Metamask is not installed, please install!");
+      this.toastr.error("Metamask is not installed, please install!");
     } else {
 
       const chainId = await provider.request({ method: 'eth_chainId' });
@@ -336,10 +347,10 @@ export class DappComponent implements OnInit {
         this.getWalletBalance()
         this.getStakeDetails()
         this.check()
-        console.log("Bravo!, you are on the correct network");
+        this.toastr.success("Bravo!, you are on the correct network");
       } else {
 
-        console.log("oulalal, switch to the correct network");
+        this.toastr.error("oulalal, switch to the correct network");
         try {
 
           await provider.request({
@@ -350,12 +361,12 @@ export class DappComponent implements OnInit {
           this.getWalletBalance()
           this.getStakeDetails()
           this.check()
-          console.log("You have succefully switched to Binance Test network")
+          this.toastr.success("You have succefully switched to Binance Test network")
 
         } catch (switchError: any) {
           // This error code indicates that the chain has not been added to MetaMask.
           if (switchError?.code === 4902) {
-            console.log("This network is not available in your metamask, please add it")
+            this.toastr.error("This network is not available in your metamask, please add it")
             try {
               await provider.request({
                 method: 'wallet_addEthereumChain',
@@ -400,10 +411,13 @@ export class DappComponent implements OnInit {
     });
   }
   async handleSale() {
-
-    const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+    try {
+   const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
-    await provider.send("eth_requestAccounts", [])
+    await provider.send("eth_requestAccounts", []).catch((error:any)=>{
+      this.toastr.error(error!.message);
+      console.log(error);
+     })
     const signer = await provider.getSigner(account[0])
     const Erc20 = new ethers.Contract(this.SALECONTRACTADDRESS, sale, signer)
     await Erc20.connect(signer)
@@ -416,12 +430,16 @@ export class DappComponent implements OnInit {
       this.approve(this.amountToBuy.value!)
       this.ngOnInit()
     }
+    } catch (error:any) {
+      this.toastr.error(error!.data.message);
+    }
+   
     
   }
 
   async handleClaim() {
-
-    const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+try {
+   const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
     await provider.send("eth_requestAccounts", [])
     const signer = await provider.getSigner(account[0])
@@ -437,11 +455,15 @@ export class DappComponent implements OnInit {
       this.approve(this.amountToClaim.value!)
       this.ngOnInit()
     }
+} catch (error:any) {
+  this.toastr.error(error!.error.data.message);
+}
+   
     
   }
   async handleStake() {
-    
-    const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+    try {
+      const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
     await provider.send("eth_requestAccounts", [])
     const signer = await provider.getSigner(account[0])
@@ -452,6 +474,11 @@ export class DappComponent implements OnInit {
     await Erc20['stake'](amountToStake)
    
     this.ngOnInit()
+    } catch (error:any) {
+      console.log(error!.error.data.message)
+      this.toastr.error(error!.error.data.message);
+    }
+    
   }
   async isTransactionMined(transactionHash:any)  {
     const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
