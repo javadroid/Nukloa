@@ -14,14 +14,14 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon d-sm-none"></span>
+            <span class="navbar-toggler-icon d-sm-none">fds</span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">About</a>
-              <a class="nav-link" href="#">Resources</a>
-              <a class="nav-link" href="#">Video</a>
-              <a class="nav-link" href="#">Our Services</a>
+              <a class="nav-link " aria-current="page" routerLink="/" routerLinkActive="active">Home</a>
+              <a class="nav-link" routerLink="/whitepaper" routerLinkActive="active">Whitepaper</a>
+              <a class="nav-link" routerLink="/faq" routerLinkActive="active">FAQ</a>
+              
             </div>
           </div>
           <button (click)="openApp()" class="launch btn btn-primary">Launch app</button>

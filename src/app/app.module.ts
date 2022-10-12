@@ -15,11 +15,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ToastrModule } from 'ngx-toastr';
 import { CountdownModule } from 'ngx-countdown';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WhitepaperComponent } from './whitepaper/whitepaper.component'
+import { FComponent } from './f/f.component';
 
 
 
 const routes: Routes = [{ path: 'app', component: DappComponent},
+  { path: 'whitepaper', component: WhitepaperComponent},
+  { path: 'faq', component: FComponent},
   { path: 'app/:id', component: DappComponent,resolve:{app:ResolverService} },
   { path: '**', component: HomeComponent},
   
@@ -28,7 +32,7 @@ const routes: Routes = [{ path: 'app', component: DappComponent},
 @NgModule({
   declarations: [
    
-      DappComponent,HomeComponent,AppComponent,
+      DappComponent,HomeComponent,AppComponent, WhitepaperComponent, FComponent,
   ],
   imports: [ RouterModule.forRoot(routes),
     BrowserModule,ReactiveFormsModule,

@@ -278,7 +278,7 @@ export class DappComponent implements OnInit {
     await erc20.connect(signer)
     const amountToBuy = ethers.utils.parseEther(this.amountTowithdraw.value!)
 
-    await erc20['withdraw'](amountToBuy)
+    await erc20['withdraw'](amountToBuy).wait();
     this.ngOnInit()
   } catch (error:any) {
     this.toastr.error(error!.error.data.message);
@@ -339,7 +339,7 @@ export class DappComponent implements OnInit {
 
     if (!provider) {
 
-      this.toastr.error("Metamask is not installed, please install!");
+      this.toastr.error("Download and connect a desired software wallet.");
     } else {
 
       const chainId = await provider.request({ method: 'eth_chainId' });
@@ -474,7 +474,7 @@ export class DappComponent implements OnInit {
 
     await Erc20.connect(signer)
     const amountToStake = ethers.utils.parseEther(this.amountToStake.value!)
-    await Erc20['stake'](amountToStake)
+    await Erc20['stake'](amountToStake).wait();
    
     this.ngOnInit()
     } catch (error:any) {

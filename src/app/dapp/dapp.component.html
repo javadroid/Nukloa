@@ -6,14 +6,16 @@
   <div class="nav_section d-flex justify-content-between align-items-center">
     <a routerLink="/" class="logo">NUKLEON</a>
     <div class="button_holder">
-      <button (click)="addToken()" class="btn text-light"> click here to add token to wallect ==></button>
+      
       <button (click)="addToken()" class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
-      <button (click)="ngOnInit()" class="btn text-light">BnB Balance: {{setwalletBalance}}</button>
+      <button (click)="ngOnInit()" class="btn text-light">BNB: {{setwalletBalance}}</button>
      
     </div>
     
   </div>
-  <button (click)="ngOnInit()" class="btn text-light">reload page</button>
+  <button (click)="addToken()" class="btn text-light"> Add Nukleon to Wallect</button><div>
+  <button (click)="ngOnInit()" class="btn text-light">Refresh Page</button></div>
+  
   <div class="main_buy d-flex">
     <div class="buy_card">
       <p class="card_content">Daily Claim</p>
