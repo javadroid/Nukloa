@@ -87,6 +87,7 @@ body::-webkit-scrollbar-thumb:vertical {
   color: grey;
 }
 
+
 .side_nav .menu_search .search_container {
   border: 2px solid #c292f9;
   margin-top: 1rem;
@@ -108,6 +109,7 @@ body::-webkit-scrollbar-thumb:vertical {
   width: 95%;
   font-size: 1.3rem;
 }
+
 
 .side_nav .menu_search .search_container i {
   font-size: 1.6rem;
@@ -207,13 +209,14 @@ body::-webkit-scrollbar-thumb:vertical {
 
 .container-fluid  .launch{
   padding:1rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .proj_header .navbar .navbar-brand {
   color: white;
   text-decoration: none;
   font-size: 3rem;
   font-weight: 700;
+ 
 }
 
 .proj_header .navbar .navbar-collapse {
@@ -239,7 +242,9 @@ body::-webkit-scrollbar-thumb:vertical {
   font-size: 4rem;
   color: #eee;
   margin-bottom: 3rem;
+  margin-top: 3rem;
   font-weight: 600;
+
 }
 
 .proj_header .caption .sub_caption {

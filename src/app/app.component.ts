@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent  {
  
  
-constructor(private rout:Router){
+constructor(private rout:Router,private toastr: ToastrService){
 
 }
 

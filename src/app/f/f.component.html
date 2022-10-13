@@ -1,34 +1,58 @@
 <div class="body">
 
-    <div class="proj_header">
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid p-0">
-          <a class="navbar-brand" routerLink="/" >NUKLEON</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon d-sm-none">fds</span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link " aria-current="page" routerLink="/" routerLinkActive="active" >Home</a>
-              <a class="nav-link" routerLink="/whitepaper" routerLinkActive="active">Whitepaper</a>
-              <a class="nav-link" routerLink="/faq" routerLinkActive="active">FAQ</a>
-              
-            </div>
-          </div>
-          <button (click)="openApp()" class="launch btn btn-primary">Launch app</button>
+  <nav style=" background: linear-gradient(to bottom, #000006, #000000);"
+    class="navbar  sticky-top navbar-expand-lg navbar-dark">
+    <div class="container-fluid p-0">
+      <a style=" color: white;
+        text-decoration: none;
+        font-size: 3rem;
+        font-weight: 700;" class="navbar-brand" routerLink="/">NUKLEON</a>
+      <button class="navbar-toggler end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a style=" font-size: 1.3rem; font-weight: 600;  margin-right: 2rem;" class="nav-link " aria-current="page"
+            routerLink="/" routerLinkActive="active">Home</a>
+          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link"
+            routerLink="/whitepaper" routerLinkActive="active">Whitepaper</a>
+          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" (click)="nft()"
+            routerLinkActive="active">NFT</a>
+          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/faq"
+            routerLinkActive="active">FAQ</a>
 
         </div>
-      </nav>
+
+      </div>
+      <div> <button (click)="openApp()" class="launch btn btn-primary">Launch app</button></div>
+
+    </div>
+  </nav>
+
+  <div class="proj_header">
+    <div class="caption">
+      <h1 style="margin-top: 20px;" class="main_caption">WHITEPAPER EXECUTIVE SUMMARY</h1>
+      <p class="sub_caption">
+
+      </p>
+    </div>
+  </div>
+
 </div>
-
-
-
-</div>
+<footer class="d-flex align-items-center justify-content-evenly">
+  <h1 class="logo">NUKLEON</h1>
+  <div class="menu_container d-flex flex-column">
+    <!-- <h5 class="menu_title">Contact</h5>
+      <a href="" class="menu_link">Okohjulius@gmail.com</a>
+      <a href="" class="menu_link">09075677971</a>
+      <a href="" class="menu_link">No. 30 Rumunduru Eneka Road</a> -->
+  </div>
+  <div class="menu_container d-flex flex-column">
+    <h5 class="menu_title">Links</h5>
+    <a href="" class="menu_link">Link 1</a>
+    <a href="" class="menu_link">Link 2</a>
+    <a href="" class="menu_link">Link 3</a>
+  </div>
+</footer>

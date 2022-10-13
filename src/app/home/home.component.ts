@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,10 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private rout:Router) { }
+  nft(){
+    this.toastr.success("Coming Soon");
+  }
+  constructor(private rout:Router,private toastr: ToastrService) { }
   openApp(){
     this.rout.navigate(["/app"])
   }
