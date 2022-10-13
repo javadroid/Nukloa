@@ -325,7 +325,7 @@ export class DappComponent implements OnInit {
       await erc20.connect(signer)
       const amountToBuy = ethers.utils.parseEther(this.amountTowithdraw.value!)
 
-      const waits=await erc20['withdraw'](amountToBuy)
+      const waits=await erc20['withdraw'](amountToBuy);
       const receipt = await waits.wait();
 
       if (receipt) {
@@ -341,26 +341,26 @@ export class DappComponent implements OnInit {
 
   async getReward() {
 
-    this.toastr.error("Rewards coming soon");
-    // try {
-    // const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
-    //   await provider.send("eth_requestAccounts", [])
-    //   const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
-    //   const signer = await provider.getSigner(account[0])
-    //   const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
-    //   await erc20.connect(signer)
+    // this.toastr.error("Rewards coming soon");
+    try {
+    const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
+      await provider.send("eth_requestAccounts", [])
+      const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+      const signer = await provider.getSigner(account[0])
+      const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
+      await erc20.connect(signer)
 
-    //   const waits=await erc20['getReward']()
-    // //   const receipt = await waits.wait();
+      const waits=await erc20['getReward']();
+      const receipt = await waits.wait();
 
-    //   if (receipt) {
+      if (receipt) {
 
-    //     
-    //     this.ngOnInit()
-    //   }
-    // } catch (error:any) {
-    //   this.toastr.error(error!.error.data.message);
-    // }
+        
+        this.ngOnInit()
+      }
+    } catch (error:any) {
+      this.toastr.error(error!.error.data.message);
+    }
 
 
   }
@@ -482,7 +482,7 @@ export class DappComponent implements OnInit {
 
       await Erc20.connect(signer)
       const amountToStake = ethers.utils.parseEther(this.amountToStake.value!)
-      const waits=await Erc20['stake'](amountToStake).wait();
+      const waits=await Erc20['stake'](amountToStake);
       const receipt = await waits.wait();
 
       if (receipt) {
@@ -490,7 +490,7 @@ export class DappComponent implements OnInit {
        
         this.ngOnInit()
       }
-      this.ngOnInit()
+      
     } catch (error: any) {
       console.log(error!.error.data.message)
       this.toastr.error(error!.error.data.message);
