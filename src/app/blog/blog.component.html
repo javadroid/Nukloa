@@ -1,0 +1,63 @@
+<nav class="navbar navbar-default main-header">
+  <div class="container header-main">
+      <div class="navbar-header">
+          <a routerLink="/" class="navbar-brand">Blog Book</a>
+
+
+      </div>
+
+      <div class="collapse navbar-collapse" id="myHeader">
+          <ul class="nav navbar-nav">
+
+              <li routerLinkActive="active">
+                  <!--      <a routerLink="/login">login</a> -->
+              </li>
+              <li routerLinkActive="active">
+                  <!--    <a routerLink="/signup">Sign-up</a> -->
+              </li>
+              <li routerLinkActive="active">
+                  <a *ngIf="allpostcount==0" routerLink="/create-post">Create post</a>
+                  <a *ngIf="allpostcount>0" routerLink="/create-post">Add Post</a>
+              </li>
+
+              <li routerLinkActive="active" *ngIf="!isAuthenticated">
+                  <a routerLink="/auth">Authenticate</a>
+              </li>
+              <li routerLinkActive="active" *ngIf="isAuthenticated && isemailverfied">
+                  <a routerLink="/myposts">MyPosts</a>
+              </li>
+              <li routerLinkActive="active" *ngIf="isAuthenticated && !isprofileSet ">
+                  <a routerLink='/myprofile'>CreateProfile</a>
+              </li>
+              <li routerLinkActive="active" *ngIf="isAuthenticated && isprofileSet && isemailverfied">
+                  <a [routerLink]="['/myprofile', username]">MyProfile</a>
+              </li>
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li *ngIf="isAuthenticated">
+                  <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
+              </li>
+
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+
+
+
+
+<div class="container middle">
+
+  <!-- <ngx-spinner bdColor="rgb(221,214,243,0.5)" size="medium" type="ball-spin-fade" color="#42275a" fullScreen=" true">
+    <p style="color: Black;font-size: 20px; font-weight: 600;">Loading News... </p>
+</ngx-spinner> -->
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+<h5 *ngIf="!isloading" class="text-center copyright"> © Copyrights reserved by Mehul Kothari</h5>

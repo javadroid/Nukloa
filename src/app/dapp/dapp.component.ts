@@ -15,6 +15,7 @@ import { ClipboardService } from 'ngx-clipboard';
 import { ToastrService } from 'ngx-toastr';
 import { CountdownConfig } from 'ngx-countdown';
 import { doc, Firestore, FirestoreModule, updateDoc } from '@angular/fire/firestore';
+import { ServiceService } from '../share/service.service';
 @Component({
   selector: 'app-dapp',
   templateUrl: './dapp.component.html',
@@ -47,7 +48,7 @@ export class DappComponent implements OnInit {
   timestamp = this.current.getTime();
   newTimestamp = 0;
 
-  constructor(private readonly firestore: Firestore, private db: FirestoreModule, private toastr: ToastrService, private clipboardApi: ClipboardService, private store: NukFirestoreService, private route: ActivatedRoute, private winRef: WinRefService) {
+  constructor(private readonly api: ServiceService, private db: FirestoreModule, private toastr: ToastrService, private clipboardApi: ClipboardService, private store: NukFirestoreService, private route: ActivatedRoute, private winRef: WinRefService) {
 
   }
   ngOnInit(): void {
@@ -169,7 +170,8 @@ export class DappComponent implements OnInit {
   async check() {
     const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
 
-    this.store.e(account[0]).subscribe((res: any) => {
+    this.api.findAny('users','walletAddress',account[0]).subscribe(res=>{
+      console.log('walletAddress',res)
       this.dailyClaim = res[0].dailyBonus
 
       this.current = new Date(this.newTimestamp)
@@ -194,13 +196,15 @@ export class DappComponent implements OnInit {
 
       console.log('test', res[0])
       return;
-    })
-    this.store.z(account[0]).subscribe((res: any[]) => {
 
+    })
+    this.api.findAny('users','referredby',account[0]).subscribe(res=>{
+      console.log('referredby',res)
       this.refferal = res.length
 
       this.amountToClaim.setValue(String(this.refferal * 30000))
     })
+
   }
 
   async contranDetails() {
@@ -227,7 +231,7 @@ export class DappComponent implements OnInit {
 
         let ids: any[] = [this.route.snapshot.params]
 
-
+          console.log("ids",ids)
 
         if (ids[0].id && ids[0].id != account[0]) {
           this.user = {
@@ -248,23 +252,23 @@ export class DappComponent implements OnInit {
         }
         console.log("id", this.user)
 
-
-        this.store.e(account[0]).subscribe((res: any) => {
-
-
-
+        this.api.findAny('users','walletAddress',account[0]).subscribe(res=>{
           if (res[0]) {
 
             this.getWalletBalance()
             this.getStakeDetails()
             this.check()
           } else {
-            this.store.create(this.user)
+            this.api.create('users',this.user).subscribe(res=>{
+              console.log('create',res)
+            })
             this.getWalletBalance()
             this.getStakeDetails()
             this.check()
           }
         })
+
+
       } catch (error: any) {
         this.toastr.error(error!.error.data.message);
       }
@@ -355,7 +359,7 @@ export class DappComponent implements OnInit {
 
       if (receipt) {
 
-        
+
         this.ngOnInit()
       }
     } catch (error:any) {
@@ -394,10 +398,9 @@ export class DappComponent implements OnInit {
     const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
 
 
-
-    this.store.e(account[0]).subscribe((res: any) => {
-
-      localStorage.setItem("id", res[0].id);
+    this.api.findAny('users','walletAddress',account[0]).subscribe(res=>{
+      console.log('walletAddressfindAny',res)
+      localStorage.setItem("id", res[0]._id);
       localStorage.setItem("user", res[0].dailyBonus);
     })
 
@@ -415,7 +418,12 @@ export class DappComponent implements OnInit {
       }
       console.log("user", daiyclicks + 10000);
       console.log("res", res);
-      this.store.updates(res, this.user)
+      this.api.update('users',res,this.user).subscribe(res=>{
+        console.log('update',res)
+        this.check()
+      })
+
+
     }
 
 
@@ -487,10 +495,10 @@ export class DappComponent implements OnInit {
 
       if (receipt) {
 
-       
+
         this.ngOnInit()
       }
-      
+
     } catch (error: any) {
       console.log(error!.error.data.message)
       this.toastr.error(error!.error.data.message);
@@ -507,7 +515,7 @@ export class DappComponent implements OnInit {
       return txReceipt;
     } return 'null'
   }
-  
+
 
 
 

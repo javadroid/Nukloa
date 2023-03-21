@@ -1,35 +1,6 @@
 <div class="body">
 
-  <nav style=" background: linear-gradient(to bottom, #000006, #000000);"
-    class="navbar  sticky-top navbar-expand-lg navbar-dark">
-    <div class="container-fluid p-0">
-      <a style=" color: white;
-        text-decoration: none;
-        font-size: 3rem;
-        font-weight: 700;" class="navbar-brand" routerLink="/">NUKLEON</a>
-      <button class="navbar-toggler end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a style=" font-size: 1.3rem; font-weight: 600;  margin-right: 2rem;" class="nav-link " aria-current="page"
-            routerLink="/" routerLinkActive="active">Home</a>
-          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link"
-            routerLink="/whitepaper" routerLinkActive="active">Whitepaper</a>
-          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" (click)="nft()"
-            routerLinkActive="active">NFT</a>
-          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/faq"
-            routerLinkActive="active">FAQ</a>
-
-        </div>
-
-      </div>
-      <div> <button (click)="openApp()" class="launch btn btn-primary">Launch app</button></div>
-
-    </div>
-  </nav>
+  <app-header></app-header>
 
   <div class="proj_header">
     <div class="caption">

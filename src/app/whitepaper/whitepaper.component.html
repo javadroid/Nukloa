@@ -1,44 +1,19 @@
 <div class="body">
 
-  <nav style=" background: linear-gradient(to bottom, #000006, #000000);"
-  class="navbar  sticky-top navbar-expand-lg navbar-dark">
-  <div class="container-fluid p-0">
-    <a style=" color: white;
-        text-decoration: none;
-        font-size: 3rem;
-        font-weight: 700;" class="navbar-brand" routerLink="/">NUKLEON</a>
-    <button  class="navbar-toggler end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a style=" font-size: 1.3rem; font-weight: 600;  margin-right: 2rem;" class="nav-link " aria-current="page" routerLink="/" routerLinkActive="active">Home</a>
-        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/whitepaper" routerLinkActive="active">Whitepaper</a>
-        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" (click)="nft()" routerLinkActive="active">NFT</a>
-        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/faq" routerLinkActive="active">FAQ</a>
-
-      </div>
-      
-    </div>
-   <div> <button (click)="openApp()" class="launch btn btn-primary">Launch app</button></div>
-
-  </div>
-</nav>
+<app-header></app-header>
 
 <div class="proj_header">
   <div class="caption">
     <h1 style="margin-top: 20px;" class="main_caption">WHITEPAPER EXECUTIVE SUMMARY</h1>
     <p class="sub_caption">
-    
+
     </p>
   </div>
 </div>
 <!-- -->
 <div style="color: white; " class="caption" >
- 
-  
+
+
   <br> <div class="content">
   <h4 class="title">ABSTRACT</h4>
   <p style="font-size: 13px; " class="words">
@@ -84,7 +59,7 @@
     content delivery networks, we are developing a system (CDN). The Nucleon
     decentralized orbital is the next step in cloud storage and will play a significant role in
     shaping and propelling innovation in the emerging web 3.0 era.
-    
+
   </p>
 </div>
 
@@ -105,14 +80,14 @@
     to achieve the same durability level. This finding is based on our research and
     experience running our previous network, which scaled to a size greater than any other
     decentralized cloud storage network in the world.
-    
+
   </p></div>
 
 
   <div class="content"><h3 class="title">THE CHALLENGES OF DECENTRALIZED NETWORK</h3>
   <p style="font-size: 13px; " class="words">
-   
-   
+
+
 The requirements, network implementation, and general architecture of a scalable,
 resilient decentralized cloud storage platform must take into account a number of
 design restrictions. Many platforms fall short in properly addressing these
@@ -123,7 +98,7 @@ Nucleon Orbital creates a network that can in many ways outperform centralized
 cloud storage services by addressing the architectural constraints. The design
 restraints that we have taken into account include:  </p> <br>
 <ul style="font-size: 13px; ">The need for AWS S3 compatibility to ensure easy migration
-</ul> 
+</ul>
 <ul style="font-size: 13px; "> Device failure and churn, which are tightly coupled with durability and
 bandwidth</ul>
 <ul style="font-size: 13px; ">Minimizing bandwidth usage due to bandwidth caps imposed by ISPs •
@@ -131,7 +106,7 @@ The need for enterprise-grade security and privacy for data stored on the
 network</ul>
 <br></div>
 
-<div class="content"><h3 class="title">OBJECT STORAGE VS DATABASE USE CASES</h3> 
+<div class="content"><h3 class="title">OBJECT STORAGE VS DATABASE USE CASES</h3>
 <ul style="font-size: 13px; ">Byzantine fault tolerance across the decentralized cloud storage
     network </ul>
 <ul style="font-size: 13px; ">General attack resistance to combat data breaches and DDoS attacks
@@ -143,7 +118,7 @@ network</ul>
 <ul style="font-size: 13px; ">Building coordination avoidance systems instead of coordination dependant
     systems</ul>
   <p style="font-size: 13px; " class="words">
-  
+
     Delivering cloud storage that is simple to integrate into current
     infrastructure and applications is a key objective of our platform.
     Additionally, it must provide security, encryption, reputation management,
@@ -157,7 +132,7 @@ network</ul>
     We have created a unique design with eight parts that offers the best decentralized
 storage implementation. The architecture we describe performs within the parameters of
 the design restrictions, offers the fundamental capabilities anticipated, and transfers
-savings to storage users. 
+savings to storage users.
 The framework of components discussed in this white paper are:<br>
 <ul style="font-size: 13px; ">Storage nodes</ul>
 <ul style="font-size: 13px; ">Peer-to-peer communication and discovery</ul>
@@ -173,7 +148,7 @@ necessary. <br>
 Three separate areas of the network have these eight components.</p>
 <ul style="font-size: 13px; ">An Uplink is any software or service which invokes LibUplink in order to
 communicate with Satellites and Storage Nodes. Examples of Uplinks include
-the Uplink CLI and the Gateway.</ul> 
+the Uplink CLI and the Gateway.</ul>
 
 <ul style="font-size: 13px; ">The Storage Node, which stores the data for the network. Each one is
 independently operated and does not share bandwidth, power or other
@@ -204,7 +179,7 @@ members will be able to operate their own satellites as well.
     the core eight components will remain the same, while their concrete implementation will
     evolve to maximize security, dependability, efficiency, performance and take use of other
     benefits.
-    
+
   </p></div>
 </div>
 
