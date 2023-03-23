@@ -26,6 +26,7 @@ import { FooterComponent } from './share/footer/footer.component';
 import { HeaderComponent } from './share/header/header.component';
 import { ServiceService } from './share/service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PlayComponent } from './play/play.component';
 
 
 
@@ -36,6 +37,7 @@ const routes: Routes = [{ path: 'app', component: DappComponent},
   { path: 'blog', component: BlogComponent},
   { path: 'landing', component: LandingPageComponent},
   { path: 'aboutus', component: AboutComponent},
+  { path: 'play', component: PlayComponent},
   { path: 'app/:id', component: DappComponent,resolve:{app:ResolverService} },
   { path: '**', component: HomeComponent},
 
@@ -44,7 +46,7 @@ const routes: Routes = [{ path: 'app', component: DappComponent},
 @NgModule({
   declarations: [
 
-      DappComponent,HomeComponent,AppComponent, WhitepaperComponent, FComponent, BlogComponent, HeaderComponent, LandingPageComponent, AboutComponent, FooterComponent,
+      DappComponent,HomeComponent,AppComponent, WhitepaperComponent, FComponent, BlogComponent, HeaderComponent, LandingPageComponent, AboutComponent, FooterComponent, PlayComponent,
   ],
   imports: [ RouterModule.forRoot(routes),
     BrowserModule,ReactiveFormsModule,
