@@ -32,7 +32,17 @@ a:hover {
 ul {
   list-style: none;
 }
+.testingR{
+  position: relative;
 
+  height: 100vh;
+  width: 100%;
+  z-index: 99;
+  background: #050113;
+  display: grid;
+  place-items: center;
+  font-family: "Oribtron", sans-serif;
+}
 
 /* loading div */
 .loading {
@@ -142,6 +152,10 @@ ul {
 }
 
 @media (max-width: 600px) {
+
+  .testingR{
+    width: 90vw;
+  }
   .loading_box {
     position: relative;
     width: 90vw;

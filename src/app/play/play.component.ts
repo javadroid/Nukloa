@@ -44,15 +44,17 @@ export class PlayComponent implements OnInit {
       this.renderer.setPixelRatio( window.devicePixelRatio );
       this.renderer.setSize( window.innerWidth, window.innerHeight );
       this.renderer.outputEncoding = THREE.sRGBEncoding;
-      // this.renderer.setSize(window.innerWidth,window.innerHeight)
-      document.body.appendChild(this.renderer.domElement)
+     const containerDiv = document.querySelector('.testingR'); // get the div with class 'container'
+     const newDiv = document.createElement('div'); // create a new div element
+     containerDiv!.appendChild(this.renderer.domElement); // Append the new div as a child to the container div
+      // document.body.appendChild(this.renderer.domElement)
 
       const geometry = new THREE.BoxGeometry()
       const material = new THREE.MeshBasicMaterial({color:0xff0000})
       const  mesh = new THREE.Mesh(geometry, material)
       this.mesh=mesh
       this.scene.add(mesh)
-     this.camera.position.z = 5
+     this.camera.position.z = 10
      this.animate()
 
 
