@@ -44,11 +44,11 @@ ul {
   height: 100vh;
   width: 100%;
   z-index: 99;
-  background: #0b134f;
+  background: #050113;
   display: grid;
   place-items: center;
   font-family: "Oribtron", sans-serif;
-
+  display: none;
 }
 
 .loading_box {
@@ -201,13 +201,16 @@ ul {
   background-color: #111;
   color: #fff;
   overflow: hidden;
+
+
 }
 
 .header {
   position: absolute;
-  top: 1rem;
+  top: -100%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 20;
 }
 
 .header_wrap {
