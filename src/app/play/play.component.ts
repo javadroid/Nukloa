@@ -98,11 +98,17 @@ export class PlayComponent implements OnInit {
           })
 
           gsap.to(".header", {
-            duration: 1,
+            duration: 3,
             delay: 2,
             top: "0",
           })
 
+          gsap.to(".socials", {
+            duration: 3,
+            delay: 3,
+            bottom: "10rem",
+
+          })
         })
 
       }
