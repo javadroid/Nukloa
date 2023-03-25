@@ -412,12 +412,13 @@ font-weight: 500;
   gap: 1rem;
   z-index: 20;
  }
-.socials svg{
+.socials svg,.coloricons{
   color: #fff;
   font-size: 35px;
   z-index: 20;
+  cursor: pointer;
 }
-.coloricons:hover{
+.coloricons:hover,.socials svg:hover{
   animation: coloriconsAnimation .2s infinite;
 }
 @keyframes coloriconsAnimation {
