@@ -27,6 +27,11 @@ import { HeaderComponent } from './share/header/header.component';
 import { ServiceService } from './share/service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayComponent } from './play/play.component';
+// import { NgIconsModule } from '@ng-icons/core';
+// import {  bootstrapMedium,bootstrapDiscord,bootstrapTwitter } from '@ng-icons/bootstrap-icons';
+// import { heroUsers } from '@ng-icons/heroicons/outline';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 
@@ -54,7 +59,7 @@ const routes: Routes = [{ path: 'app', component: DappComponent},
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-
+    FontAwesomeModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     FirestoreModule,

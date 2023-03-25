@@ -4,6 +4,7 @@ body {
   line-height: 1.5;
   display: block;
 
+
 }
 
 html,
@@ -54,18 +55,18 @@ ul {
   height: 100vh;
   width: 100%;
   z-index: 99;
-  background: #050113;
+  background: #010411;
   display: grid;
   place-items: center;
   font-family: "Oribtron", sans-serif;
-  display: none;
+
 }
 
 .loading_box {
   position: relative;
   width: 500px;
   height: 200px;
-  border: 3px solid #6cff8d;
+  border: 3px solid #03270b;
   border-top: 3px solid #6cff8c7a;
   border-bottom: 3px solid #6cff8c7a;
 }
@@ -153,9 +154,7 @@ ul {
 
 @media (max-width: 600px) {
 
-  .testingR{
-    width: 90vw;
-  }
+
   .loading_box {
     position: relative;
     width: 90vw;
@@ -212,7 +211,11 @@ ul {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-color: #111;
+  background: #091551;
+  /* background: transparent; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   color: #fff;
   overflow: hidden;
 
@@ -398,3 +401,40 @@ font-weight: 500;
  .header_button:hover:after{
   transform: translate3d(0,-5px,0);
  }
+
+ .socials{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 20;
+ }
+.socials svg{
+  color: #fff;
+  font-size: 35px;
+  z-index: 20;
+}
+.coloricons:hover{
+  animation: coloriconsAnimation .2s infinite;
+}
+@keyframes coloriconsAnimation {
+  0%{
+    text-shadow: -5px -4px rgb(90, 8, 8),-5px -6px rgb(3, 3, 80);
+  }
+
+  25%{
+    text-shadow: -5px -6px rgb(90, 8, 8),-5px -4px rgb(3, 3, 80);
+  }
+  50%{
+    text-shadow: -5px -4px rgb(90, 8, 8),-8px -4px rgb(3, 3, 80);
+  }
+  75%{
+    text-shadow: -8px -4px rgb(90, 8, 8),-5px -4px rgb(3, 3, 80);
+  }
+  100%{
+    text-shadow: -5 px 0px rgb(90, 8, 8),-5px -0px rgb(3, 3, 80);
+  }
+}
