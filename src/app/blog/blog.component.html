@@ -1,63 +1,232 @@
-<nav class="navbar navbar-default main-header">
-  <div class="container header-main">
-      <div class="navbar-header">
-          <a routerLink="/" class="navbar-brand">Blog Book</a>
 
 
+
+  <div class="row h-75 main_highlight pt-5">
+    <div class="img col-lg-8 col-sm-12 bg-light h-lg-75 h-sm-75 w-lg-25 p-0">
+      <img src="img/1.jpg" alt="" />
+    </div>
+    <div class="text col-lg-4 col-sm-12 w-lg-25">
+      <span class="small">Featured</span>
+      <h1 class="headline">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur veniam sapiente aliquam corrupti, at
+        deleniti.
+      </h1>
+      <div class="post_detail">
+        <a href="" class="blog_link">Policy,</a>
+        <span class="date">Mar 22, 2023, </span>
+        <span class="read_time">5 min read time</span>
       </div>
-
-      <div class="collapse navbar-collapse" id="myHeader">
-          <ul class="nav navbar-nav">
-
-              <li routerLinkActive="active">
-                  <!--      <a routerLink="/login">login</a> -->
-              </li>
-              <li routerLinkActive="active">
-                  <!--    <a routerLink="/signup">Sign-up</a> -->
-              </li>
-              <li routerLinkActive="active">
-                  <a *ngIf="allpostcount==0" routerLink="/create-post">Create post</a>
-                  <a *ngIf="allpostcount>0" routerLink="/create-post">Add Post</a>
-              </li>
-
-              <li routerLinkActive="active" *ngIf="!isAuthenticated">
-                  <a routerLink="/auth">Authenticate</a>
-              </li>
-              <li routerLinkActive="active" *ngIf="isAuthenticated && isemailverfied">
-                  <a routerLink="/myposts">MyPosts</a>
-              </li>
-              <li routerLinkActive="active" *ngIf="isAuthenticated && !isprofileSet ">
-                  <a routerLink='/myprofile'>CreateProfile</a>
-              </li>
-              <li routerLinkActive="active" *ngIf="isAuthenticated && isprofileSet && isemailverfied">
-                  <a [routerLink]="['/myprofile', username]">MyProfile</a>
-              </li>
-
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-              <li *ngIf="isAuthenticated">
-                  <a style="cursor: pointer;" (click)="onLogout()">Logout</a>
-              </li>
-
-          </ul>
-      </div>
+    </div>
   </div>
-</nav>
+
+  <section class="most_recent-section my-5">
+    <h1 class="title mb-5 text-light">Most recent</h1>
+
+    <div class="row most_recent">
+      <div class="col-lg-4 col-sm-12">
+        <div class="card_img h-75"><img src="img/2.jpg" alt="" /></div>
+        <div class="post_detail">
+          <a href="" class="blog_link">Policy,</a>
+          <span class="date">Mar 22, 2023, </span>
+          <span class="read_time">5 min read time</span>
+        </div>
+        <h2 class="headline">Lorem ipsum dolor sit amet consectetur.</h2>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <div class="card_img h-75"><img src="img/2.jpg" alt="" /></div>
+        <div class="post_detail">
+          <a href="" class="blog_link">Policy,</a>
+          <span class="date">Mar 22, 2023, </span>
+          <span class="read_time">5 min read time</span>
+        </div>
+        <h2 class="headline">Lorem ipsum dolor sit amet consectetur.</h2>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <div class="card_img h-75"><img src="img/2.jpg" alt="" /></div>
+        <div class="post_detail">
+          <a href="" class="blog_link">Policy,</a>
+          <span class="date">Mar 22, 2023, </span>
+          <span class="read_time">5 min read time</span>
+        </div>
+        <h2 class="headline">Lorem ipsum dolor sit amet consectetur.</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="podcast_section">
+    <h1 class="title my-5 text-light">Podcast</h1>
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button
+          class="nav-link active"
+          id="nav-home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-home"
+          type="button"
+          role="tab"
+          aria-controls="nav-home"
+          aria-selected="true"
+        >
+          Around the Block
+        </button>
+        <button
+          class="nav-link"
+          id="nav-profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-profile"
+          type="button"
+          role="tab"
+          aria-controls="nav-profile"
+          aria-selected="false"
+        >
+          Build Crypto
+        </button>
+      </div>
+    </nav>
+    <div class="tab-content py-4" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECOND TAB CONTENT STARTS HERE -->
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="live_chat-container">
+    <div class="chat_card">
+      <div class="name_image">
+        <img src="img/11. Nerd Woman.png" alt="" />
+        <div class="care">
+          <h4 class="intro">How Can We Help?</h4>
+          <p class="online">We are online</p>
+        </div>
+      </div>
+
+      <div class="chat_container">
+        <div class="sender">
+          <p class="msg">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur minima nostrum numquam deleniti
+            repudiandae ullam optio nihil sequi itaque fugit.
+          </p>
+        </div>
+        <div class="receiver">
+          <p class="msg">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur minima nostrum numquam deleniti
+            repudiandae ullam optio nihil sequi itaque fugit.
+          </p>
+        </div>
+      </div>
+
+      <div class="typing">
+        <textarea name="" id="" placeholder="Enter Message"></textarea>
+        <button class="send"><i class="icofont-paper-plane icofont-3x"></i></button>
+      </div>
+    </div>
+    <button class="chat_initiator">Chat <i class="icofont-wechat"></i></button>
+  </div>
 
 
-
-
-
-
-<div class="container middle">
-
-  <!-- <ngx-spinner bdColor="rgb(221,214,243,0.5)" size="medium" type="ball-spin-fade" color="#42275a" fullScreen=" true">
-    <p style="color: Black;font-size: 20px; font-weight: 600;">Loading News... </p>
-</ngx-spinner> -->
-  <router-outlet></router-outlet>
-</div>
-
-
-
-
-<h5 *ngIf="!isloading" class="text-center copyright"> © Copyrights reserved by Mehul Kothari</h5>

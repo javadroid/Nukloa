@@ -27,22 +27,23 @@ import { HeaderComponent } from './share/header/header.component';
 import { ServiceService } from './share/service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayComponent } from './play/play.component';
-// import { NgIconsModule } from '@ng-icons/core';
-// import {  bootstrapMedium,bootstrapDiscord,bootstrapTwitter } from '@ng-icons/bootstrap-icons';
-// import { heroUsers } from '@ng-icons/heroicons/outline';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PriceComponent } from './price/price.component';
 
 
 
 
 
-const routes: Routes = [{ path: 'app', component: DappComponent},
+const routes: Routes = [
+  { path: 'app', component: DappComponent},
   { path: 'whitepaper', component: WhitepaperComponent},
   { path: 'faq', component: FComponent},
   { path: 'blog', component: BlogComponent},
   { path: 'landing', component: LandingPageComponent},
   { path: 'aboutus', component: AboutComponent},
   { path: 'play', component: PlayComponent},
+  { path: 'price', component: PriceComponent},
   { path: 'app/:id', component: DappComponent,resolve:{app:ResolverService} },
   { path: '**', component: HomeComponent},
 
@@ -51,7 +52,7 @@ const routes: Routes = [{ path: 'app', component: DappComponent},
 @NgModule({
   declarations: [
 
-      DappComponent,HomeComponent,AppComponent, WhitepaperComponent, FComponent, BlogComponent, HeaderComponent, LandingPageComponent, AboutComponent, FooterComponent, PlayComponent,
+      DappComponent,HomeComponent,AppComponent, WhitepaperComponent, FComponent, BlogComponent, HeaderComponent, LandingPageComponent, AboutComponent, FooterComponent, PlayComponent, PriceComponent,
   ],
   imports: [ RouterModule.forRoot(routes),
     BrowserModule,ReactiveFormsModule,

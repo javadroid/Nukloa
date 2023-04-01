@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import axios from 'axios';
 import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
 
 // const apiUrl ='https://api.mrssms.com/api'
@@ -68,4 +69,18 @@ export class ServiceService {
   sendMail(model: string,data:any): Observable<any>{
     return this.http.post(`${apiUrl}/${model}`,data)
   }
+
+ async getAllCoin(){
+
+  //  const res =await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=ngn',{'headers':{'Content-Type':'app'}})
+  //  console.log("testing ", await res)
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=ngn`)
+  }
+
+   getAlltrending(){
+
+    //  const res =await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=ngn',{'headers':{'Content-Type':'app'}})
+    //  console.log("testing ", await res)
+      return this.http.get(`https://api.coingecko.com/api/v3/search/trending`)
+    }
 }

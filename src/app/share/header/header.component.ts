@@ -8,16 +8,23 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  loading_bar_inner = 0
+  loading_bar_style = { width: this.loading_bar_inner + '%' }
+  isollapse = true
 
-
-  nft(){
-    this.toastr.success("Coming Soon");
-  }
   constructor(private rout:Router,private toastr: ToastrService) { }
+
+
+  ngOnInit(): void {
+
+  }
   openApp(){
     this.rout.navigate(["/app"])
   }
-  ngOnInit(): void {
+
+nft(){
+    this.toastr.success("Coming Soon");
   }
+
 
 }

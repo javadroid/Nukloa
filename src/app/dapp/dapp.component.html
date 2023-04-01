@@ -4,25 +4,25 @@
 
 <div class="buy_container  pb-5">
   <div class="nav_section d-flex justify-content-between align-items-center">
-    <a routerLink="/" class="logo">NUKLEON</a>
+
     <div class="button_holder">
-      
+
       <button (click)="addToken()" class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
       <button (click)="ngOnInit()" class="btn text-light">BNB: {{setwalletBalance}}</button>
-     
+
     </div>
-    
+
   </div>
   <button (click)="addToken()" class="btn text-light"> Add Nukleon to Wallect</button><div>
   <button (click)="ngOnInit()" class="btn text-light">Refresh Page</button></div>
-  
+
   <div class="main_buy d-flex">
     <div class="buy_card">
       <p class="card_content">Daily Claim</p>
       <h1 class="highlight">{{dailyClaim}}</h1>
       <div class="card_content">
         <countdown [config]="config"></countdown>
-        </div> 
+        </div>
       <div class="hold_btn">
         <button [disabled]="ready" (click)="handleEvent()" class="btn primary_btn">Claim</button>
         <button  (click)=" handleClaim()" class="btn">Withdraw</button>
@@ -32,9 +32,9 @@
       <p class="card_content text">Total Referrals : {{refferal}}</p>
       <div class="card_content text">Referrals Balance: {{refferal*30000}}</div>
       <div class="hold_btn">
-        
+
         <button (click)="copyLink()" class="btn primary_btn">Copy link</button>
-        <button 
+        <button
          (click)=" handleClaim()" class="btn">Withdraw</button>
       </div>
     </div>
@@ -44,7 +44,7 @@
     <div class="buy_nuk">
       <h4 class="item_title">Buy Nuk</h4><strong>
       <h3 style="color: rgba(80, 73, 73, 0.753)" >1  {{(setContractInfo.tokenSymbol)}} ~ $13.20</h3>
-        
+
         <h3 style="color: rgba(80, 73, 73, 0.753)" >0.0000001 BNB = 1 {{(setContractInfo.tokenSymbol)}}</h3></strong>
 
       <div class="input_container">
@@ -59,7 +59,7 @@
       <div class="hold_inputs">
         <h4><span style="color: rgb(143, 32, 32);">note:</span> you can only withdraw staked token after stake period ends <span style="color: rgb(19, 121, 33);">but then you can withdraw your staked rewards😃</span></h4>
         <div class="heading">Rewards: {{setStakeBalance}} {{setContractInfo.tokenSymbol}} </div>
-        
+
         <div class="input_container">
           <input [formControl]="amountToStake"  name="" placeholder="Enter Amount" />
           <button (click)="handleStake()" class="cta">Stake</button>
@@ -68,7 +68,7 @@
           <input [formControl]="amountTowithdraw"  name="" placeholder="Withdraw Staked" />
           <button  (click)="withdraw()" class="cta">Withdraw</button>
         </div>
-       
+
         <button   (click)="getReward()" class="cta">Claim Rewards</button>
       </div>
     </div>
@@ -99,45 +99,45 @@
     <button (click)="addToken()">Add token to Wallet</button>
     <button (click)="contranDetails()">Connect wallect</button>
   </div>
-  
+
   <p>Wallet Balance {{setwalletBalance}} BNB</p>
   <p>{{setContractInfo.tokenName}} {{(setContractInfo.tokenSymbol)}}</p>
   <p>Wallet Balance {{setBalanceInfo.balance}} {{(setContractInfo.tokenSymbol)}}</p>
   <p>total supply {{setContractInfo.totalSupply}} {{(setContractInfo.tokenSymbol)}}</p>
-  
+
   <p>0.0000001 BNB = 1 {{(setContractInfo.tokenSymbol)}})/p>
-  
-  
+
+
   <input placeholder="AmountToBuy in BNB"  [formControl]="amountToBuy" />
    <button (click)="handleSale()"> submit</button>
-  
-  
+
+
    <button (click)="getReward">getReward</button>
   <div>
-    
+
       <input placeholder="AmountToStake" [formControl]="amountToStake"  />
-  
+
       <button  (click)="handleStake()"> submit</button>
-  
+
   </div>
-  
+
   <p>Withdraw</p>
-  
+
     <input placeholder="AmountTowithdraw" [formControl]="amountTowithdraw"  />
-  
+
     <button (click)="withdraw()"> submit</button>
-  
-  
+
+
   <button (click)="getReward">getReward</button>
   <div>
   <input placeholder="Token to clam"  [formControl]="amountToClaim" />
    <button (click)="handleClaim()"> submit</button>
   </div>
   <p>Total reward token {{setTotalStak}} {{setContractInfo.tokenSymbol}}</p>
-  
+
   <p>Staked Balance {{setStakeBalance}} {{setContractInfo.tokenSymbol}}</p>
   <p> you have earned {{setearnd}} {{setContractInfo.tokenSymbol}}</p>
-  
+
   <p>Referral ID</p>
   <p>http://localhost:4200/app/{{setWalletAddress}}</p>
   <button (click)="getStakeDetails">refresh </button> -->

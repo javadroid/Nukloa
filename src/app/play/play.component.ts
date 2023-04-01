@@ -97,7 +97,7 @@ export class PlayComponent implements OnInit {
             rotate: "360deg"
           })
 
-          gsap.to(".header", {
+          gsap.to(".headerPlay", {
             duration: 3,
             delay: 2,
             top: "0",
