@@ -134,7 +134,7 @@ body {
 .proj_header {
   height: 100%;
   width: 100%;
-  background: url(../img/abcd1c6.png);
+  /* background: url(../img/abcd1c6.png); */
   background-size: contain;
   background-repeat: no-repeat;
   background-attachment: local;
