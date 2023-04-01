@@ -73,7 +73,8 @@ this.loading()
             duration: 2,
             zIndex: -99,
             background: "transparent",
-            opacity: 0.3
+            // opacity: 0.3
+            opacity: 0
 
           })
           gsap.to(".loading_svg", {
@@ -90,7 +91,7 @@ this.loading()
 
           gsap.to(".headerPlay", {
             duration: 3,
-            delay: 2,
+            delay: 1,
             top: "0",
           })
 

@@ -112,6 +112,17 @@
             </tr>
           </thead>
           <tbody>
+            <tr >
+              <th scope="row"><img src="assets/img/NUD.png" alt="" /> <strong>Nukleon</strong> NUK</th>
+              <td ><span>&#8358;</span>**.**</td>
+              <td>
+                <span
+               ><i class="icofont-caret-up">**.**%</i></span>
+              </td>
+              <td ><span>&#8358;</span>**.**</td>
+              <td><span>&#8358;</span>**.**</td>
+              <td><span>&#8358;</span>**.**</td>
+            </tr>
             <tr *ngFor="let item of allcoins">
               <th scope="row"><img [src]="item.image" alt="" /> <strong>{{item.name}}</strong> {{item.symbol}}</th>
               <td ><span>&#8358;</span>{{ addCommasToNumber(item.current_price)}}</td>
