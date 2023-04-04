@@ -484,6 +484,7 @@ footer {
   margin-bottom: 20px;
   width: 40rem;
   height: 55vh;
+  z-index: 99;
   opacity: 0;
   display: flex;
   flex-direction: column;

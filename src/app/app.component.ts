@@ -7,7 +7,7 @@ import { Configuration, OpenAIApi } from "openai";
 // import '../css/three'
 
 import { DOCUMENT } from '@angular/common';
-import { faCoffee, } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee,  } from '@fortawesome/free-solid-svg-icons';
 import { testing } from './css/three';
 @Component({
   selector: 'app-root',
@@ -15,25 +15,25 @@ import { testing } from './css/three';
   styleUrls: ['./app.component.css'],
   // encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {
+export class AppComponent  {
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
-  @ViewChild('threeBG', { static: false }) threeBG!: ElementRef
+  @ViewChild('threeBG',{static:false}) threeBG!:ElementRef
   loading_bar_inner = 0
   loading_bar_style = { width: this.loading_bar_inner + '%' }
   isollapse = false
-  showChat = false
+  showChat=false
   faCoffee = faCoffee;
-  chatInput = ''
-  conversations = [] as any[]
+  chatInput=''
+  conversations=[]as any[]
   backgroudimage = ['5', '18', '42', '46', '49', '52', '57', '154', '33']
-  createChatCompletion = [] as any[]
+  createChatCompletion=[]as any[]
   ngOnInit(): void {
 
-    this.loading()
+this.loading()
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(){
     testing(this.threeBG.nativeElement)
   }
 
@@ -124,34 +124,33 @@ export class AppComponent {
 
   }
 
-  async nukAIChat() {
+  async nukAIChat(){
     const configuration = new Configuration({
       organization: "org-YystOv4jjFUdGewDH3p3yOOn",
-      apiKey: "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",
-    });
-    const openai = new OpenAIApi(configuration);
-    const response = await openai.listEngines();
-    const c = { role: "user", content: this.chatInput }
+      apiKey: "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",
+  });
+  const openai = new OpenAIApi(configuration);
+  const response = await openai.listEngines();
+  const c={role:"user", content:this.chatInput}
     this.createChatCompletion.push(c)
-
-    const chat = { me: this.chatInput, res: '...', id: this.conversations.length + 1 }
+    const chat={me:this.chatInput,res:'...',id:this.conversations.length+1}
     this.chatInput=''
     this.conversations.push(chat)
-    openai.createChatCompletion({
-      "model": "gpt-3.5-turbo",
-      "messages": this.createChatCompletion,
-      n: 1,
-      max_tokens: 30,
-      temperature: 0.8,
+  openai.createChatCompletion({
+    "model": "gpt-3.5-turbo",
+    "messages": this.createChatCompletion,
+    n:1,
+    max_tokens:100,
+    temperature:0.4,
 
-    }).then(res => {
-      const response = res.data.choices[0].message?.content
-      console.log("res", response)
-      const chat = this.conversations.pop()
-      this.conversations = this.conversations.filter(c => c.id !== chat.id)
-      chat['res'] = response
-      this.conversations.push(chat)
-    })
+  }).then(res=>{
+    const response=res.data.choices[0].message?.content
+    console.log("res",response)
+    const chat=this.conversations.pop()
+    this.conversations=this.conversations.filter(c=>c.id!==chat.id)
+    chat['res']=response
+    this.conversations.push(chat)
+  })
 
 
     //
