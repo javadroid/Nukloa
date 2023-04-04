@@ -3,7 +3,7 @@ import { Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } f
 import * as THREE from 'three';
 import gsap from 'gsap'
 import { Configuration, OpenAIApi } from "openai";
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 // import '../css/three'
 
 import { DOCUMENT } from '@angular/common';
@@ -15,6 +15,7 @@ import { testing } from './css/three';
   styleUrls: ['./app.component.css'],
   // encapsulation: ViewEncapsulation.None,
 })
+
 export class AppComponent  {
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
