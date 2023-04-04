@@ -114,26 +114,26 @@
           <tbody>
             <tr >
               <th scope="row"><img src="assets/img/NUD.png" alt="" /> <strong>Nukleon</strong> NUK</th>
-              <td ><span>&#8358;</span>**.**</td>
+              <td ><span>&#36;</span>**.**</td>
               <td>
                 <span
                ><i class="icofont-caret-up">**.**%</i></span>
               </td>
-              <td ><span>&#8358;</span>**.**</td>
-              <td><span>&#8358;</span>**.**</td>
-              <td><span>&#8358;</span>**.**</td>
+              <td ><span>&#36;</span>**.**</td>
+              <td><span>&#36;</span>**.**</td>
+              <td><span>&#36;</span>**.**</td>
             </tr>
             <tr *ngFor="let item of allcoins">
               <th scope="row"><img [src]="item.image" alt="" /> <strong>{{item.name}}</strong> {{item.symbol}}</th>
-              <td ><span>&#8358;</span>{{ addCommasToNumber(item.current_price)}}</td>
+              <td ><span>&#36;</span>{{ addCommasToNumber(item.current_price)}}</td>
               <td>
                 <span
                 [ngClass]="{'text-success':!isNegative(item.price_change_percentage_24h),
                 'text-danger':isNegative(item.price_change_percentage_24h)}"><i class="icofont-caret-up">{{item.price_change_percentage_24h.toFixed(2)}}%</i></span>
               </td>
-              <td ><span>&#8358;</span>{{addCommasToNumber(item.market_cap)}}</td>
-              <td><span>&#8358;</span>{{addCommasToNumber(item.total_volume)}}</td>
-              <td><span>&#8358;</span>{{addCommasToNumber(item.circulating_supply)}}</td>
+              <td ><span>&#36;</span>{{addCommasToNumber(item.market_cap)}}</td>
+              <td><span>&#36;</span>{{addCommasToNumber(item.total_volume)}}</td>
+              <td><span>&#36;</span>{{addCommasToNumber(item.circulating_supply)}}</td>
             </tr>
 
           </tbody>

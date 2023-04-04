@@ -479,10 +479,12 @@ footer {
 
 .live_chat-container {
   position: fixed;
-  bottom: 3rem;
+  bottom: 7rem;
   right: 3rem;
+  margin-bottom: 20px;
   width: 40rem;
   height: 55vh;
+  opacity: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

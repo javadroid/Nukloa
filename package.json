@@ -39,6 +39,7 @@
     "ngx-clipboard": "^15.1.0",
     "ngx-countdown": "^14.0.0",
     "ngx-toastr": "^15.1.0",
+    "openai": "^3.2.1",
     "rxjs": "~7.5.0",
     "service": "^0.1.4",
     "three": "^0.150.1",

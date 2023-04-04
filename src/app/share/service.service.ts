@@ -40,8 +40,8 @@ export class ServiceService {
     return this.http.post(`${apiUrl}/${model}`, create);
   }
 
-  upload(model: string, file: any): Observable<any> {
-    return this.http.post(`${apiUrl}/${model}`, file);
+  upload(file: any): Observable<any> {
+    return this.http.post(`${apiUrl}/${'document'}`, file);
   }
 
   delete(model: string, id: string): Observable<any> {
@@ -74,7 +74,7 @@ export class ServiceService {
 
   //  const res =await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=ngn',{'headers':{'Content-Type':'app'}})
   //  console.log("testing ", await res)
-    return this.http.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=ngn`)
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd`)
   }
 
    getAlltrending(){
