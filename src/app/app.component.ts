@@ -3,7 +3,7 @@ import { Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } f
 import * as THREE from 'three';
 import gsap from 'gsap'
 import { Configuration, OpenAIApi } from "openai";
-
+import { environment } from 'src/environments/environment';
 // import '../css/three'
 
 import { DOCUMENT } from '@angular/common';
@@ -126,8 +126,8 @@ this.loading()
 
   async nukAIChat(){
     const configuration = new Configuration({
-      organization: "org-YystOv4jjFUdGewDH3p3yOOn",
-      apiKey: "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",
+      organization: environment.openai.organization,
+      apiKey: environment.openai.apiKey,
   });
   const openai = new OpenAIApi(configuration);
   const response = await openai.listEngines();

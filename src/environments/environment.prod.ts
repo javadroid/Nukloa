@@ -1,4 +1,9 @@
 export const environment = {
+  openai:{
+    apiKey: "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",
+    organization: "org-YystOv4jjFUdGewDH3p3yOOn",
+
+  },
   firebase: {
     apiKey: "AIzaSyC1ajPKpaYtc-0DmsS7pVAETysBlcfp1hI",
     authDomain: "nukloeids.firebaseapp.com",
