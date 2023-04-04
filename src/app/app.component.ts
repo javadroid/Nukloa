@@ -110,7 +110,7 @@ export class AppComponent {
           gsap.to(".live_chat-container", {
             duration: 3,
             delay: 3,
-            opacity: 0.8
+            opacity: 1
 
           })
         })
