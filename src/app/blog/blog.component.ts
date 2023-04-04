@@ -13,19 +13,11 @@ export class BlogComponent implements OnInit {
   constructor(private http:ServiceService) { }
 
   ngOnInit(): void {
+
+  this.getAllPost()
   }
 
-  // title: string;
 
-  // caption: string;
-// date
-// min
-  // minRead: number;
-
-  // Image: string;
-  // category
-  // featuredPost
-  // details: string;
   getAllPost(){
     this.http.find('blog').subscribe((e:any[])=>{
       this.allPosts=e

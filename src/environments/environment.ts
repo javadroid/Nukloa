@@ -4,7 +4,7 @@
 
 export const environment = {
   openai:{
-    apiKey: "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",
+    apiKey: "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",
     organization: "org-YystOv4jjFUdGewDH3p3yOOn",
 
   },

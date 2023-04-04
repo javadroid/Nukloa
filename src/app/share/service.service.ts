@@ -83,4 +83,12 @@ export class ServiceService {
     //  console.log("testing ", await res)
       return this.http.get(`https://api.coingecko.com/api/v3/search/trending`)
     }
+
+    openai(data:any):  Observable<any>{
+
+      // axios.post('https://whatsappgtp.vercel.app/api/openai',[{"role":"user", "content":"aw are u"}]).then(res=>{
+      //   console.log(res)
+      // })
+      return this.http.post('https://whatsappgtp.vercel.app/api/openai',[{"role":"user", "content":"aw are u"}])
+    }
 }

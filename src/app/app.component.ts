@@ -7,8 +7,10 @@ import { environment } from 'src/environments/environment.prod';
 // import '../css/three'
 
 import { DOCUMENT } from '@angular/common';
-import { faCoffee,  } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, } from '@fortawesome/free-solid-svg-icons';
 import { testing } from './css/three';
+
+import { ServiceService } from './share/service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,25 +18,25 @@ import { testing } from './css/three';
   // encapsulation: ViewEncapsulation.None,
 })
 
-export class AppComponent  {
+export class AppComponent {
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
-  @ViewChild('threeBG',{static:false}) threeBG!:ElementRef
+  constructor(private http:ServiceService) { }
+  @ViewChild('threeBG', { static: false }) threeBG!: ElementRef
   loading_bar_inner = 0
   loading_bar_style = { width: this.loading_bar_inner + '%' }
   isollapse = false
-  showChat=false
+  showChat = false
   faCoffee = faCoffee;
-  chatInput=''
-  conversations=[]as any[]
+  chatInput = ''
+  conversations = [] as any[]
   backgroudimage = ['5', '18', '42', '46', '49', '52', '57', '154', '33']
-  createChatCompletion=[]as any[]
+  createChatCompletion = [] as any[]
   ngOnInit(): void {
 
-this.loading()
+    this.loading()
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     testing(this.threeBG.nativeElement)
   }
 
@@ -125,33 +127,23 @@ this.loading()
 
   }
 
-  async nukAIChat(){
-    const configuration = new Configuration({
-      organization: environment.openai.organization,
-      apiKey: environment.openai.apiKey,
-  });
-  const openai = new OpenAIApi(configuration);
-  const response = await openai.listEngines();
-  const c={role:"user", content:this.chatInput}
-    this.createChatCompletion.push(c)
-    const chat={me:this.chatInput,res:'...',id:this.conversations.length+1}
-    this.chatInput=''
-    this.conversations.push(chat)
-  openai.createChatCompletion({
-    "model": "gpt-3.5-turbo",
-    "messages": this.createChatCompletion,
-    n:1,
-    max_tokens:100,
-    temperature:0.4,
+  async nukAIChat() {
 
-  }).then(res=>{
-    const response=res.data.choices[0].message?.content
-    console.log("res",response)
-    const chat=this.conversations.pop()
-    this.conversations=this.conversations.filter(c=>c.id!==chat.id)
-    chat['res']=response
+
+
+    const c = { role: "user", content: this.chatInput }
+    this.createChatCompletion.push(c)
+    const chat = { me: this.chatInput, res: '...', id: this.conversations.length + 1 }
+    this.chatInput = ''
     this.conversations.push(chat)
-  })
+    this.http.openai(this.createChatCompletion).subscribe(res => {
+      const response = res.message
+      console.log("res", response)
+      const chat = this.conversations.pop()
+      this.conversations = this.conversations.filter(c => c.id !== chat.id)
+      chat['res'] = response
+      this.conversations.push(chat)
+    })
 
 
     //
