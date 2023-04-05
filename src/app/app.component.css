@@ -276,5 +276,7 @@ ul {
 }
 
 .showChat{
+  z-index: -99999;
   opacity: 0;
+
 }
