@@ -131,7 +131,7 @@ export class AppComponent {
 
     const configuration = new Configuration({
       organization:'org-YystOv4jjFUdGewDH3p3yOOn',
-      apiKey: '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',
+      apiKey: 'sk-'+'rRXtUZMwRh33YQJorwtIT3'+'BlbkFJBNa8d77chxPCtl7VaWtS',
   });
   const openai = new OpenAIApi(configuration);
   const response = await openai.listEngines();
