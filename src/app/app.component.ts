@@ -129,15 +129,23 @@ export class AppComponent {
 
   async nukAIChat() {
 
-
-
+    const configuration = new Configuration({
+      organization:'org-YystOv4jjFUdGewDH3p3yOOn',
+      apiKey: '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',
+  });
+  const openai = new OpenAIApi(configuration);
+  const response = await openai.listEngines();
+  console.log("res", openai,response)
     const c = { role: "user", content: this.chatInput }
     this.createChatCompletion.push(c)
     const chat = { me: this.chatInput, res: '...', id: this.conversations.length + 1 }
     this.chatInput = ''
     this.conversations.push(chat)
-    this.http.openai(this.createChatCompletion).subscribe(res => {
-      const response = res.message
+    openai.createChatCompletion({
+      model:'gpt-3.5-turbo',
+      messages:this.createChatCompletion
+    }).then( res=> {
+      const response = res.data.choices[0].message?.content
       console.log("res", response)
       const chat = this.conversations.pop()
       this.conversations = this.conversations.filter(c => c.id !== chat.id)
