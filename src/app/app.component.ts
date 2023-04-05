@@ -20,20 +20,24 @@ import { ServiceService } from './share/service.service';
 
 export class AppComponent {
 
-  constructor(private http:ServiceService) { }
+  constructor(private http:ServiceService,private elementRef: ElementRef) { }
   @ViewChild('threeBG', { static: false }) threeBG!: ElementRef
+
   loading_bar_inner = 0
   loading_bar_style = { width: this.loading_bar_inner + '%' }
   isollapse = false
   showChat = false
   faCoffee = faCoffee;
-  chatInput = ''
+  chatInput = 'What is $NUK NUKLEON DECENTRALIZED ORBITAL'
   conversations = [] as any[]
   backgroudimage = ['5', '18', '42', '46', '49', '52', '57', '154', '33']
-  createChatCompletion = [] as any[]
+  createChatCompletion = [{ role: "assistant", content: 'Nukleon Decentralized Orbital (NUK) is a cryptocurrency project that aims to create a decentralized exchange platform for trading digital assets. The platform is built on the Ethereum blockchain and uses smart contracts to execute trades automatically without the need for intermediaries. NUK token is the native cryptocurrency of the platform and is used to pay for transaction fees and other services. The project aims to provide users with a secure and transparent platform for trading digital assets while maintaining their privacy and security.' },
+  { role: "assistant", content: '$NUK is currently on presale and not trading' },
+  { role: "assistant", content: '$NUK offical site is http://nukleon.io' }] as any[]
   ngOnInit(): void {
 
     this.loading()
+    this.nukAIChat()
   }
 
   ngAfterViewInit() {
@@ -134,16 +138,19 @@ export class AppComponent {
       apiKey: 'sk-'+'rRXtUZMwRh33YQJorwtIT3'+'BlbkFJBNa8d77chxPCtl7VaWtS',
   });
   const openai = new OpenAIApi(configuration);
-  const response = await openai.listEngines();
-  console.log("res", openai,response)
     const c = { role: "user", content: this.chatInput }
     this.createChatCompletion.push(c)
     const chat = { me: this.chatInput, res: '...', id: this.conversations.length + 1 }
     this.chatInput = ''
     this.conversations.push(chat)
+    this.scrollToMyDiv()
     openai.createChatCompletion({
       model:'gpt-3.5-turbo',
-      messages:this.createChatCompletion
+      messages:this.createChatCompletion,
+      n:1,
+      temperature:0.6,
+      max_tokens:100,
+
     }).then( res=> {
       const response = res.data.choices[0].message?.content
       console.log("res", response)
@@ -151,11 +158,21 @@ export class AppComponent {
       this.conversations = this.conversations.filter(c => c.id !== chat.id)
       chat['res'] = response
       this.conversations.push(chat)
+      const c = { role: "assistant", content: response }
+      this.createChatCompletion.push(c)
+      this.scrollToMyDiv()
     })
 
 
     //
   }
 
+  scrollToMyDiv() {
+    const element = this.elementRef.nativeElement.querySelector('#swss');
+    const element2 = this.elementRef.nativeElement.querySelector('#sws');
+    element.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
 
+    element.scrollTop=element.scrollHeight-element.clientHeight
+
+  }
 }

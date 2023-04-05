@@ -1,4 +1,4 @@
-<nav  style=" background: linear-gradient(to bottom, #000006, #000000);"
+<nav style=" background: linear-gradient(to bottom, #000006, #000000);"
   class="navbar  hideOnLoad sticky-top navbar-expand-lg navbar-dark">
   <div class="container-fluid p-0">
     <a style=" color: white;
@@ -15,28 +15,33 @@
       <div class="navbar-nav">
         <a style=" font-size: 1.3rem; font-weight: 600;  margin-right: 2rem;" class="nav-link " aria-="page"
           routerLink="/" routerLinkActive="active">Home</a>
-        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/whitepaper"
-          routerLinkActive="active">Whitepaper</a>
+          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" (click)="nft()"
+          routerLinkActive="active">NFT</a>
+
+
         <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/blog"
           routerLinkActive="active">Blog</a>
-          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/price"
-          routerLinkActive="active">MarketPlace</a>
-        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" (click)="nft()"
-          routerLinkActive="active">NFT</a>
-        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/aboutus"
-          routerLinkActive="active">About Us</a>
         <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/faq"
           routerLinkActive="active">FAQ</a>
+          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/aboutus"
+          routerLinkActive="active">About Us</a>
+
+          <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/whitepaper"
+          routerLinkActive="active">Whitepaper</a>
+        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/price"
+          routerLinkActive="active">MarketPlace</a>
+
+
 
       </div>
 
     </div>
 
-      <!-- <button (click)="openApp()" class="launch btn btn-primary">Launch app</button> -->
-      <div style="height: 50px;" class="headerPlay_right">
+    <!-- <button (click)="openApp()" class="launch btn btn-primary">Launch app</button> -->
+    <div style="height: 50px;" class="headerPlay_right">
 
-        <button class="headerPlay_button"><span>Lunch app</span></button>
-      </div>
+      <button (click)="openApp()" class="headerPlay_button"><span>Lunch app</span></button>
+    </div>
 
 
   </div>

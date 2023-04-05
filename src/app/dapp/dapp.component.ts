@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NukFirestoreService } from '../core/nuk-firestore.service';
 
 import { ethers, BigNumber, Wallet } from 'ethers'
@@ -16,12 +16,13 @@ import { ToastrService } from 'ngx-toastr';
 import { CountdownConfig } from 'ngx-countdown';
 import { doc, Firestore, FirestoreModule, updateDoc } from '@angular/fire/firestore';
 import { ServiceService } from '../share/service.service';
+import { gsap } from 'gsap';
 @Component({
   selector: 'app-dapp',
   templateUrl: './dapp.component.html',
   styleUrls: ['./dapp.component.css']
 })
-export class DappComponent implements OnInit {
+export class DappComponent implements OnInit,OnDestroy {
 
   title = 'Nukloa';
   setWalletAddress: string | undefined;
@@ -51,8 +52,18 @@ export class DappComponent implements OnInit {
   constructor(private readonly api: ServiceService, private db: FirestoreModule, private toastr: ToastrService, private clipboardApi: ClipboardService, private store: NukFirestoreService, private route: ActivatedRoute, private winRef: WinRefService) {
 
   }
-  ngOnInit(): void {
 
+
+  ngOnDestroy() {
+    gsap.to(".headerPlay_button", {
+      display: 'block'
+    })
+  }
+
+  ngOnInit(): void {
+    gsap.to(".headerPlay_button", {
+      display: 'none'
+    })
     this.amountToBuy.reset()
     this.amountToClaim.reset()
     this.amountToStake.reset()
@@ -62,6 +73,7 @@ export class DappComponent implements OnInit {
 
 
   }
+
   CONTRACTADDRESS = '0x0FdFdb9bc31186E229B6D198346dca54b0a70599'
   SALECONTRACTADDRESS = '0x4632d3304dB173692e8A4666fc106B0B1D6E4862'
   STAKECONTRACTADDRESS = '0x8DC4d4D66AdCb05aFc0284E7bC74716E9eb5d444'
@@ -92,7 +104,7 @@ export class DappComponent implements OnInit {
     });
   }
 
-   copyLink() {
+  copyLink() {
 
     if (this.setWalletAddress) {
 
@@ -170,8 +182,8 @@ export class DappComponent implements OnInit {
   async check() {
     const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
 
-    this.api.findAny('users','walletAddress',account[0]).subscribe(res=>{
-      console.log('walletAddress',res)
+    this.api.findAny('users', 'walletAddress', account[0]).subscribe(res => {
+      console.log('walletAddress', res)
       this.dailyClaim = res[0].dailyBonus
 
       this.current = new Date(this.newTimestamp)
@@ -198,8 +210,8 @@ export class DappComponent implements OnInit {
       return;
 
     })
-    this.api.findAny('users','referredby',account[0]).subscribe(res=>{
-      console.log('referredby',res)
+    this.api.findAny('users', 'referredby', account[0]).subscribe(res => {
+      console.log('referredby', res)
       this.refferal = res.length
 
       this.amountToClaim.setValue(String(this.refferal * 30000))
@@ -231,7 +243,7 @@ export class DappComponent implements OnInit {
 
         let ids: any[] = [this.route.snapshot.params]
 
-          console.log("ids",ids)
+        console.log("ids", ids)
 
         if (ids[0].id && ids[0].id != account[0]) {
           this.user = {
@@ -252,15 +264,15 @@ export class DappComponent implements OnInit {
         }
         console.log("id", this.user)
 
-        this.api.findAny('users','walletAddress',account[0]).subscribe(res=>{
+        this.api.findAny('users', 'walletAddress', account[0]).subscribe(res => {
           if (res[0]) {
 
             this.getWalletBalance()
             this.getStakeDetails()
             this.check()
           } else {
-            this.api.create('users',this.user).subscribe(res=>{
-              console.log('create',res)
+            this.api.create('users', this.user).subscribe(res => {
+              console.log('create', res)
             })
             this.getWalletBalance()
             this.getStakeDetails()
@@ -329,7 +341,7 @@ export class DappComponent implements OnInit {
       await erc20.connect(signer)
       const amountToBuy = ethers.utils.parseEther(this.amountTowithdraw.value!)
 
-      const waits=await erc20['withdraw'](amountToBuy);
+      const waits = await erc20['withdraw'](amountToBuy);
       const receipt = await waits.wait();
 
       if (receipt) {
@@ -347,14 +359,14 @@ export class DappComponent implements OnInit {
 
     // this.toastr.error("Rewards coming soon");
     try {
-    const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
+      const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
       await provider.send("eth_requestAccounts", [])
       const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
       const signer = await provider.getSigner(account[0])
       const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
       await erc20.connect(signer)
 
-      const waits=await erc20['getReward']();
+      const waits = await erc20['getReward']();
       const receipt = await waits.wait();
 
       if (receipt) {
@@ -362,7 +374,7 @@ export class DappComponent implements OnInit {
 
         this.ngOnInit()
       }
-    } catch (error:any) {
+    } catch (error: any) {
       this.toastr.error(error!.error.data.message);
     }
 
@@ -398,8 +410,8 @@ export class DappComponent implements OnInit {
     const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
 
 
-    this.api.findAny('users','walletAddress',account[0]).subscribe(res=>{
-      console.log('walletAddressfindAny',res)
+    this.api.findAny('users', 'walletAddress', account[0]).subscribe(res => {
+      console.log('walletAddressfindAny', res)
       localStorage.setItem("id", res[0]._id);
       localStorage.setItem("user", res[0].dailyBonus);
     })
@@ -418,8 +430,8 @@ export class DappComponent implements OnInit {
       }
       console.log("user", daiyclicks + 10000);
       console.log("res", res);
-      this.api.update('users',res,this.user).subscribe(res=>{
-        console.log('update',res)
+      this.api.update('users', res, this.user).subscribe(res => {
+        console.log('update', res)
         this.check()
       })
 
@@ -490,7 +502,7 @@ export class DappComponent implements OnInit {
 
       await Erc20.connect(signer)
       const amountToStake = ethers.utils.parseEther(this.amountToStake.value!)
-      const waits=await Erc20['stake'](amountToStake);
+      const waits = await Erc20['stake'](amountToStake);
       const receipt = await waits.wait();
 
       if (receipt) {
