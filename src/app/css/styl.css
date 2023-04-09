@@ -199,7 +199,10 @@ body::-webkit-scrollbar-thumb:vertical {
   background-position: center right;
   margin-bottom: 5rem;
 }
+.video_container{
 
+  opacity: 0;
+}
 @media only screen and (max-width: 37.5em) {
   .proj_header {
     height: 40%;
@@ -209,6 +212,7 @@ body::-webkit-scrollbar-thumb:vertical {
   .video_container{
     height:50vh;
     width:100%;
+    opacity: 0;
   }
 }
 

@@ -22,7 +22,7 @@ export class AppComponent {
 
   constructor(private http:ServiceService,private elementRef: ElementRef) { }
   @ViewChild('threeBG', { static: false }) threeBG!: ElementRef
-
+  @ViewChild('bgvideo') myVideo!: ElementRef;
   loading_bar_inner = 0
   loading_bar_style = { width: this.loading_bar_inner + '%' }
   isollapse = false
@@ -89,12 +89,52 @@ export class AppComponent {
             opacity: 0.3
             // opacity: 0
 
+          }).then(() => {
+            gsap.to(".video_container", {
+              duration: 2,
+              delay:2,
+              opacity:1,
+            }).then(()=>{
+            let c=0
+          const inn=  setInterval(()=>{
+              c+=1
+              console.log(c)
+              this.myVideo.nativeElement.play()
+              if(c===8){
+                clearInterval(inn)
+                this.myVideo.nativeElement.currentTime = 8
+                this.myVideo.nativeElement.pause();
+              }
+
+
+              //
+              // this.myVideo.nativeElement.pause();
+            },1000)
+              // if (this.myVideo.nativeElement.currentTime >= 8) {
+              //    console.log(this.myVideo.nativeElement.currentTime)
+              //    // Pause the video playback
+              // console.log("this.myVideo.nativeElement",this.myVideo.nativeElement)
+              // }
+            })
+
           })
           gsap.to(".loading_svg", {
 
             duration: 100,
             rotate: "360deg"
           })
+
+
+
+
+
+
+
+
+
+
+
+
           gsap.to(".hideOnLoad", {
             duration: 3,
             delay: 4,
@@ -120,6 +160,9 @@ export class AppComponent {
             opacity: 1
 
           })
+
+
+
         })
 
       }
@@ -130,10 +173,22 @@ export class AppComponent {
   }
 
   closeAi(){
-    gsap.to(".live_chat-container", {
+ this.showChat=false;
+
+    gsap.to(".", {
       duration: 1,
 
       opacity: 0
+
+    })
+  }
+
+  openAi(){
+    this.showChat=true;
+    gsap.to(".showChat", {
+      duration: 1,
+
+      opacity: 1
 
     })
   }
