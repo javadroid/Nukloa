@@ -97,10 +97,10 @@ export class AppComponent {
             }).then(()=>{
             let c=0
           const inn=  setInterval(()=>{
-              c+=1
+              c+=0.5
               console.log(c)
               this.myVideo.nativeElement.play()
-              if(c===8){
+              if(c===8.5){
                 clearInterval(inn)
                 this.myVideo.nativeElement.currentTime = 8
                 this.myVideo.nativeElement.pause();
@@ -109,7 +109,7 @@ export class AppComponent {
 
               //
               // this.myVideo.nativeElement.pause();
-            },1000)
+            },500)
               // if (this.myVideo.nativeElement.currentTime >= 8) {
               //    console.log(this.myVideo.nativeElement.currentTime)
               //    // Pause the video playback
