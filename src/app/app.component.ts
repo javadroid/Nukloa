@@ -95,26 +95,28 @@ export class AppComponent {
               delay:2,
               opacity:1,
             }).then(()=>{
-            let c=0
-          const inn=  setInterval(()=>{
-              c+=0.5
-              console.log(c)
-              this.myVideo.nativeElement.play()
-              if(c===8.5){
-                clearInterval(inn)
-                this.myVideo.nativeElement.currentTime = 8
-                this.myVideo.nativeElement.pause();
-              }
+            let c=1
+
+            this.myVideo.nativeElement.addEventListener('ended', () => {
+              console.log('Video finished playing');
+              this.myVideo.nativeElement.controls = true
+              this.myVideo.nativeElement.currentTime = 0
+            });
+          // const inn=  setInterval(()=>{
+          //     // c+=0.5
+          //     // console.log(c)
+          //     // this.myVideo.nativeElement.play()
+          //     // if(c===8.5){
+          //     //   clearInterval(inn)
+          //     //   this.myVideo.nativeElement.currentTime = 8
+          //     //   this.myVideo.nativeElement.pause();
+          //     // }
 
 
-              //
-              // this.myVideo.nativeElement.pause();
-            },500)
-              // if (this.myVideo.nativeElement.currentTime >= 8) {
-              //    console.log(this.myVideo.nativeElement.currentTime)
-              //    // Pause the video playback
-              // console.log("this.myVideo.nativeElement",this.myVideo.nativeElement)
-              // }
+          //     //
+          //     // this.myVideo.nativeElement.pause();
+          //   },500)
+
             })
 
           })
@@ -123,16 +125,6 @@ export class AppComponent {
             duration: 100,
             rotate: "360deg"
           })
-
-
-
-
-
-
-
-
-
-
 
 
           gsap.to(".hideOnLoad", {
