@@ -1,10 +1,13 @@
 <nav  style=" background: transparent; z-index: 999;"
   class="navbar  hideOnLoad  navbar-expand-lg navbar-dark">
   <div class="container-fluid p-0">
-    <a style=" color: white;
+    <!-- <a style=" color: white;
           text-decoration: none;
           font-size: 3rem;
-          font-weight: 700;" class="navbar-brand" routerLink="/">NUKLEON</a>
+          font-weight: 700;" class="navbar-brand" routerLink="/">NUKLEON</a> -->
+          <a class="navbar-brand"  routerLink="/" routerLinkActive="active"
+          ><img src="assets/WhatsApp Image 2023-04-05 at 13.13.41.png" style="height: 12rem; width: 12rem" alt=""
+        /></a>
     <!-- <img width="150" height="100"  src="assets/img/NUD.png" alt="re"> -->
 
 
@@ -16,7 +19,7 @@
           routerLinkActive="active">NFT</a>
 
 
-        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/blog"
+        <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" (click)="nft()"
           routerLinkActive="active">Blog</a>
         <a style=" font-size: 1.3rem;  font-weight: 600;  margin-right: 2rem;" class="nav-link" routerLink="/faq"
           routerLinkActive="active">FAQ</a>

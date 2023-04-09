@@ -2,8 +2,15 @@
 <div class="body">
 
 
-  <div class="proj_header">
-    <div class="caption">
+  <div class="proj_header row">
+    <div  style="position: relative;
+
+          " class="video_container  col-lg-6 col-sm-12 h-sm-75">
+<video controls autoplay loop   playsinline id="bg-video">
+  <source src="assets/vid.mp4" type="video/mp4">
+</video>
+    </div>
+    <div class="caption  col-lg-6 col-sm-12 h-sm-25">
       <h1 style="margin-top: 20px;" class="main_caption">NUKLEON DECENTRALIZED ORBITAL</h1>
       <p class="sub_caption">
         Let's create a universal internet where Contributors are rewarded for distributing their storage and bandwidth
@@ -13,3 +20,19 @@
   </div>
 </div>
 <app-footer></app-footer>>
+
+
+<style>
+  #bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: fill;
+  }
+</style>

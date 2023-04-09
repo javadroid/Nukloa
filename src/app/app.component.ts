@@ -127,8 +127,15 @@ export class AppComponent {
     }, 5)
 
 
+  }
 
+  closeAi(){
+    gsap.to(".live_chat-container", {
+      duration: 1,
 
+      opacity: 0
+
+    })
   }
 
   async nukAIChat() {
