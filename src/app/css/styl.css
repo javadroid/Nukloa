@@ -145,7 +145,7 @@ body::-webkit-scrollbar-thumb:vertical {
   background: none;
   border: none;
   outline: none;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: white;
 }
 
@@ -166,7 +166,7 @@ body::-webkit-scrollbar-thumb:vertical {
   background: none;
   border: none;
   outline: none;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: white;
 }
 
@@ -186,7 +186,7 @@ body::-webkit-scrollbar-thumb:vertical {
 }
 
 .side_nav .menu_container .reference_option ul .reference .reference_btn {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 .proj_header {
@@ -274,7 +274,7 @@ body::-webkit-scrollbar-thumb:vertical {
 
 @media only screen and (max-width: 37.5em) {
   .proj_header .caption .sub_caption {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -322,7 +322,7 @@ body::-webkit-scrollbar-thumb:vertical {
 }
 
 .content .words {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #eee;
 }
 
@@ -384,7 +384,7 @@ footer .menu_container .menu_link {
 
 @media only screen and (max-width: 37.5em) {
   footer .menu_container .menu_link {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 }
 
@@ -532,7 +532,7 @@ footer .menu_container .menu_link {
   border: none;
   outline: none;
   color: #eee;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .buy_container .buy_section .input_container .cta {
@@ -543,7 +543,7 @@ footer .menu_container .menu_link {
   color: white;
   border-radius: 5px;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 @media only screen and (max-width: 37.5em) {
@@ -581,7 +581,7 @@ footer .menu_container .menu_link {
   color: white;
   border-radius: 5px;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 @media only screen and (max-width: 37.5em) {
@@ -877,7 +877,7 @@ footer .menu_container .menu_link {
 }
 
 .prices_main .trending .card_title .title {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #eee;
   font-weight: 600;
 }

@@ -44,7 +44,7 @@ export class PriceComponent implements OnInit {
     })
   }
  addCommasToNumber(num:number) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return Math.floor(num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 }
  isNegative(num:number) {
   Math.floor(num)
