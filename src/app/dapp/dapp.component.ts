@@ -127,7 +127,7 @@ export class DappComponent implements OnInit,OnDestroy {
 
       const chainId = await provider.request({ method: 'eth_chainId' });
 
-      if (chainId === binanceTestChainId) {
+      if (chainId === '0x118') {
         this.contranDetails()
         this.getWalletBalance()
         this.getStakeDetails()
@@ -140,7 +140,7 @@ export class DappComponent implements OnInit,OnDestroy {
 
           await provider.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: binanceTestChainId }],
+            params: [{ chainId: '0x118' }],
           });
           this.contranDetails()
           this.getWalletBalance()
@@ -157,12 +157,12 @@ export class DappComponent implements OnInit,OnDestroy {
                 method: 'wallet_addEthereumChain',
                 params: [
                   {
-                    chainId: '0x61',
+                    chainId: '0x118',
                     chainName: 'Smart Chain - Testnet',
-                    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'],
-                    blockExplorerUrls: ['https://testnet.bscscan.com'],
+                    rpcUrls: ['https://testnet.era.zksync.dev'],
+                    blockExplorerUrls: ['https://explorer.zksync.io/'],
                     nativeCurrency: {
-                      symbol: 'BNB', // 2-6 characters long
+                      symbol: 'ETH', // 2-6 characters long
                       decimals: 18
                     }
 

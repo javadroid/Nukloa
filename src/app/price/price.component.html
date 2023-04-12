@@ -108,7 +108,7 @@
               <th scope="col">24h(%)</th>
               <th scope="col">Market Cap</th>
               <th scope="col">Total Volume</th>
-              <th scope="col">Circulating Supply</th>
+
             </tr>
           </thead>
           <tbody>
@@ -121,7 +121,7 @@
               </td>
               <td ><span>&#36;</span>**.**</td>
               <td><span>&#36;</span>**.**</td>
-              <td><span>&#36;</span>**.**</td>
+
             </tr>
             <tr *ngFor="let item of allcoins">
               <th scope="row"><img [src]="item.image" alt="" /> <strong>{{item.name}}</strong> {{item.symbol}}</th>
@@ -133,7 +133,7 @@
               </td>
               <td ><span>&#36;</span>{{addCommasToNumber(item.market_cap)}}</td>
               <td><span>&#36;</span>{{addCommasToNumber(item.total_volume)}}</td>
-              <td><span>&#36;</span>{{addCommasToNumber(item.circulating_supply)}}</td>
+
             </tr>
 
           </tbody>

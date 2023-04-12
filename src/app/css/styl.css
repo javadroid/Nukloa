@@ -262,13 +262,13 @@ body::-webkit-scrollbar-thumb:vertical {
 
 @media only screen and (max-width: 37.5em) {
   .proj_header .caption .main_caption {
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
   }
 }
 
 .proj_header .caption .sub_caption {
-  font-size: 1.3rem;
+  font-size: 2rem;
   color: #b9b9b9;
 }
 
@@ -707,7 +707,7 @@ footer .menu_container .menu_link {
 
 .live_chat-container {
   position: fixed;
-  bottom: 10rem;
+  bottom: 7rem;
   right: 3rem;
   margin-bottom: 20px;
   width: 40rem;
