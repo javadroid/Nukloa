@@ -8,13 +8,15 @@
     <div class="button_holder">
 
       <button (click)="addToken()" class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
-      <button (click)="ngOnInit()" class="btn text-light">BNB: {{setwalletBalance}}</button>
+      <button (click)="ngOnInit()" class="btn text-light">NUK: {{setwalletBalance}}</button>
 
     </div>
 
   </div>
   <button (click)="addToken()" class="btn text-light"> Add Nukleon to Wallect</button><div>
-  <button (click)="ngOnInit()" class="btn text-light">Refresh Page</button></div>
+
+
+  <button  (click)="ngOnInit()" [class]="!isConnected?'nuk btn btn-primary':'btn text-light'">{{!isConnected?"Connect Wallet":"Refresh Page"}}</button></div>
 
   <div class="main_buy d-flex">
     <div class="buy_card">
@@ -48,12 +50,12 @@
     border-radius: 20px;
     padding: 2rem;" class="buy_nuk">
       <h4 class="item_title">Buy Nuk</h4><strong>
-      <h3 style="color: rgba(189, 185, 185, 0.753)" >1  {{(setContractInfo.tokenSymbol)}} ~ $13.20</h3>
+      <h3 style="color: rgba(189, 185, 185, 0.753)" >1  {{(setContractInfo.tokenSymbol)}} ~ $0.8264</h3>
 
-        <h3 style="color: rgba(189, 185, 185, 0.753)" >0.0000001 BNB = 1 {{(setContractInfo.tokenSymbol)}}</h3></strong>
+        <h3 style="color: rgba(189, 185, 185, 0.753)" >0.00043 Eth = 1 {{(setContractInfo.tokenSymbol)}}</h3></strong>
 
       <div class="input_container">
-        <input [formControl]="amountToBuy"  name="" placeholder="Enter Amount in (BNB)" />
+        <input [formControl]="amountToBuy"  name="" placeholder="Eth" />
         <button (click)="handleSale()" class="cta">Buy</button>
       </div>
     </div>
@@ -69,15 +71,15 @@
       background-blend-mode: multiply;
       padding: 2rem;
     "    class="hold_inputs">
-        <h4><span style="color: rgb(190, 47, 47);">note:</span> you can only withdraw staked token after stake period ends <span style="color: rgb(19, 121, 33);">but then you can withdraw your staked rewards😃</span></h4>
+        <h4><span style="color: rgb(190, 47, 47);">note:</span>  <span style="color: rgb(19, 121, 33);"> Minimum stake 16 $Nuk = $13.2224😃</span></h4>
         <div class="heading">Rewards: {{setStakeBalance}} {{setContractInfo.tokenSymbol}} </div>
 
         <div class="input_container">
-          <input [formControl]="amountToStake"  name="" placeholder="Enter Amount" />
+          <input [formControl]="amountToStake"  name="" placeholder="Nuk" />
           <button (click)="handleStake()" class="cta">Stake</button>
         </div>
         <div class="input_container">
-          <input [formControl]="amountTowithdraw"  name="" placeholder="Withdraw Staked" />
+          <input [formControl]="amountTowithdraw"  name="" placeholder="Nuk" />
           <button  (click)="withdraw()" class="cta">Withdraw</button>
         </div>
 

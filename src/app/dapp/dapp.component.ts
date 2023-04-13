@@ -48,7 +48,7 @@ export class DappComponent implements OnInit,OnDestroy {
   current = new Date();
   timestamp = this.current.getTime();
   newTimestamp = 0;
-
+  account =null as any
   constructor(private readonly api: ServiceService, private db: FirestoreModule, private toastr: ToastrService, private clipboardApi: ClipboardService, private store: NukFirestoreService, private route: ActivatedRoute, private winRef: WinRefService) {
 
   }
@@ -60,7 +60,12 @@ export class DappComponent implements OnInit,OnDestroy {
     })
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.isConnected=false
+    this.account= await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+    if(this.account){
+      this.isConnected=true
+    }
     gsap.to(".headerPlay_button", {
       display: 'none'
     })
@@ -80,6 +85,7 @@ export class DappComponent implements OnInit,OnDestroy {
   CLAIMCONTRACTADDRESS = '0x5d7cE23d67309b8E8b5e2F5a7317E245E6a3A57E'
 
   date = new Date('2019-01-26T00:00:00');
+  isConnected=false;
 
 
   //  sleep(ms:any) {
@@ -121,7 +127,7 @@ export class DappComponent implements OnInit,OnDestroy {
     const binanceTestChainId = '0x61';
 
     if (!provider) {
-
+     this.isConnected = true;
       this.toastr.error("Download and connect a desired software wallet.");
     } else {
 
@@ -132,6 +138,7 @@ export class DappComponent implements OnInit,OnDestroy {
         this.getWalletBalance()
         this.getStakeDetails()
         this.check()
+
         this.toastr.success("Bravo!, you are on the correct network");
       } else {
 
@@ -180,9 +187,9 @@ export class DappComponent implements OnInit,OnDestroy {
   }
 
   async check() {
-    const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
 
-    this.api.findAny('users', 'walletAddress', account[0]).subscribe(res => {
+
+    this.api.findAny('users', 'walletAddress', this.account[0]).subscribe(res => {
       console.log('walletAddress', res)
       this.dailyClaim = res[0].dailyBonus
 
@@ -210,7 +217,7 @@ export class DappComponent implements OnInit,OnDestroy {
       return;
 
     })
-    this.api.findAny('users', 'referredby', account[0]).subscribe(res => {
+    this.api.findAny('users', 'referredby', this.account[0]).subscribe(res => {
       console.log('referredby', res)
       this.refferal = res.length
 
@@ -223,16 +230,19 @@ export class DappComponent implements OnInit,OnDestroy {
     if (this.winRef.window.ethereum) {
 
       try {
-        const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+
+        if(this.account){
+          this.isConnected = true;
+        }
         const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
         const erc20 = new ethers.Contract(this.CONTRACTADDRESS, buchi, provider)
 
-        const balance = await erc20['balanceOf'](account[0])
+        const balance = await erc20['balanceOf'](this.account[0])
         const tokenName = await erc20['name']()
         const tokenSymbol = await erc20['symbol']()
         const totalSupply = await erc20['totalSupply']()
         const decimals = await erc20['decimals']()
-        this.setBalanceInfo = { address: account[0], balance: Math.round(balance / 10 ** 18) }
+        this.setBalanceInfo = { address: this.account[0], balance: Math.round(balance / 10 ** 18) }
         this.setContractInfo = {
           address: this.CONTRACTADDRESS,
           tokenName,
@@ -245,9 +255,9 @@ export class DappComponent implements OnInit,OnDestroy {
 
         console.log("ids", ids)
 
-        if (ids[0].id && ids[0].id != account[0]) {
+        if (ids[0].id && ids[0].id != this.account[0]) {
           this.user = {
-            walletAddress: account[0],
+            walletAddress: this.account[0],
             referredby: ids[0].id,
             start: 0,
             referredBonus: 0,
@@ -255,7 +265,7 @@ export class DappComponent implements OnInit,OnDestroy {
           }
         } else {
           this.user = {
-            walletAddress: account[0],
+            walletAddress: this.account[0],
             referredby: 'null',
             start: 0,
             referredBonus: 0,
@@ -264,7 +274,7 @@ export class DappComponent implements OnInit,OnDestroy {
         }
         console.log("id", this.user)
 
-        this.api.findAny('users', 'walletAddress', account[0]).subscribe(res => {
+        this.api.findAny('users', 'walletAddress', this.account[0]).subscribe(res => {
           if (res[0]) {
 
             this.getWalletBalance()
@@ -284,6 +294,8 @@ export class DappComponent implements OnInit,OnDestroy {
       } catch (error: any) {
         this.toastr.error(error!.error.data.message);
       }
+    }else{
+      this.isConnected = true;
     }
   }
 
@@ -291,10 +303,10 @@ export class DappComponent implements OnInit,OnDestroy {
     if (this.winRef.window.ethereum) {
 
       try {
-        const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
-        this.setWalletAddress = (account[0])
 
-        let Wbalance = await this.winRef.window.ethereum.request({ method: 'eth_getBalance', params: [account[0]] }).catch((err: any) => { console.log(err) })
+        this.setWalletAddress = (this.account[0])
+
+        let Wbalance = await this.winRef.window.ethereum.request({ method: 'eth_getBalance', params: [this.account[0]] }).catch((err: any) => { console.log(err) })
         let mainBalance = parseInt(Wbalance) / Math.pow(10, 18)
         this.setwalletBalance = mainBalance.toLocaleString()
         console.log(mainBalance)
@@ -311,13 +323,13 @@ export class DappComponent implements OnInit,OnDestroy {
     if (this.winRef.window.ethereum) {
 
       try {
-        const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+
         const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
         const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, provider)
 
-        const stakeBalance = await erc20['balanceOf'](account[0]);
+        const stakeBalance = await erc20['balanceOf'](this.account[0]);
         const stakeTotal = await erc20['totalSupply']();
-        const stakeEarn = await erc20['earned'](account[0]);
+        const stakeEarn = await erc20['earned'](this.account[0]);
 
 
         this.setStakeBalance = String(Math.round(stakeBalance / 10 ** 18))
@@ -335,8 +347,8 @@ export class DappComponent implements OnInit,OnDestroy {
     try {
       const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
       await provider.send("eth_requestAccounts", [])
-      const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
-      const signer = await provider.getSigner(account[0])
+
+      const signer = await provider.getSigner(this.account[0])
       const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
       await erc20.connect(signer)
       const amountToBuy = ethers.utils.parseEther(this.amountTowithdraw.value!)
@@ -361,8 +373,8 @@ export class DappComponent implements OnInit,OnDestroy {
     try {
       const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
       await provider.send("eth_requestAccounts", [])
-      const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
-      const signer = await provider.getSigner(account[0])
+
+      const signer = await provider.getSigner(this.account[0])
       const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
       await erc20.connect(signer)
 
@@ -385,8 +397,8 @@ export class DappComponent implements OnInit,OnDestroy {
     try {
       const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
       await provider.send("eth_requestAccounts", [])
-      const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
-      const signer = await provider.getSigner(account[0])
+
+      const signer = await provider.getSigner(this.account[0])
       const erc20 = new ethers.Contract(this.CONTRACTADDRESS, buchi, signer);
       await erc20.connect(signer)
       if (any) {
@@ -407,10 +419,10 @@ export class DappComponent implements OnInit,OnDestroy {
   }
 
   async handleEvent() {
-    const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
 
 
-    this.api.findAny('users', 'walletAddress', account[0]).subscribe(res => {
+
+    this.api.findAny('users', 'walletAddress', this.account[0]).subscribe(res => {
       console.log('walletAddressfindAny', res)
       localStorage.setItem("id", res[0]._id);
       localStorage.setItem("user", res[0].dailyBonus);
@@ -442,17 +454,17 @@ export class DappComponent implements OnInit,OnDestroy {
   }
   async handleSale() {
     try {
-      const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+
       const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
       await provider.send("eth_requestAccounts", []).catch((error: any) => {
         this.toastr.error(error!.message);
         console.log(error);
       })
-      const signer = await provider.getSigner(account[0])
+      const signer = await provider.getSigner(this.account[0])
       const Erc20 = new ethers.Contract(this.SALECONTRACTADDRESS, sale, signer)
       await Erc20.connect(signer)
       const amountToBuy = ethers.utils.parseEther(this.amountToBuy.value!)
-      const waits = await Erc20['buyTokens'](account[0], { value: amountToBuy, from: account[0] })
+      const waits = await Erc20['buyTokens'](this.account[0], { value: amountToBuy, from: this.account[0] })
       const receipt = await waits.wait();
 
       if (receipt) {
@@ -470,15 +482,15 @@ export class DappComponent implements OnInit,OnDestroy {
   async handleClaim() {
     this.toastr.error("claim coming soon");
     // try {
-    //   const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+    //
     //     const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
     //     await provider.send("eth_requestAccounts", [])
-    //     const signer = await provider.getSigner(account[0])
+    //     const signer = await provider.getSigner(this.account[0])
     //     const Erc20 = new ethers.Contract(this.CLAIMCONTRACTADDRESS, claim, signer)
     //     await Erc20.connect(signer)
     //     console.log(this.amountToClaim.value)
     //     const amountToBuy = ethers.utils.parseEther(this.amountToClaim.value!)
-    //     const waits=await Erc20['buyTokens'](account[0], amountToBuy)
+    //     const waits=await Erc20['buyTokens'](this.account[0], amountToBuy)
     //     const receipt = await waits.wait();
 
     //     if(receipt){
@@ -494,10 +506,10 @@ export class DappComponent implements OnInit,OnDestroy {
   }
   async handleStake() {
     try {
-      const account = await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
+
       const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
       await provider.send("eth_requestAccounts", [])
-      const signer = await provider.getSigner(account[0])
+      const signer = await provider.getSigner(this.account[0])
       const Erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer)
 
       await Erc20.connect(signer)
