@@ -8,7 +8,7 @@
     <div class="button_holder">
 
       <button (click)="addToken()" class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
-      <button (click)="ngOnInit()" class="btn text-light">NUK: {{setwalletBalance}}</button>
+      <button (click)="ngOnInit()" class="btn text-light">NUD: {{setwalletBalance}}</button>
 
     </div>
 
@@ -49,7 +49,7 @@
     background-blend-mode: multiply;
     border-radius: 20px;
     padding: 2rem;" class="buy_nuk">
-      <h4 class="item_title">Buy Nuk</h4><strong>
+      <h4 class="item_title">Buy Nud</h4><strong>
       <h3 style="color: rgba(189, 185, 185, 0.753)" >1  {{(setContractInfo.tokenSymbol)}} ~ $0.8264</h3>
 
         <h3 style="color: rgba(189, 185, 185, 0.753)" >0.00043 Eth = 1 {{(setContractInfo.tokenSymbol)}}</h3></strong>
@@ -71,15 +71,15 @@
       background-blend-mode: multiply;
       padding: 2rem;
     "    class="hold_inputs">
-        <h4><span style="color: rgb(190, 47, 47);">note:</span>  <span style="color: rgb(19, 121, 33);"> Minimum stake 16 $Nuk = $13.2224😃</span></h4>
+        <h4><span style="color: rgb(190, 47, 47);">note:</span>  <span style="color: rgb(19, 121, 33);"> Minimum stake 16 $Nud = $13.2224😃</span></h4>
         <div class="heading">Rewards: {{setStakeBalance}} {{setContractInfo.tokenSymbol}} </div>
 
         <div class="input_container">
-          <input [formControl]="amountToStake"  name="" placeholder="Nuk" />
+          <input [formControl]="amountToStake"  name="" placeholder="Nud" />
           <button (click)="handleStake()" class="cta">Stake</button>
         </div>
         <div class="input_container">
-          <input [formControl]="amountTowithdraw"  name="" placeholder="Nuk" />
+          <input [formControl]="amountTowithdraw"  name="" placeholder="Nud" />
           <button  (click)="withdraw()" class="cta">Withdraw</button>
         </div>
 

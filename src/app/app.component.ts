@@ -28,12 +28,12 @@ export class AppComponent {
   isollapse = false
   showChat = false
   faCoffee = faCoffee;
-  chatInput = 'What is $NUK NUKLEON DECENTRALIZED ORBITAL'
+  chatInput = 'What is $NUD NUKLEON DECENTRALIZED ORBITAL'
   conversations = [] as any[]
   backgroudimage = ['5', '18', '42', '46', '49', '52', '57', '154', '33']
-  createChatCompletion = [{ role: "assistant", content: 'Nukleon Decentralized Orbital (NUK) is a cryptocurrency project that aims to create a decentralized exchange platform for trading digital assets. The platform is built on the Ethereum blockchain and uses smart contracts to execute trades automatically without the need for intermediaries. NUK token is the native cryptocurrency of the platform and is used to pay for transaction fees and other services. The project aims to provide users with a secure and transparent platform for trading digital assets while maintaining their privacy and security.' },
-  { role: "assistant", content: '$NUK is currently on presale and not trading' },
-  { role: "assistant", content: '$NUK offical site is http://nukleon.io' }] as any[]
+  createChatCompletion = [{ role: "assistant", content: 'Nukleon Decentralized Orbital (NUD) is a cryptocurrency project that aims to create a decentralized exchange platform for trading digital assets. The platform is built on the Ethereum blockchain and uses smart contracts to execute trades automatically without the need for intermediaries. NUD token is the native cryptocurrency of the platform and is used to pay for transaction fees and other services. The project aims to provide users with a secure and transparent platform for trading digital assets while maintaining their privacy and security.' },
+  { role: "assistant", content: '$NUD is currently on presale and not trading' },
+  { role: "assistant", content: '$NUD offical site is http://nukleon.io' }] as any[]
   ngOnInit(): void {
 
     this.loading()
