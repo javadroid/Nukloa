@@ -238,7 +238,7 @@ body::-webkit-scrollbar-thumb:vertical {
 }
 
 .proj_header .caption {
-  width: 45%;
+  width: 80%;
   height: 80%;
   display: flex;
   flex-direction: column;
