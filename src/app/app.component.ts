@@ -203,7 +203,7 @@ export class AppComponent {
       messages:this.createChatCompletion,
       n:1,
       temperature:0.6,
-      max_tokens:100,
+      max_tokens:1000,
 
     }).then( res=> {
       const response = res.data.choices[0].message?.content
