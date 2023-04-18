@@ -61,7 +61,11 @@ ul {
   font-family: "Oribtron", sans-serif;
 
 }
+.routerTest{
 
+  all: unset;
+  display: none;
+}
 .loading_box {
   position: relative;
   width: 500px;
@@ -174,6 +178,8 @@ ul {
     align-items: center;
     justify-content: center;
   }
+
+
 }
 
 @keyframes pulse {

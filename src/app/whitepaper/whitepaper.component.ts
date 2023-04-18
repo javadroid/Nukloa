@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import AOS from 'aos';
 @Component({
   selector: 'app-whitepaper',
   templateUrl: './whitepaper.component.html',
@@ -11,7 +11,7 @@ export class WhitepaperComponent implements OnInit {
   nft(){
     this.toastr.success("Coming Soon");
   }
- 
+
   constructor(private rout:Router,private toastr: ToastrService) { }
   openApp(){
     this.rout.navigate(["/app"])
@@ -23,5 +23,10 @@ export class WhitepaperComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-
+  ngAfterViewInit() {
+    AOS.init({
+      offset: 400,
+      duration: 2000,
+    });
+  }
 }

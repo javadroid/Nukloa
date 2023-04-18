@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import imagesLoaded from 'imagesloaded';
+import AOS from 'aos';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,10 +22,16 @@ export class HomeComponent implements OnInit {
     this.rout.navigate(["/app"])
   }
   ngOnInit(): void {
-
+    // AOS.init({
+    //   offset: 400,
+    //   duration: 2000,
+    // });
   }
   ngAfterViewInit() {
-
+    AOS.init({
+      offset: 400,
+      duration: 2000,
+    });
   }
 
 

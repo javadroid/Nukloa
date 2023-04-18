@@ -134,7 +134,7 @@ body {
 .proj_header {
   height: 100%;
   width: 100%;
-  background: url(../img/abcd1c6.png);
+  /* background: url(../img/abcd1c6.png); */
   background-size: contain;
   background-repeat: no-repeat;
   background-attachment: local;
@@ -649,7 +649,7 @@ footer {
       flex-direction: column; } }
   .features .card_container .feature_card {
     width: 24%;
-    height: 18rem;
+    /* height: 18rem; */
     background: rgba(2, 0, 22, 0.514);
     padding: 2rem;
     border-radius: 10px; }

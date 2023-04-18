@@ -1,6 +1,12 @@
 
 
-  <main class="prices_main">
+<div class="shapes">
+  <div class="shape-01 move-01"></div>
+  <div class="shape-02 move-02"></div>
+  <div class="shape-03 move-03"></div>
+</div>
+
+  <main style="padding: 20px ;" class="prices_main">
     <div class="heading">
       <h1 class="headline">Today's Cryptocurrency Prices by Market Cap</h1>
       <p class="sub_headline">
@@ -25,7 +31,7 @@
 
         </ol>
       </div>
-      <div class="col-lg-4 col-sm-12 me-2 trending">
+      <div style="margin-bottom: 20px;" class="col-lg-4 col-sm-12 me-2 trending">
         <div class="card_title d-flex justify-content-between p-4">
           <h3 class="title"><i class="icofont-fire-burn text-danger"></i>Trending</h3>
           <button class="more btn text-primary">Market cap rank<i class="icofont-rounded-right mw-3"></i></button>
@@ -107,7 +113,7 @@
               <th scope="col">Price</th>
               <th scope="col">24h(%)</th>
               <th scope="col">Market Cap</th>
-              <th scope="col">Total Volume</th>
+              <!-- <th scope="col">Total Volume</th> -->
 
             </tr>
           </thead>
@@ -120,7 +126,7 @@
                ><i class="icofont-caret-up">**.**%</i></span>
               </td>
               <td ><span>&#36;</span>**.**</td>
-              <td><span>&#36;</span>**.**</td>
+              <!-- <td><span>&#36;</span>**.**</td> -->
 
             </tr>
             <tr *ngFor="let item of allcoins">
@@ -132,7 +138,7 @@
                 'text-danger':isNegative(item.price_change_percentage_24h)}"><i class="icofont-caret-up">{{item.price_change_percentage_24h.toFixed(2)}}%</i></span>
               </td>
               <td ><span>&#36;</span>{{addCommasToNumber(item.market_cap)}}</td>
-              <td><span>&#36;</span>{{addCommasToNumber(item.total_volume)}}</td>
+              <!-- <td><span>&#36;</span>{{addCommasToNumber(item.total_volume)}}</td> -->
 
             </tr>
 

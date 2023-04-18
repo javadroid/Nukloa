@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../share/service.service';
 import axios from 'axios';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-price',
@@ -19,6 +20,12 @@ export class PriceComponent implements OnInit {
 
     this.getAllcoins()
     this.getAlltrending()
+  }
+  ngAfterViewInit() {
+    AOS.init({
+      offset: 400,
+      duration: 2000,
+    });
   }
   async getAlltrending(){
     (await this.http.getAlltrending()).subscribe((e: any)=>{

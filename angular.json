@@ -28,8 +28,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./node_modules/bootstrap/dist/js/bootstrap.js",
-              "https://unpkg.com/aos@2.3.1/dist/aos.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {

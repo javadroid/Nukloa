@@ -3,6 +3,7 @@ import { Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } f
 import * as THREE from 'three';
 import gsap from 'gsap'
 import { Configuration, OpenAIApi } from "openai";
+import AOS from 'aos';
 import { environment } from 'src/environments/environment.prod';
 // import '../css/three'
 
@@ -26,6 +27,7 @@ export class AppComponent {
   loading_bar_inner = 0
   loading_bar_style = { width: this.loading_bar_inner + '%' }
   isollapse = false
+  loadingDone=false
   showChat = false
   faCoffee = faCoffee;
   chatInput = 'What is $NUD NUKLEON DECENTRALIZED ORBITAL'
@@ -42,6 +44,10 @@ export class AppComponent {
 
   ngAfterViewInit() {
     testing(this.threeBG.nativeElement)
+    AOS.init({
+      offset: 400,
+      duration: 2000,
+    });
   }
 
 
@@ -89,37 +95,47 @@ export class AppComponent {
             opacity: 0.3
             // opacity: 0
 
-          }).then(() => {
-            gsap.to(".video_container", {
-              duration: 2,
-              delay:2,
-              opacity:1,
-            }).then(()=>{
-            let c=1
+          }).then(()=>{
+            this.loadingDone=true
+          })
 
-            this.myVideo.nativeElement.addEventListener('ended', () => {
-              console.log('Video finished playing');
-              this.myVideo.nativeElement.controls = true
-              this.myVideo.nativeElement.currentTime = 0
-            });
-          // const inn=  setInterval(()=>{
-          //     // c+=0.5
-          //     // console.log(c)
-          //     // this.myVideo.nativeElement.play()
-          //     // if(c===8.5){
-          //     //   clearInterval(inn)
-          //     //   this.myVideo.nativeElement.currentTime = 8
-          //     //   this.myVideo.nativeElement.pause();
-          //     // }
-
-
-          //     //
-          //     // this.myVideo.nativeElement.pause();
-          //   },500)
-
-            })
+          gsap.to(".routerTest", {
+       display:"contents"
 
           })
+          // .then(() => {
+          //   gsap.to(".video_container", {
+          //     duration: 2,
+          //     delay:2,
+          //     opacity:1,
+          //   }).then(()=>{
+          //   let c=1
+
+          //   this.myVideo.nativeElement.addEventListener('ended', () => {
+          //     console.log('Video finished playing');
+          //     this.myVideo.nativeElement.controls = true
+          //     this.myVideo.nativeElement.currentTime = 0
+          //   });
+          // // const inn=  setInterval(()=>{
+          // //     // c+=0.5
+          // //     // console.log(c)
+          // //     // this.myVideo.nativeElement.play()
+          // //     // if(c===8.5){
+          // //     //   clearInterval(inn)
+          // //     //   this.myVideo.nativeElement.currentTime = 8
+          // //     //   this.myVideo.nativeElement.pause();
+          // //     // }
+
+
+          // //     //
+          // //     // this.myVideo.nativeElement.pause();
+          // //   },500)
+
+          //   })
+
+          // })
+
+
           gsap.to(".loading_svg", {
 
             duration: 100,
