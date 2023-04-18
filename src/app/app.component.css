@@ -238,5 +238,5 @@ ul {
 
 .showChat{
   display:none;
-
+z-index: -999;
 }

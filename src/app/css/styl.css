@@ -833,7 +833,7 @@ footer .menu_container .menu_link {
   color: #ffffff;
 }
 
-.live_chat-container .chat_initiator {
+ .chat_initiator {
   background: none;
   border: none;
   outline: none;
@@ -846,7 +846,7 @@ footer .menu_container .menu_link {
   border-radius: 20px;
 }
 
-.live_chat-container .chat_initiator i {
+ .chat_initiator i {
   color: white;
   font-size: 2.5rem;
   margin-left: 0.5rem;
