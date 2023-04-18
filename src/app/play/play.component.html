@@ -1,83 +1,277 @@
-<!-- <canvas #canvas id="canvas" style="height: 100vh; width: 100vw;" ></canvas>| -->
-
 <body>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="img/WhatsApp Image 2023-04-05 at 13.13.41.png" style="height: 8rem; width: 8rem" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          data-bs-target="#navbarColor02"
+          aria-controls="navbarColor01"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <!-- `loading div -->
-  <div class="loading">
-  <div class="loading_box">
-    <img class="loading_svg" src="assets/suv/loader15.svg" alt="#">
-    <div class="loading_text">
-      <div class="loading_text_border "></div>
-      NUKLE <div class="loading_dot">
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Our Services</a>
+            </li>
+          </ul>
 
-      </div>N
-    </div>
-<div class="loading_bar">
-  <div [style]="loading_bar_style" class="loading_bar--inner barinverval">
-
-  </div>
-</div>
-<div class="loading_counter">
-  <span>0%</span>
-  <div class="loading_counter_number">{{loading_bar_inner}}%</div>
-</div>
-  </div>
-</div>
-<!-- `landing div -->
-<div class="landing">
-  <!-- three js backgound -->
-<div #threeBG class="threeBG">
-
-</div>
-
-  <header  class="headerPlay">
-    <div class="headerPlay_wrap">
-
-      <ul class="headerPlay_left collapsesss">
-
-        <li><a class="headerPlay_coolLink" data-text="Home" ><span>Home</span></a></li>
-        <li><a class="headerPlay_coolLink hideli" data-text="Whitepaper" ><span>Whitepaper</span></a></li>
-        <li><a class="headerPlay_coolLink" data-text="Blog" ><span>Blog</span></a></li>
-        <li><a class="headerPlay_coolLink hideli" data-text="NFT" ><span>NFT</span></a></li>
-        <li><a class="headerPlay_coolLink hideli" data-text="AboutUs" ><span>AboutUs</span></a></li>
-
-      </ul>
-
-      <!-- <div *ngIf="isollapse" style="opacity: 0;" class="menu-button"></div> -->
-      <!-- <div (click)="isollapse?collapse():uncollapse()" class="menu-button"></div> -->
-      <div class="headerPlay_right">
-
-        <button class="headerPlay_button"><span>Lunch app</span></button>
+          <div class="socials navbar-text d-flex">
+            <a href="#" class="nav-link p-0"><i class="icofont-twitter"></i></a>
+            <a href="#" class="nav-link p-0"><i class="icofont-telegram"></i></a>
+            <a href="#" class="nav-link p-0"><i class="icofont-instagram"></i></a>
+          </div>
+        </div>
       </div>
+    </nav>
 
+    <div class="w-100 hero d-flex align-items-center justify-content-around">
+      <div class="copy">
+        <h1 class="main_caption">NUKLEON <span>DECENTRALIZED</span> ORBITAL</h1>
+        <h6 class="sub_caption">
+          Let's create a universal internet where Contributors are rewarded for distributing their storage and
+          bandwidth on the NUKLEON, which is made up of "storage nodes" that are used to store data for others.
+        </h6>
 
-
+        <div class="btn_container">
+          <button class="btn btn-primary">Buy Now</button>
+        </div>
+      </div>
+      <img
+        src="img/digital-3d-dices-with-cryptocurrency-logos-bitcoin-litecoin-and-ripple-digital-3d-dices-with-drawing_csp88856390.png"
+        class="move-01"
+      />
+      <!-- <img src="img/4bdd09efb22a073c1f89fc60a8ec59b4.png" class="move-01" /> -->
     </div>
   </header>
 
-  <!-- socials -->
-  <div class="socials">
-    <a  target="_blank">
-    <svg class="coloricons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="coloricons bi bi-twitter" viewBox="0 0 16 16">
-      <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-    </svg>
-  </a>
-  <a  target="_blank">
-    <svg class="coloricons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="coloricons bi bi-medium" viewBox="0 0 16 16">
-      <path d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8zm4.95 0c0 2.34-1.01 4.236-2.256 4.236-1.246 0-2.256-1.897-2.256-4.236 0-2.34 1.01-4.236 2.256-4.236 1.246 0 2.256 1.897 2.256 4.236zM16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795z"/>
-    </svg>
-    </a>
-
-    <a  target="_blank">
-      <svg class="coloricons" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="coloricons bi bi-discord" viewBox="0 0 16 16">
-        <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"/>
-      </svg>
-    </a>
-
-    <!-- <a  target="_blank"><ng-icon class="#"  strokeWidth="#" size="35" colo<fa-icon icon="coffee"></fa-icon>r="white" name="bootstrapDiscord"></ng-icon></a>
-    <a  target="_blank"><ng-icon class="coloricons"  strokeWidth="#"size="35" color="white" name="bootstrapMedium"></ng-icon></a> -->
+  <div class="shapes">
+    <div class="shape-01 move-01"></div>
+    <div class="shape-02 move-02"></div>
+    <div class="shape-03 move-03"></div>
   </div>
 
-</div>
-</body>
+  <section class="features d-flex flex-column align-items-center">
+    <h2 class="section_title text-light">Features</h2>
+    <div class="card_container w-100 d-flex flex-wrap justify-content-between">
+      <div class="feature_card" data-aos="fade-up">
+        <h3 class="card_title"><i class="icofont-rocket-alt-2"></i>Fair Launch</h3>
+        <p class="card_detail">
+          We launched for everyone, making all tokens available. Our WikiCat coin is available for everyone on
+          PancakeSwap V2.
+        </p>
+      </div>
+      <div class="feature_card" data-aos="fade-up">
+        <h3 class="card_title"><i class="icofont-rocket-alt-2"></i>Fair Launch</h3>
+        <p class="card_detail">
+          We launched for everyone, making all tokens available. Our WikiCat coin is available for everyone on
+          PancakeSwap V2.
+        </p>
+      </div>
+      <div class="feature_card" data-aos="fade-up">
+        <h3 class="card_title"><i class="icofont-rocket-alt-2"></i>Fair Launch</h3>
+        <p class="card_detail">
+          We launched for everyone, making all tokens available. Our WikiCat coin is available for everyone on
+          PancakeSwap V2.
+        </p>
+      </div>
+      <div class="feature_card" data-aos="fade-up">
+        <h3 class="card_title"><i class="icofont-rocket-alt-2"></i>Fair Launch</h3>
+        <p class="card_detail">
+          We launched for everyone, making all tokens available. Our WikiCat coin is available for everyone on
+          PancakeSwap V2.
+        </p>
+      </div>
+    </div>
+  </section>
 
+  <section class="road_map d-flex flex-column align-items-center">
+    <h2 class="section_title text-light">Road map</h2>
+
+    <div class="sec_stepper d-flex align-items-center">
+      <h4 class="note">
+        <strong>Note</strong>: We are determined to follow through each project listed, within their given timeframes.
+      </h4>
+
+      <div class="steps" data-aos="zoom-in">
+        <div class="step">
+          <div class="step-header">
+            <h5 class="header">PHASE 1</h5>
+          </div>
+          <div class="step-content one">
+            <div class="step_list">
+              <p class="index"><i class="icofont-tack-pin"></i>WikiCat launch</p>
+              <p class="index"><i class="icofont-tack-pin"></i>500 holders</p>
+              <p class="index"><i class="icofont-tack-pin"></i>2000 wallet Transactions</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>
+                Contract Auditing by solidity finance
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>1000 organic telegram members</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>Creation of our Chinese community and Turkish community
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>White paper creation</p>
+              <p class="index"><i class="icofont-tack-pin"></i>Road map creation</p>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <div class="header">PHASE 2</div>
+          </div>
+          <div class="step-content one">
+            <div class="step_list">
+              <p class="index"><i class="icofont-tack-pin"></i>WikiCat launch</p>
+              <p class="index"><i class="icofont-tack-pin"></i>500 holders</p>
+              <p class="index"><i class="icofont-tack-pin"></i>2000 wallet Transactions</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>
+                Contract Auditing by solidity finance
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>1000 organic telegram members</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>Creation of our Chinese community and Turkish community
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>White paper creation</p>
+              <p class="index"><i class="icofont-tack-pin"></i>Road map creation</p>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <div class="header">PHASE 3</div>
+          </div>
+          <div class="step-content one">
+            <div class="step_list">
+              <p class="index"><i class="icofont-tack-pin"></i>WikiCat launch</p>
+              <p class="index"><i class="icofont-tack-pin"></i>500 holders</p>
+              <p class="index"><i class="icofont-tack-pin"></i>2000 wallet Transactions</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>
+                Contract Auditing by solidity finance
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>1000 organic telegram members</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>Creation of our Chinese community and Turkish community
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>White paper creation</p>
+              <p class="index"><i class="icofont-tack-pin"></i>Road map creation</p>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <div class="header">PHASE 4</div>
+          </div>
+          <div class="step-content one">
+            <div class="step_list">
+              <p class="index"><i class="icofont-tack-pin"></i>WikiCat launch</p>
+              <p class="index"><i class="icofont-tack-pin"></i>500 holders</p>
+              <p class="index"><i class="icofont-tack-pin"></i>2000 wallet Transactions</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>
+                Contract Auditing by solidity finance
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>1000 organic telegram members</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>Creation of our Chinese community and Turkish community
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>White paper creation</p>
+              <p class="index"><i class="icofont-tack-pin"></i>Road map creation</p>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-header">
+            <div class="header">PHASE 5</div>
+          </div>
+          <div class="step-content one">
+            <div class="step_list">
+              <p class="index"><i class="icofont-tack-pin"></i>WikiCat launch</p>
+              <p class="index"><i class="icofont-tack-pin"></i>500 holders</p>
+              <p class="index"><i class="icofont-tack-pin"></i>2000 wallet Transactions</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>
+                Contract Auditing by solidity finance
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>1000 organic telegram members</p>
+              <p class="index">
+                <i class="icofont-tack-pin"></i>Creation of our Chinese community and Turkish community
+              </p>
+              <p class="index"><i class="icofont-tack-pin"></i>White paper creation</p>
+              <p class="index"><i class="icofont-tack-pin"></i>Road map creation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features d-flex flex-column align-items-center">
+    <h2 class="section_title text-light">FAQs</h2>
+    <div class="card_container w-100 d-flex flex-wrap justify-content-between">
+      <div class="faq_card" data-aos="fade-right">
+        <h3 class="card_title">What is the Utility/Use Case for Wiki Cat?</h3>
+        <p class="card_detail">
+          Wiki Cat started out as a token by Sir. Mapy for the SMC community to teach them how to create meme tokens.
+          Regardless, we believe the use case for Wiki Cat lies in the strength of its community that believes in the
+          social consensus of shared value. This is what has taken the likes of Doge and Shiba Inu to billions of
+          dollars in the market value.
+        </p>
+      </div>
+      <div class="faq_card" data-aos="fade-left">
+        <h3 class="card_title">Who owns WikiCat?</h3>
+        <p class="card_detail">
+          Wiki Cat ownership has been renounced. Ownership is collectively owned by the community. There is no CEO, no
+          VC or board members pulling the strings in the background. For this reason, no wallet has more than 5% of
+          the token. Funding or contributions are voluntary and ultimately the community gets to decide the future of
+          the project.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="d-flex align-items-center justify-content-evenly">
+    <a class="navbar-brand" href="#"><img src="img/WhatsApp Image 2023-04-05 at 13.13.41.png" alt="" /></a>
+    <div class="menu_container d-flex flex-column">
+      <h5 class="menu_title">Contact</h5>
+      <a href="" class="menu_link">Okohjulius@gmail.com</a>
+      <a href="" class="menu_link">09075677971</a>
+      <a href="" class="menu_link">No. 30 Rumunduru Eneka Road</a>
+    </div>
+    <div class="menu_container d-flex flex-lg-column">
+      <h5 class="menu_title">Links</h5>
+      <a href="" class="menu_link me-4">Link 1</a>
+      <a href="" class="menu_link me-4">Link 2</a>
+      <a href="" class="menu_link me-4">Link 3</a>
+    </div>
+  </footer>
+
+
+  <script>
+    AOS.init({
+      offset: 400,
+      duration: 2000,
+    });
+  </script>
+</body>
