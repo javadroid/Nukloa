@@ -17,6 +17,8 @@ import { CountdownConfig } from 'ngx-countdown';
 import { doc, Firestore, FirestoreModule, updateDoc } from '@angular/fire/firestore';
 import { ServiceService } from '../share/service.service';
 import { gsap } from 'gsap';
+
+
 @Component({
   selector: 'app-dapp',
   templateUrl: './dapp.component.html',
@@ -61,7 +63,7 @@ export class DappComponent implements OnInit,OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
-    this.isConnected=false
+
     this.account= await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     if(this.account){
       this.isConnected=true
@@ -433,19 +435,26 @@ export class DappComponent implements OnInit,OnDestroy {
     const currents = new Date();
     const timestamps = currents.getTime();
     if (res && daiyclicks) {
-      this.user = {
 
-        start: timestamps,
+      if(this.setBalanceInfo.balance<16){
+        this.user = {
 
-        dailyBonus: Number(daiyclicks) + 10000
+          start: timestamps,
 
+          dailyBonus: Number(daiyclicks) + 10000
+
+        }
+        console.log("user", daiyclicks + 10000);
+        console.log("res", res);
+        this.api.update('users', res, this.user).subscribe(res => {
+          console.log('update', res)
+          this.check()
+        })
+      }else{
+        this.toastr.error(" have a mininum of 16 $NUKN to be eligible for daily claim ");
       }
-      console.log("user", daiyclicks + 10000);
-      console.log("res", res);
-      this.api.update('users', res, this.user).subscribe(res => {
-        console.log('update', res)
-        this.check()
-      })
+
+
 
 
     }
