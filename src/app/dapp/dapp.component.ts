@@ -63,19 +63,25 @@ export class DappComponent implements OnInit,OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
-
     this.account= await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     if(this.account){
+
       this.isConnected=true
+      this.amountToBuy.reset()
+      this.amountToClaim.reset()
+      this.amountToStake.reset()
+      this.amountTowithdraw.reset()
+
+      this.switchN()
+    }else{
+      this.isConnected=false
+      this.toastr.error("Yeah")
+      this.amountToBuy.reset()
+      this.amountToClaim.reset()
+      this.amountToStake.reset()
+      this.amountTowithdraw.reset()
+      this.switchN()
     }
-    gsap.to(".headerPlay_button", {
-      display: 'none'
-    })
-    this.amountToBuy.reset()
-    this.amountToClaim.reset()
-    this.amountToStake.reset()
-    this.amountTowithdraw.reset()
-    this.switchN()
 
 
 
