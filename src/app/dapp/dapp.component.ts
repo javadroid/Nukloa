@@ -65,7 +65,7 @@ export class DappComponent implements OnInit,OnDestroy {
   async ngOnInit(): Promise<void> {
     this.account= await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     if(this.account){
-
+      console.log("this.account",this.account)
       this.isConnected=true
       this.amountToBuy.reset()
       this.amountToClaim.reset()
@@ -238,10 +238,6 @@ export class DappComponent implements OnInit,OnDestroy {
     if (this.winRef.window.ethereum) {
 
       try {
-
-        if(this.account){
-          this.isConnected = true;
-        }
         const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
         const erc20 = new ethers.Contract(this.CONTRACTADDRESS, buchi, provider)
 
@@ -300,10 +296,11 @@ export class DappComponent implements OnInit,OnDestroy {
 
 
       } catch (error: any) {
+        console.error("contranDetails",error)
         this.toastr.error(error!.error.data.message);
       }
     }else{
-      this.isConnected = true;
+      this.isConnected = false;
     }
   }
 
@@ -321,6 +318,7 @@ export class DappComponent implements OnInit,OnDestroy {
 
 
       } catch (error: any) {
+        console.error("getWalletBalance",error)
         this.toastr.error(error!.error.data.message);
       }
     }
@@ -345,6 +343,7 @@ export class DappComponent implements OnInit,OnDestroy {
         this.setearnd = String(Math.round(stakeEarn / 10 ** 18))
 
       } catch (error: any) {
+        console.error("getStakeDetails",error)
         this.toastr.error(error!.error.data.message);
       }
     }

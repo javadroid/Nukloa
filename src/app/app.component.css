@@ -59,7 +59,7 @@ ul {
   display: grid;
   place-items: center;
   font-family: "Oribtron", sans-serif;
-
+  /* display: none; */
 }
 .routerTest{
 

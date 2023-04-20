@@ -90,7 +90,7 @@ export class AppComponent {
           gsap.to(".loading", {
             delay: 2,
             duration: 2,
-            zIndex: -99,
+            zIndex: -9999,
             background: "transparent",
             opacity: 0.3
             // opacity: 0
