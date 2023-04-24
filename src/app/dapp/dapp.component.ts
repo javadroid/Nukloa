@@ -63,6 +63,23 @@ export class DappComponent implements OnInit,OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
+    const provider = this.winRef.window.ethereum;
+    const binanceTestChainId = '0x61';
+
+    if (!provider) {
+     this.isConnected = true;
+      this.toastr.error("Download and connect a desired software wallet.");
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        console.log("first")
+        // open the deeplink page
+        window.open("https://metamask.app.link/dapp/nukleon.netlify.app/app")
+
+        } else {
+          console.log("2nd")
+          window.open("https://metamask.io/download.html")
+
+
+        }}else{
     this.account= await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     if(this.account){
       console.log("this.account",this.account)
@@ -83,7 +100,7 @@ export class DappComponent implements OnInit,OnDestroy {
       this.switchN()
     }
 
-
+  }
 
   }
 
@@ -137,6 +154,17 @@ export class DappComponent implements OnInit,OnDestroy {
     if (!provider) {
      this.isConnected = true;
       this.toastr.error("Download and connect a desired software wallet.");
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        console.log("first")
+        // open the deeplink page
+        window.open("https://metamask.app.link/dapp/nukleon.netlify.app/app")
+
+        } else {
+          console.log("2nd")
+          window.open("https://metamask.io/download.html")
+
+
+        }
     } else {
 
       const chainId = await provider.request({ method: 'eth_chainId' });
