@@ -69,17 +69,21 @@ export class DappComponent implements OnInit,OnDestroy {
     if (!provider) {
      this.isConnected = true;
       this.toastr.error("Download and connect a desired software wallet.");
-      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-        console.log("first")
-        // open the deeplink page
-        window.open("https://metamask.app.link/dapp/nukleon.netlify.app/app")
 
-        } else {
-          console.log("2nd")
-          window.open("https://metamask.io/download.html")
+      setTimeout(()=>{
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+          console.log("https://metamask.app.link/dapp/nukleon.netlify.app/app")
+          // open the deeplink page
+          window.open("https://metamask.app.link/dapp/nukleon.netlify.app/app")
+
+          } else {
+            console.log("https://metamask.app.link/dapp/nukleon.netlify.app/app")
+            window.open("https://metamask.io/download.html")
 
 
-        }}else{
+          }
+      },3000)
+     }else{
     this.account= await this.winRef.window.ethereum.request({ method: "eth_requestAccounts" })
     if(this.account){
       console.log("this.account",this.account)
