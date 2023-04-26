@@ -108,9 +108,9 @@ export class DappComponent implements OnInit,OnDestroy {
 
   }
 
-  CONTRACTADDRESS = '0x0FdFdb9bc31186E229B6D198346dca54b0a70599'
-  SALECONTRACTADDRESS = '0x4632d3304dB173692e8A4666fc106B0B1D6E4862'
-  STAKECONTRACTADDRESS = '0x8DC4d4D66AdCb05aFc0284E7bC74716E9eb5d444'
+  CONTRACTADDRESS = '0x0b4Df0E7328Fb58657b3fb050691f224aFe6FafF'
+  SALECONTRACTADDRESS = '0x8F1DE9Cb0D06c9D6338aB2db15B82816b92E028f'
+  STAKECONTRACTADDRESS = '0xb25442Fe97Ff696Bb9A7AC0107FC6a12B2E43D8d'
   CLAIMCONTRACTADDRESS = '0x5d7cE23d67309b8E8b5e2F5a7317E245E6a3A57E'
 
   date = new Date('2019-01-26T00:00:00');
@@ -365,9 +365,9 @@ export class DappComponent implements OnInit,OnDestroy {
         const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
         const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, provider)
 
-        const stakeBalance = await erc20['balanceOf'](this.account[0]);
-        const stakeTotal = await erc20['totalSupply']();
-        const stakeEarn = await erc20['earned'](this.account[0]);
+        const stakeBalance = await erc20['getStakedBalance'](this.account[0]);
+        const stakeTotal = await erc20['getTotalStaked']();
+        const stakeEarn = await erc20['getRewardEarned'](this.account[0]);
 
 
         this.setStakeBalance = String(Math.round(stakeBalance / 10 ** 18))
@@ -510,7 +510,10 @@ export class DappComponent implements OnInit,OnDestroy {
       const Erc20 = new ethers.Contract(this.SALECONTRACTADDRESS, sale, signer)
       await Erc20.connect(signer)
       const amountToBuy = ethers.utils.parseEther(this.amountToBuy.value!)
-      const waits = await Erc20['buyTokens'](this.account[0], { value: amountToBuy, from: this.account[0] })
+
+      const gasPrice = await provider.getGasPrice();
+      this.toastr.success(gasPrice.toString())
+      const waits = await Erc20['buyTokens'](this.account[0], { value: amountToBuy, from: this.account[0], gasPrice })
       const receipt = await waits.wait();
 
       if (receipt) {
