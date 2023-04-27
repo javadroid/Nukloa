@@ -37,14 +37,17 @@ export class DappComponent implements OnInit,OnDestroy {
   user = [] as any
 
 
-  amountToBuy = new FormControl('');
-  amountTowithdraw = new FormControl('');
-  amountToStake = new FormControl('');
-  amountToClaim = new FormControl('');
+  amountToBuy = new FormControl(1);
+  amountTowithdraw = new FormControl(0);
+  amountToStake = new FormControl(16);
+  amountToClaim = new FormControl(0);
   config: CountdownConfig = {};
   notify = '';
   ready = true
   dailyClaim = 0;
+  coinRate = 0.00043;
+  amountToBuyCal=0.00043
+  amountToBuyVal=1
   refferal = 0;
 
   current = new Date();
@@ -63,6 +66,11 @@ export class DappComponent implements OnInit,OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
+
+
+  }
+
+  async connect(){
     const provider = this.winRef.window.ethereum;
     const binanceTestChainId = '0x61';
 
@@ -105,9 +113,11 @@ export class DappComponent implements OnInit,OnDestroy {
     }
 
   }
-
   }
-
+  calulatePrice(){
+    this.amountToBuyVal=Number(this.amountToBuy.value!)
+    this.amountToBuyCal=(Number(this.amountToBuy.value!)*this.coinRate)
+  }
   CONTRACTADDRESS = '0x0b4Df0E7328Fb58657b3fb050691f224aFe6FafF'
   SALECONTRACTADDRESS = '0x8F1DE9Cb0D06c9D6338aB2db15B82816b92E028f'
   STAKECONTRACTADDRESS = '0xb25442Fe97Ff696Bb9A7AC0107FC6a12B2E43D8d'
@@ -261,7 +271,7 @@ export class DappComponent implements OnInit,OnDestroy {
       console.log('referredby', res)
       this.refferal = res.length
 
-      this.amountToClaim.setValue(String(this.refferal * 30000))
+      this.amountToClaim.setValue((this.refferal * 30000))
     })
 
   }
@@ -272,6 +282,7 @@ export class DappComponent implements OnInit,OnDestroy {
       try {
         const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
         const erc20 = new ethers.Contract(this.CONTRACTADDRESS, buchi, provider)
+
 
         const balance = await erc20['balanceOf'](this.account[0])
         const tokenName = await erc20['name']()
@@ -390,7 +401,7 @@ export class DappComponent implements OnInit,OnDestroy {
       const signer = await provider.getSigner(this.account[0])
       const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
       await erc20.connect(signer)
-      const amountToBuy = ethers.utils.parseEther(this.amountTowithdraw.value!)
+      const amountToBuy = ethers.utils.parseEther(String(this.amountTowithdraw.value!))
 
       const waits = await erc20['withdraw'](amountToBuy);
       const receipt = await waits.wait();
@@ -509,10 +520,11 @@ export class DappComponent implements OnInit,OnDestroy {
       const signer = await provider.getSigner(this.account[0])
       const Erc20 = new ethers.Contract(this.SALECONTRACTADDRESS, sale, signer)
       await Erc20.connect(signer)
-      const amountToBuy = ethers.utils.parseEther(this.amountToBuy.value!)
-
+      const atb=(Number(this.amountToBuy.value!)*this.coinRate).toString()
+      const amountToBuy = ethers.utils.parseEther(atb)
+console.log("amountToBuy",amountToBuy)
       const gasPrice = await provider.getGasPrice();
-      this.toastr.success(gasPrice.toString())
+
       const waits = await Erc20['buyTokens'](this.account[0], { value: amountToBuy, from: this.account[0], gasPrice })
       const receipt = await waits.wait();
 
@@ -562,7 +574,7 @@ export class DappComponent implements OnInit,OnDestroy {
       const Erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer)
 
       await Erc20.connect(signer)
-      const amountToStake = ethers.utils.parseEther(this.amountToStake.value!)
+      const amountToStake = ethers.utils.parseEther(String(this.amountToStake.value!))
       const waits = await Erc20['stake'](amountToStake);
       const receipt = await waits.wait();
 
@@ -590,6 +602,8 @@ export class DappComponent implements OnInit,OnDestroy {
   }
 
 
-
+  getStakeDisble(){
+   return Number(this.amountToStake.value!)>16
+  }
 
 }

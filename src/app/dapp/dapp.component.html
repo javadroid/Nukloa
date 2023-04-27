@@ -12,7 +12,7 @@
     <div class="button_holder">
 
       <button (click)="addToken()" class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
-      <button (click)="ngOnInit()" class="btn text-light">ETH: {{setwalletBalance}}</button>
+      <button (click)="connect()" class="btn text-light">ETH: {{setwalletBalance}}</button>
 
     </div>
 
@@ -20,7 +20,7 @@
   <button (click)="addToken()" class="btn text-light"> Add Nukleon to Wallect</button><div>
 
 
-  <button  (click)="ngOnInit()" [class]="!isConnected?'nuk btn btn-primary':'btn text-light'">{{!isConnected?"Connect Wallet":"Refresh Page"}}</button></div>
+  <button  (click)="connect()" [class]="!isConnected?'nuk btn btn-primary':'btn text-light'">{{!isConnected?"Connect Wallet":"Refresh Page"}}</button></div>
 
   <div class="main_buy d-flex">
     <div class="buy_card">
@@ -53,15 +53,12 @@
     background-blend-mode: multiply;
     border-radius: 20px;
     padding: 2rem;" class="buy_nuk">
-      <h4 class="item_title">Buy NUKN</h4><strong>
-      <h3 style="color: rgba(189, 185, 185, 0.753)" >1  {{(setContractInfo.tokenSymbol)}} ~ $0.8264</h3>
-
-        <h3 style="color: rgba(189, 185, 185, 0.753)" >0.00043 ETH = 1 {{(setContractInfo.tokenSymbol)}}</h3></strong>
-
+      <h4 class="item_title">Buy NUKN</h4>
       <div class="input_container">
-        <input [formControl]="amountToBuy"  name="" placeholder="ETH" />
+        <input [formControl]="amountToBuy" (input)="calulatePrice()" type="number"  name="" placeholder="NUKN" />
         <button (click)="handleSale()" class="cta">Buy</button>
       </div>
+      <h3 style="color: rgba(189, 185, 185, 0.753); display: flex; justify-content: flex-end; font-size: small;" >{{amountToBuyVal}}  NUKN ~ {{amountToBuyCal}} ETH</h3>
     </div>
 
     <div class="stake">
@@ -76,11 +73,11 @@
       padding: 2rem;
     "    class="hold_inputs">
         <h4><span style="color: rgb(190, 47, 47);">NOTE:</span>  <span style="color: rgb(19, 121, 33);"> Minimum stake 16 $NUKN = $13.2224</span></h4>
-        <div class="heading">Rewards: {{setStakeBalance}} {{setContractInfo.tokenSymbol}} </div>
+        <div class="heading">Rewards: {{setearnd}} {{setContractInfo.tokenSymbol}} </div>
 
         <div class="input_container">
           <input [formControl]="amountToStake"  name="" placeholder="NUKN" />
-          <button (click)="handleStake()" class="cta">Stake</button>
+          <button [disabled]="getStakeDisble()" (click)="handleStake()" class="cta">Stake</button>
         </div>
         <div class="input_container">
           <input [formControl]="amountTowithdraw"  name="" placeholder="NUKN" />
