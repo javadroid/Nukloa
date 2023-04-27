@@ -603,7 +603,7 @@ console.log("amountToBuy",amountToBuy)
 
 
   getStakeDisble(){
-   return Number(this.amountToStake.value!)>16
+   return Number(this.amountToStake.value!)<16
   }
 
 }
