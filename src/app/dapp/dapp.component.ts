@@ -45,8 +45,8 @@ export class DappComponent implements OnInit,OnDestroy {
   notify = '';
   ready = true
   dailyClaim = 0;
-  coinRate = 0.00043;
-  amountToBuyCal=0.00043
+  coinRate = 0.00005;
+  amountToBuyCal=0.00005
   amountToBuyVal=1
   refferal = 0;
 
