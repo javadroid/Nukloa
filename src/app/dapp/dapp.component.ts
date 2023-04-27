@@ -401,14 +401,16 @@ export class DappComponent implements OnInit,OnDestroy {
       const signer = await provider.getSigner(this.account[0])
       const erc20 = new ethers.Contract(this.STAKECONTRACTADDRESS, stake, signer);
       await erc20.connect(signer)
-      const amountToBuy = ethers.utils.parseEther(String(this.amountTowithdraw.value!))
 
-      const waits = await erc20['withdraw'](amountToBuy);
+
+      const waits = await erc20['withdraw']();
       const receipt = await waits.wait();
 
       if (receipt) {
 
-        this.ngOnInit()
+
+        this.getStakeDetails()
+        this.contranDetails()
       }
     } catch (error: any) {
       this.toastr.error(error!.error.data.message);
@@ -531,7 +533,8 @@ console.log("amountToBuy",amountToBuy)
       if (receipt) {
 
         this.approve(this.amountToBuy.value!)
-        this.ngOnInit()
+        this.getWalletBalance()
+        this.contranDetails()
       }
     } catch (error: any) {
       this.toastr.error(error!.data.message);
@@ -581,7 +584,8 @@ console.log("amountToBuy",amountToBuy)
       if (receipt) {
 
 
-        this.ngOnInit()
+        this.getStakeDetails()
+        this.contranDetails()
       }
 
     } catch (error: any) {

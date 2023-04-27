@@ -79,12 +79,9 @@
           <input [formControl]="amountToStake"  name="" placeholder="NUKN" />
           <button [disabled]="getStakeDisble()" (click)="handleStake()" class="cta">Stake</button>
         </div>
-        <div class="input_container">
-          <input [formControl]="amountTowithdraw"  name="" placeholder="NUKN" />
-          <button  (click)="withdraw()" class="cta">Withdraw</button>
-        </div>
 
-        <button   (click)="getReward()" class="cta">Claim Rewards</button>
+
+        <button   (click)="withdraw()" class="cta">Claim Rewards</button>
       </div>
     </div>
   </div>
