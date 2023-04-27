@@ -486,7 +486,7 @@ export class DappComponent implements OnInit,OnDestroy {
     const timestamps = currents.getTime();
     if (res && daiyclicks) {
 
-      if(this.setBalanceInfo.balance<16){
+      if(this.setBalanceInfo.balance>16){
         this.user = {
 
           start: timestamps,
