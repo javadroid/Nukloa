@@ -49,7 +49,7 @@ export class DappComponent implements OnInit,OnDestroy {
   amountToBuyCal=0.00005
   amountToBuyVal=1
   refferal = 0;
-
+  isNetwork=true
   current = new Date();
   timestamp = this.current.getTime();
   newTimestamp = 0;
@@ -191,7 +191,7 @@ export class DappComponent implements OnInit,OnDestroy {
 
         this.toastr.success("Bravo!, you are on the correct network");
       } else {
-
+        this.isNetwork=false
         this.toastr.error("oulalal, switch to the correct network");
         try {
 
@@ -199,6 +199,7 @@ export class DappComponent implements OnInit,OnDestroy {
             method: 'wallet_switchEthereumChain',
             params: [{ chainId: '0x118' }],
           });
+          this.isNetwork=true
           this.contranDetails()
           this.getWalletBalance()
           this.getStakeDetails()
@@ -206,36 +207,54 @@ export class DappComponent implements OnInit,OnDestroy {
           this.toastr.success("You have succefully switched to Binance Test network")
 
         } catch (switchError: any) {
+          this.toastr.error("This network is not available in your metamask, please add it")
           // This error code indicates that the chain has not been added to MetaMask.
           if (switchError?.code === 4902) {
-            this.toastr.error("This network is not available in your metamask, please add it")
-            try {
-              await provider.request({
-                method: 'wallet_addEthereumChain',
-                params: [
-                  {
-                    chainId: '0x118',
-                    chainName: 'zkSync Era Testnet',
-                    rpcUrls: ['https://testnet.era.zksync.dev'],
-                    blockExplorerUrls: ['https://goerli.explorer.zksync.io/'],
-                    nativeCurrency: {
-                      symbol: 'ETH', // 2-6 characters long
-                      decimals: 18
-                    }
 
-                  }],
-              });
-            } catch (addError) {
-              // handle "add" error
-              console.log(addError);
-            }
+
           }
-
+          this.switchNetwork()
         }
       }
     }
   }
+  async switchNetwork(){
+    try {
+      const provider = this.winRef.window.ethereum;
+      await provider.request({
+        method: 'wallet_addEthereumChain',
+        params: [
+          {
+            chainId: '0x118',
+            chainName: 'zkSync Era Testnet',
+            rpcUrls: ['https://testnet.era.zksync.dev'],
+            blockExplorerUrls: ['https://goerli.explorer.zksync.io/'],
+            nativeCurrency: {
+              symbol: 'ETH', // 2-6 characters long
+              decimals: 18
+            }
 
+          }],
+      });
+      const chainId = await provider.request({ method: 'eth_chainId' });
+      if (chainId !== '0x118') {
+        await provider.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x118' }],
+        });
+        this.isNetwork=true
+        this.contranDetails()
+        this.getWalletBalance()
+        this.getStakeDetails()
+        this.check()
+        this.toastr.success("You have succefully switched to Binance Test network")
+      }
+    } catch (addError) {
+      this.isNetwork=false
+      // handle "add" error
+      console.log(addError);
+    }
+  }
   async check() {
 
 
