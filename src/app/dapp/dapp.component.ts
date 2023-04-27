@@ -215,9 +215,9 @@ export class DappComponent implements OnInit,OnDestroy {
                 params: [
                   {
                     chainId: '0x118',
-                    chainName: 'Smart Chain - Testnet',
+                    chainName: 'zkSync Era Testnet',
                     rpcUrls: ['https://testnet.era.zksync.dev'],
-                    blockExplorerUrls: ['https://explorer.zksync.io/'],
+                    blockExplorerUrls: ['https://goerli.explorer.zksync.io/'],
                     nativeCurrency: {
                       symbol: 'ETH', // 2-6 characters long
                       decimals: 18
