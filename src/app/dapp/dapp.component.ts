@@ -188,7 +188,7 @@ export class DappComponent implements OnInit,OnDestroy {
         this.getWalletBalance()
         this.getStakeDetails()
         this.check()
-
+        this.isNetwork=true
         this.toastr.success("Bravo!, you are on the correct network");
       } else {
         this.isNetwork=false
@@ -204,7 +204,7 @@ export class DappComponent implements OnInit,OnDestroy {
           this.getWalletBalance()
           this.getStakeDetails()
           this.check()
-          this.toastr.success("You have succefully switched to Binance Test network")
+          // this.toastr.success("You have succefully switched to Binance Test network")
 
         } catch (switchError: any) {
           this.toastr.error("This network is not available in your metamask, please add it")
@@ -236,6 +236,7 @@ export class DappComponent implements OnInit,OnDestroy {
 
           }],
       });
+      this.isNetwork=true
       const chainId = await provider.request({ method: 'eth_chainId' });
       if (chainId !== '0x118') {
         await provider.request({
