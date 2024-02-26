@@ -2,7 +2,7 @@ import imagesLoaded from 'imagesloaded';
 import { Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import * as THREE from 'three';
 import gsap from 'gsap'
-import { Configuration, OpenAIApi } from "openai";
+// import { Configuration, OpenAIApi } from "openai";
 import AOS from 'aos';
 import { environment } from 'src/environments/environment.prod';
 // import '../css/three'
@@ -39,7 +39,7 @@ export class AppComponent {
   ngOnInit(): void {
 
     this.loading()
-    this.nukAIChat()
+    // this.nukAIChat()
   }
 
   ngAfterViewInit() {
@@ -201,41 +201,41 @@ export class AppComponent {
     })
   }
 
-  async nukAIChat() {
+  // async nukAIChat() {
 
-    const configuration = new Configuration({
-      organization:'org-YystOv4jjFUdGewDH3p3yOOn',
-      apiKey: 'sk-'+'rRXtUZMwRh33YQJorwtIT3'+'BlbkFJBNa8d77chxPCtl7VaWtS',
-  });
-  const openai = new OpenAIApi(configuration);
-    const c = { role: "user", content: this.chatInput }
-    this.createChatCompletion.push(c)
-    const chat = { me: this.chatInput, res: '...', id: this.conversations.length + 1 }
-    this.chatInput = ''
-    this.conversations.push(chat)
-    this.scrollToMyDiv()
-    openai.createChatCompletion({
-      model:'gpt-3.5-turbo',
-      messages:this.createChatCompletion,
-      n:1,
-      temperature:0.6,
-      max_tokens:1000,
+  //   const configuration = new Configuration({
+  //     organization:'org-YystOv4jjFUdGewDH3p3yOOn',
+  //     apiKey: 'sk-'+'rRXtUZMwRh33YQJorwtIT3'+'BlbkFJBNa8d77chxPCtl7VaWtS',
+  // });
+  // const openai = new OpenAIApi(configuration);
+  //   const c = { role: "user", content: this.chatInput }
+  //   this.createChatCompletion.push(c)
+  //   const chat = { me: this.chatInput, res: '...', id: this.conversations.length + 1 }
+  //   this.chatInput = ''
+  //   this.conversations.push(chat)
+  //   this.scrollToMyDiv()
+  //   openai.createChatCompletion({
+  //     model:'gpt-3.5-turbo',
+  //     messages:this.createChatCompletion,
+  //     n:1,
+  //     temperature:0.6,
+  //     max_tokens:1000,
 
-    }).then( res=> {
-      const response = res.data.choices[0].message?.content
-      console.log("res", response)
-      const chat = this.conversations.pop()
-      this.conversations = this.conversations.filter(c => c.id !== chat.id)
-      chat['res'] = response
-      this.conversations.push(chat)
-      const c = { role: "assistant", content: response }
-      this.createChatCompletion.push(c)
-      this.scrollToMyDiv()
-    })
+  //   }).then( res=> {
+  //     const response = res.data.choices[0].message?.content
+  //     console.log("res", response)
+  //     const chat = this.conversations.pop()
+  //     this.conversations = this.conversations.filter(c => c.id !== chat.id)
+  //     chat['res'] = response
+  //     this.conversations.push(chat)
+  //     const c = { role: "assistant", content: response }
+  //     this.createChatCompletion.push(c)
+  //     this.scrollToMyDiv()
+  //   })
 
 
-    //
-  }
+  //   //
+  // }
 
   scrollToMyDiv() {
     const element = this.elementRef.nativeElement.querySelector('#swss');
