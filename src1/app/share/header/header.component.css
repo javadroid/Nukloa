@@ -1,0 +1,132 @@
+.hideOnLoad{
+  opacity: 0;
+  /* display: none; */
+}
+
+.headerPlay_button{
+  position: relative;
+  border: none;
+  cursor: pointer;
+  width: 175px;
+  height: 120px;
+
+
+    transform: scale3d(0.7,0.7,0.7);
+    font-size: 1.6rem;
+
+
+  background: none;
+  color: #fff;
+}
+.headerPlay_button:before,.headerPlay_button:after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+.headerPlay_button:before{
+ content: '';
+ background: #fff;
+ clip-path: path("M154.5,88.5 C131,113.5 62.5,110 30,89.5 C-2.5,69 -3.5,42 4.5,25.5 C12.5,9 33.5,-6 85,3.5 C136.5,13 178,63.5 154.5,88.5 Z");
+
+ transition: clip-path 0.5s cubic-bezier(0.585,2.5,0.645,0.55);
+}
+.headerPlay_button:hover:before{
+  clip-path: path("M143,77 C117,96 74,100.5 45.5,91.5 C17,82.5 -10.5,57 5.5,31.5 C21.5,6 79,-5.5 130.5,4 C182,13.5 169,58 143,77 Z");
+
+ }
+
+ .headerPlay_button span{
+ mix-blend-mode: difference;
+font-weight: 500;
+ }
+ .headerPlay_button:after{
+  content: '';
+  height: 85%;
+  border: 1px solid #fff;
+  width: 95%;
+  top: 6px;
+  border-radius: 58% 42% 55% 45% / 56% 45% 55% 44%;
+  transform: rotate(-20deg);
+  transition: transform 0.5s cubic-bezier(0.585,2.5,0.645,0.55);
+
+ }
+ .headerPlay_button:hover:after{
+  transform: translate3d(0,-5px,0);
+ }
+
+ @media (max-width: 600px) {
+  .makingbold {
+
+    font-size: 1.7rem;
+     font-weight: 600;
+
+
+  }}
+
+  @media (max-width: 400px) {
+    .headerPlay_button {
+
+     transform: scale3d(0.5,0.5,0.5);
+     font-size: 16px;
+
+    }
+  .phoneNavme{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  }
+
+
+  .socials{
+    /* position: fixed;
+
+
+    right: 3rem;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 20; */
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+   }
+  .socials svg,.coloricons{
+    color: #fff;
+    font-size: 35px;
+    z-index: 20;
+    cursor: pointer;
+
+  }
+  .coloricons:hover,.socials a svg:hover ,.socials a :hover{
+    animation: coloriconsAnimation .2s infinite;
+  }
+
+  .box {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  }
+
+
+
+  @keyframes coloriconsAnimation {
+    0%{
+       box-shadow: 5px 4px rgb(90, 8, 8),-5px -6px rgb(3, 3, 80);
+    }
+
+    25%{
+       box-shadow: -5px -6px rgb(90, 8, 8),5px 4px rgb(3, 3, 80);
+    }
+    50%{
+       box-shadow: 5px -4px rgb(90, 8, 8),-8px 4px rgb(3, 3, 80);
+    }
+    75%{
+       box-shadow: -8px -4px rgb(90, 8, 8),-5px -4px rgb(3, 3, 80);
+    }
+    100%{
+       box-shadow: -5px 0px rgb(90, 8, 8),5px -4px rgb(3, 3, 80);
+    }
+  }

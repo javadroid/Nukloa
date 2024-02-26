@@ -1,0 +1,15 @@
+.buy_container{
+
+    font-size: 1.7rem !important;
+     font-weight: 600 !important;
+
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

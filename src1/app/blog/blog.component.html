@@ -1,0 +1,148 @@
+
+
+
+  <div class="row h-75 main_highlight pt-5">
+    <div class="img col-lg-8 col-sm-12 bg-light h-lg-75 h-sm-75 w-lg-25 p-0">
+      <img [src]="featuredPost[0].Image" alt="" />
+    </div>
+    <div class="text col-lg-4 col-sm-12 w-lg-25">
+      <span class="small">Featured</span>
+      <h1 class="headline">
+        {{featuredPost[0].title}}
+      </h1>
+      <div class="post_detail">
+        <a  class="blog_link">{{featuredPost[0].category}}</a>
+        <span class="date">{{featuredPost[0].date}}</span>
+        <span class="read_time">{{featuredPost[0].min}}</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="most_recent-section my-5">
+    <h1 class="title mb-5 text-light">Most recent</h1>
+
+    <div class="row most_recent">
+      <div *ngFor="let item of MostRescentPost" class="col-lg-4 col-sm-12">
+        <div class="card_img h-75"><img [src]="item.Image" alt="" /></div>
+        <div class="post_detail">
+          <a href="" class="blog_link">{{item.category}},</a>
+          <span class="date">{{item.date}}, </span>
+          <span class="read_time">{{item.min}}</span>
+        </div>
+        <h2 class="headline">{{item.title}}.</h2>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="podcast_section">
+    <h1 class="title my-5 text-light">Podcast</h1>
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <!-- <button
+          class="nav-link active"
+          id="nav-home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-home"
+          type="button"
+          role="tab"
+          aria-controls="nav-home"
+          aria-selected="true"
+        >
+          Around the Block
+        </button>
+        <button
+          class="nav-link"
+          id="nav-profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-profile"
+          type="button"
+          role="tab"
+          aria-controls="nav-profile"
+          aria-selected="false"
+        >
+          Build Crypto
+        </button> -->
+      </div>
+    </nav>
+    <div class="tab-content py-4" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div *ngFor="let item of allPosts" class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img [src]="item.Image"alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">{{item.date}}</span>
+                <h2 class="title">{{item.title}}</h2>
+                <p class="descr">
+                  {{item.caption}}
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Read more</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SECOND TAB CONTENT STARTS HERE -->
+      <!-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+        <div class="podcast_post row mb-4">
+          <div class="img col-lg-2 col-sm-12"><img src="img/3.jpg" alt="" /></div>
+          <div class="crypto_post col-lg-10 col-sm-12">
+            <div class="row">
+              <div class="col-lg-10 col-sm-2">
+                <span class="date">December 21, 2022</span>
+                <h2 class="title">Crypto Year in Review with Coinbase CFO Alesia Haas</h2>
+                <p class="descr">
+                  Coinbase CFO Alesia Haas and Head of Institutional Research, David Duong, review the year in crypto.
+                  They cover the key events and takeaways from the year, and the opportunities to expand crypto use
+                  cases in 2023.
+                </p>
+              </div>
+              <button class="col-lg-2 col sm-12 btn btn primary">Listen now</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+
+
+

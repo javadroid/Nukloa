@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* @import "app/css/styles.css"; */
+
+@import "app/css/style.css";
+@import "app/css/bootstrap.min.css";
+
+
+@import '~ngx-toastr/toastr';
+
+
+@import "app/css/bootstrap.min.css";
+@import "https://unpkg.com/aos@2.3.1/dist/aos.css";
+@import "app/css/icofont.css";
+
+@font-face {
+  font-family: medium-content-sans-serif-font;
+  src: url(assets/fonts/marat-sans-400-normal.woff) format("woff");
+}

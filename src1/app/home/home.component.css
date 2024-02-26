@@ -1,0 +1,77 @@
+.move-01 {
+  animation: shape-01 40s ease-in-out infinite !important ;
+}
+
+.move-02 {
+  animation: shape-02 40s ease-in-out infinite !important ;
+}
+
+.move-03 {
+  animation: shape-03 30s ease-in-out infinite !important ;
+}
+
+@-webkit-keyframes shape-01 {
+  0% {
+    rotate: 0deg !important;
+    transform: scale(1) !important;
+    top: 35% !important;
+  }
+
+  50% {
+    rotate: 20deg !important;
+    transform: scale(1.2) !important;
+    top: 50% !important;
+  }
+
+  100% {
+    rotate: 0deg !important;
+    transform: scale(1) !important;
+    top: 20% !important;
+  }
+}
+
+@-webkit-keyframes shape-02 {
+  0% {
+    top: 32% !important;
+    left: 56% !important;
+    rotate: 0deg !important;
+    transform: scale(1) !important;
+  }
+
+  50% {
+    top: 42% !important;
+    left: 58% !important;
+    rotate: -60deg !important;
+    transform: scale(1.4) !important;
+  }
+
+  100% {
+    top: 32% !important;
+    left: 56% !important;
+    rotate: 0deg !important;
+    transform: scale(1) !important;
+  }
+}
+
+@-webkit-keyframes shape-03 {
+  0% {
+    left: 40% !important;
+    rotate: 0deg !important;
+    transform: scale(1) !important;
+    border-radius: 38% 62% 66% 34% / 53% 57% 43% 47% !important;
+  }
+
+  50% {
+    left: 36% !important;
+    rotate: 360deg !important;
+    transform: scale(1.2) !important;
+    border-radius: 50% / 50% !important;
+  }
+
+  100% {
+    left: 40% !important;
+    rotate: 0deg !important;
+    transform: scale(1) !important;
+    border-radius: 38% 62% 66% 34% / 53% 57% 43% 47% !important;
+  }
+}

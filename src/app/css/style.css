@@ -594,7 +594,7 @@ footer .menu_container .menu_link {
 
 .header .navbar {
   width: 100%;
-  background: rgba(2, 0, 22, 0.514);
+  background: rgb(36, 36, 36);
 }
 
 @media only screen and (max-width: 37.5em) {
@@ -604,7 +604,7 @@ footer .menu_container .menu_link {
 }
 
 .header .navbar .navbar-brand {
-  color: white;
+  color: rgb(209, 153, 0);
   text-decoration: none;
   font-size: 3rem;
   font-weight: 700;
@@ -656,7 +656,7 @@ footer .menu_container .menu_link {
 .hero .copy h1 {
   font-family: sans-serif;
   font-size: 7rem;
-  color: white;
+  color: rgb(20, 20, 20);
   font-weight: bold;
 }
 
@@ -668,12 +668,12 @@ footer .menu_container .menu_link {
 }
 
 .hero .copy h1 span {
-  color: #ff007b;
+  color: #e99f00;
 }
 
 .hero .copy h6 {
   font-size: 1.7rem;
-  color: white;
+  color: rgb(32, 32, 32);
   font-weight: 500;
 }
 
@@ -712,7 +712,7 @@ footer .menu_container .menu_link {
   }
 }
 
-[class^='shape-'] {
+[class^="shape-"] {
   position: absolute;
   left: 40%;
   right: auto;
@@ -731,7 +731,7 @@ footer .menu_container .menu_link {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #111111;
+  background-color: #ffffff;
 }
 
 .shapes .shape-01 {
@@ -911,6 +911,7 @@ footer .menu_container .menu_link {
   font-size: 4rem;
   font-weight: normal;
   margin-bottom: 5rem;
+  color: black !important;
 }
 
 @media only screen and (max-width: 37.5em) {
@@ -1027,7 +1028,7 @@ footer .menu_container .menu_link {
 
 .road_map .sec_stepper .note {
   font-size: 1.6rem;
-  color: #00fde4;
+  color: #df9203;
   position: sticky;
   top: 28%;
 }
@@ -1064,7 +1065,7 @@ footer .menu_container .menu_link {
 }
 
 .road_map .sec_stepper .steps::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   height: 24px;
@@ -1075,7 +1076,7 @@ footer .menu_container .menu_link {
 }
 
 .road_map .sec_stepper .steps::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 13px;
   width: 13px;
@@ -1095,11 +1096,11 @@ footer .menu_container .menu_link {
 }
 
 .road_map .sec_stepper .step::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 13px;
   width: 13px;
-  background-color: #00b4e0;
+  background-color: #e0b700;
   border-radius: 15px;
   left: calc(50px / 2);
   transform: translateX(-45%);
@@ -1107,11 +1108,11 @@ footer .menu_container .menu_link {
 }
 
 .road_map .sec_stepper .step::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 100%;
   width: 1px;
-  background-color: #c6c6c6;
+  background-color: #1f1f1f;
   left: calc(50px / 2);
   top: 0;
   z-index: 1;
@@ -1125,7 +1126,7 @@ footer .menu_container .menu_link {
 .road_map .sec_stepper .header {
   user-select: none;
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.979);
+  color: rgba(27, 27, 27, 0.979);
 }
 
 .road_map .sec_stepper .subheader {
@@ -1144,16 +1145,16 @@ footer .menu_container .menu_link {
   font-size: 1.6rem;
   display: flex;
   align-items: center;
-  color: #d4d4d4;
+  color: #2d2d2d;
 }
 
 .road_map .sec_stepper .step-content .step_list .index i {
   font-size: 2rem;
-  color: #00fde4;
+  color: #e2b900;
   margin-right: 0.5rem;
 }
 
-.road_map .sec_stepper .step.minimized>.step-content {
+.road_map .sec_stepper .step.minimized > .step-content {
   height: 0px;
 }
 
@@ -1328,7 +1329,7 @@ footer .menu_container .menu_link {
 }
 
 .live_chat-container .chat_card .name_image .care .online::before {
-  content: '';
+  content: "";
   height: 0.8rem;
   width: 0.8rem;
   border-radius: 50%;
@@ -1433,23 +1434,23 @@ footer .menu_container .menu_link {
 
 .prices_main .heading .headline {
   font-size: 3rem;
-  color: #8acadd;
+  color: #d68101;
   font-weight: 600;
 }
 
 .prices_main .heading .sub_headline {
   font-size: 1.4rem;
-  color: #eee;
+  color: #2c2c2c;
   font-weight: 600;
 }
 
 .prices_main .trending {
-  background: rgba(8, 142, 204, 0.308);
+  background: rgba(172, 112, 0, 0.308);
 }
 
 .prices_main .trending .card_title .title {
   font-size: 1.5rem;
-  color: #eee;
+  color: #1d1d1d;
   font-weight: 600;
 }
 
@@ -1465,7 +1466,7 @@ footer .menu_container .menu_link {
 }
 
 .prices_main .trending ol {
-  color: #eee;
+  color: #1d1d1d;
   padding-left: 0;
   padding: 0 2rem;
 }
@@ -1483,13 +1484,13 @@ footer .menu_container .menu_link {
 .nav-pills .nav-item .nav-link {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #b9b9b9;
+  color: #252525;
 }
 
 .tab-content .tab-pane .table tr,
 .tab-content .tab-pane .table td {
   font-size: 1.3rem;
-  color: #a1a1a1;
+  color: #1a1a1a;
 }
 
 .tab-content .tab-pane .table tr img,
