@@ -1,37 +1,39 @@
-
-
 <div class="shapes">
   <div class="shape-01 move-01"></div>
   <div class="shape-02 move-02"></div>
   <div class="shape-03 move-03"></div>
 </div>
 
-<div class="buy_container  pb-5">
+<div class="buy_container pb-5" style="background:none; padding:0;">
   <div class="nav_section d-flex justify-content-between align-items-center">
 
     <div class="button_holder">
 
-      <button (click)="addToken()" class="nuk btn btn-primary"> {{(setContractInfo.tokenSymbol)}}: {{setBalanceInfo.balance}}</button>
-      <button (click)="connect()" class="btn text-light">ETH: {{setwalletBalance}}</button>
+      <button (click)="addToken()" class="nuk btn btn-warning"> {{(setContractInfo.tokenSymbol)}}:
+        {{setBalanceInfo.balance}}</button>
+      <button (click)="connect()" class="btn text-dark">ETH: {{setwalletBalance}}</button>
 
     </div>
 
   </div>
-  <button (click)="addToken()" class="btn text-light"> Add Nukleon to Wallect</button><div>
+  <button (click)="addToken()" class="btn text-dark"> Add Nukleon to Wallect</button>
+  <div>
 
 
-  <button  (click)="connect()" [class]="!isConnected?'nuk btn btn-primary':'btn text-light'">{{!isConnected?"Connect Wallet":"Refresh Page"}}</button></div>
-  <button *ngIf="!isNetwork"  (click)="switchNetwork()" class='nuk btn btn-danger'>{{"Switch Network"}}</button>
+    <button (click)="connect()" [class]="!isConnected?'nuk btn btn-warning':'btn text-light'">{{!isConnected?"Connect
+      Wallet":"Refresh Page"}}</button>
+  </div>
+  <button *ngIf="!isNetwork" (click)="switchNetwork()" class='nuk btn btn-danger'>{{"Switch Network"}}</button>
   <div class="main_buy d-flex">
     <div class="buy_card">
       <p class="card_content">Daily Claim</p>
       <h1 class="highlight">{{dailyClaim}}</h1>
       <div class="card_content">
         <countdown [config]="config"></countdown>
-        </div>
+      </div>
       <div class="hold_btn">
         <button [disabled]="ready" (click)="handleEvent()" class="btn primary_btn">Claim</button>
-        <button  (click)=" handleClaim()" class="btn">Withdraw</button>
+        <button (click)=" handleClaim()" class="btn">Withdraw</button>
       </div>
     </div>
     <div class="buy_card">
@@ -40,48 +42,58 @@
       <div class="hold_btn">
 
         <button (click)="copyLink()" class="btn primary_btn">Copy link</button>
-        <button
-         (click)=" handleClaim()" class="btn">Withdraw</button>
+        <button (click)=" handleClaim()" class="btn">Withdraw</button>
       </div>
     </div>
   </div>
 
-  <div class="buy_section d-flex flex-column align-items-lg-center justify-content-lg-between">
-    <div style="   background:linear-gradient(to right, #026d94, #0083b3),   url(../../assets/img/2.png);
+  <div class="buy_section d-flex align-items-lg-end mb-5">
+    <div style="background:linear-gradient(to right, #916300e3, #916300e3),   url(../../assets/img/2.png);
     background-size: cover;
     background-position: center;
-    background-blend-mode: multiply;
     border-radius: 20px;
+    width:35rem;
+    height:20rem;
+      min-height:20rem;
+      max-height:20rem;
     padding: 2rem;" class="buy_nuk">
-      <h4 class="item_title">Buy NUKN</h4>
+      <h4 class="item_title text-dark">Buy NUKN</h4>
       <div class="input_container">
-        <input [formControl]="amountToBuy" (input)="calulatePrice()" type="number"  name="" placeholder="NUKN" />
+        <input [formControl]="amountToBuy" (input)="calulatePrice()" type="number" name="" placeholder="NUKN" />
         <button (click)="handleSale()" class="cta">Buy</button>
       </div>
-      <h3 style="color: rgba(189, 185, 185, 0.753); display: flex; justify-content: flex-end; font-size: small;" >{{amountToBuyVal}}  NUKN ~ {{amountToBuyCal}} ETH</h3>
+      <h3 style="color: rgba(12, 12, 12, 0.753); display: flex; justify-content: flex-start; font-size: small;">
+        {{amountToBuyVal}} NUKN ~ {{amountToBuyCal}} ETH</h3>
     </div>
 
-    <div class="stake">
-      <h4 class="item_title mb-3">Staked Balance: {{setStakeBalance}} {{setContractInfo.tokenSymbol}}</h4>
+    <div class="stake w-50" style="margin-left: 2rem;">
+      <h4 class="item_title mb-3 text-dark">Staked Balance: {{setStakeBalance}} {{setContractInfo.tokenSymbol}}</h4>
 
       <div style="
-      background: linear-gradient(to right, #026d94, #0083b3), url(../../assets/img/1.png);
+      background: linear-gradient(to right, #916300e3, #916300e3), url(../../assets/img/1.png);
       background-size: cover;
       border-radius: 20px;
       background-position: center;
-      background-blend-mode: multiply;
       padding: 2rem;
-    "    class="hold_inputs">
-        <h4><span style="color: rgb(190, 47, 47);">NOTE:</span>  <span style="color: rgb(19, 121, 33);"> Minimum stake 104 $NUKN ~ $10</span></h4>
-        <div class="heading">Rewards: {{setearnd}} {{setContractInfo.tokenSymbol}} </div>
+      width:35rem;
+      height:20rem;
+      min-height:20rem;
+      max-height:20rem;
+    " class="hold_inputs">
+        <h4 class="heading mb-0" style="font-size:2rem">Rewards: {{setearnd}} {{setContractInfo.tokenSymbol}} </h4>
+        <h4><span style="color: rgb(20, 20, 20); font-size:1.4rem">NOTE:</span> <span
+            style="color: rgb(31, 31, 31);font-size:1.4rem"> Minimum stake
+            104 $NUKN ~ $10</span></h4>
 
-        <div class="input_container">
-          <input [formControl]="amountToStake"  name="" placeholder="NUKN" />
-          <button [disabled]="getStakeDisble()" (click)="handleStake()" class="cta">Stake</button>
+        <div class="d-flex align-items-end justify-content-between w-100">
+          <div class="input_container" style="width:50%">
+            <input [formControl]="amountToStake" name="" placeholder="NUKN" style="width:6rem;" />
+            <button [disabled]="getStakeDisble()" (click)="handleStake()" class="cta">Stake</button>
+          </div>
+
+
+          <button (click)="withdraw()" class="cta">Claim Rewards</button>
         </div>
-
-
-        <button   (click)="withdraw()" class="cta">Claim Rewards</button>
       </div>
     </div>
   </div>
@@ -153,4 +165,3 @@
   <p>Referral ID</p>
   <p>http://localhost:4200/app/{{setWalletAddress}}</p>
   <button (click)="getStakeDetails">refresh </button> -->
-

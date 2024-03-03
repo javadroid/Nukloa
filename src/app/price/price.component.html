@@ -1,157 +1,156 @@
-
-
 <div class="shapes">
   <div class="shape-01 move-01"></div>
   <div class="shape-02 move-02"></div>
   <div class="shape-03 move-03"></div>
 </div>
 
-  <main style="padding: 20px ;" class="prices_main">
-    <div class="heading">
-      <h1 class="headline">Today's Cryptocurrency Prices by Market Cap</h1>
-      <p class="sub_headline">
-        The global crypto market cap is $1.18T,<span [ngClass]="{'text-success':!isNegative(0),
-                'text-danger':isNegative(0)}"><i
-            class="icofont-caret-up">0.70%</i></span>increases over the last day. <a aria-disabled="true" href="#">Read More</a>
-      </p>
+<main style="padding: 20px ;" class="prices_main">
+  <div class="heading">
+    <h1 class="headline">Today's Cryptocurrency Prices by Market Cap</h1>
+    <p class="sub_headline">
+      The global crypto market cap is $1.18T,<span [ngClass]="{'text-success':!isNegative(0),
+                'text-danger':isNegative(0)}"><i class="icofont-caret-up">0.70%</i></span>increases over the last day.
+      <a aria-disabled="true" href="#">Read More</a>
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-sm-12 me-2 trending">
+      <div class="card_title d-flex justify-content-between p-4">
+        <h3 class="title"><i class="icofont-fire-burn text-danger"></i>Trending</h3>
+        <button class="more btn text-light">Market cap rank<i class="icofont-rounded-right mw-3"></i></button>
+      </div>
+
+      <ol>
+        <li *ngFor="let item of allTrending1" class="d-flex justify-content-between">
+          <span><img [src]="item.item.thumb" alt="" /> <strong>{{item.item.name}}</strong> {{item.item.symbol}}</span>
+          <span class="text-d"><i class="icofont-caret-up"></i> {{item.item.market_cap_rank}}</span>
+        </li>
+
+      </ol>
     </div>
-
-    <div class="row">
-      <div class="col-lg-4 col-sm-12 me-2 trending">
-        <div class="card_title d-flex justify-content-between p-4">
-          <h3 class="title"><i class="icofont-fire-burn text-danger"></i>Trending</h3>
-          <button class="more btn text-primary">Market cap rank<i class="icofont-rounded-right mw-3"></i></button>
-        </div>
-
-        <ol>
-          <li *ngFor="let item of allTrending1" class="d-flex justify-content-between">
-            <span><img [src]="item.item.thumb" alt="" /> <strong>{{item.item.name}}</strong> {{item.item.symbol}}</span>
-            <span class="text-d"><i class="icofont-caret-up"></i> {{item.item.market_cap_rank}}</span>
-          </li>
-
-        </ol>
+    <div style="margin-top: 20px;" class="col-lg-4 col-sm-12 me-2 trending">
+      <div class="card_title d-flex justify-content-between p-4">
+        <h3 class="title"><i class="icofont-fire-burn text-danger"></i>Trending</h3>
+        <button class="more btn text-light">Market cap rank<i class="icofont-rounded-right mw-3"></i></button>
       </div>
-      <div style="margin-top: 20px;" class="col-lg-4 col-sm-12 me-2 trending">
-        <div class="card_title d-flex justify-content-between p-4">
-          <h3 class="title"><i class="icofont-fire-burn text-danger"></i>Trending</h3>
-          <button class="more btn text-primary">Market cap rank<i class="icofont-rounded-right mw-3"></i></button>
-        </div>
 
-        <ol>
-          <li *ngFor="let item of allTrending2" class="d-flex justify-content-between">
-            <span><img [src]="item.item.thumb" alt="" /> <strong>{{item.item.name}}</strong> {{item.item.symbol}}</span>
-            <span class="text-d"><i class="icofont-caret-up"></i> {{item.item.market_cap_rank}}</span>
-          </li>
+      <ol>
+        <li *ngFor="let item of allTrending2" class="d-flex justify-content-between">
+          <span><img [src]="item.item.thumb" alt="" /> <strong>{{item.item.name}}</strong> {{item.item.symbol}}</span>
+          <span class="text-d"><i class="icofont-caret-up"></i> {{item.item.market_cap_rank}}</span>
+        </li>
 
-        </ol>
-      </div>
+      </ol>
     </div>
+  </div>
 
-    <ul class="nav nav-pills my-5 w-100 d-flex justify-content-between" id="pills-tab" role="tablisst">
-      <li class="nav-item" role="presentation">
-        <button class="btn nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-          type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-          Cryptocurrencies
-        </button>
-      </li>
+  <ul class="nav nav-pills my-5 w-100 d-flex justify-content-between" id="pills-tab" role="tablisst">
+    <li class="nav-item" role="presentation">
+      <button class="btn nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+        type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+        Cryptocurrencies
+      </button>
+    </li>
 
-      <li class="nav-item" role="presentation">
-        <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-          type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
-          DeFi
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#NFT" type="button"
-          role="tab" aria-controls="pills-contact" aria-selected="false">
-          NFT
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#meta" type="button"
-          role="tab" aria-controls="pills-contact" aria-selected="false">
-          Metaverse
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#polka" type="button"
-          role="tab" aria-controls="pills-contact" aria-selected="false">
-          Polkadot
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#bnb" type="button"
-          role="tab" aria-controls="pills-contact" aria-selected="false">
-          BNB Chain
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#solana" type="button"
-          role="tab" aria-controls="pills-contact" aria-selected="false">
-          Solana
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#avalanche"
-          type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
-          Avalanche
-        </button>
-      </li>
+    <li class="nav-item" role="presentation">
+      <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+        DeFi
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#NFT" type="button"
+        role="tab" aria-controls="pills-contact" aria-selected="false">
+        NFT
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#meta" type="button"
+        role="tab" aria-controls="pills-contact" aria-selected="false">
+        Metaverse
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#polka" type="button"
+        role="tab" aria-controls="pills-contact" aria-selected="false">
+        Polkadot
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#bnb" type="button"
+        role="tab" aria-controls="pills-contact" aria-selected="false">
+        BNB Chain
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#solana" type="button"
+        role="tab" aria-controls="pills-contact" aria-selected="false">
+        Solana
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="btn nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#avalanche"
+        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+        Avalanche
+      </button>
+    </li>
 
-      <div class="input-group flex-nowrap w-25">
-        <span class="input-group-text bg-primary" id="addon-wrapping"><i
-            class="icofont-search text-light icofont-2x"></i></span>
-        <input [(ngModel)]="searchInput" (ngModelChange)="searchCoin()" type="text" class="form-control fs-5" placeholder="Search coin" />
-      </div>
-    </ul>
-    <div style="height: 100vh;" class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Price</th>
-              <th scope="col">24h(%)</th>
-              <th scope="col">Market Cap</th>
-              <!-- <th scope="col">Total Volume</th> -->
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr >
-              <th scope="row"><img src="assets/WhatsApp Image 2023-04-05 at 13.13.41.png" alt="" /> <strong>Nukleon</strong> NUD</th>
-              <td ><span>&#36;</span>**.**</td>
-              <td>
-                <span
-               ><i class="icofont-caret-up">**.**%</i></span>
-              </td>
-              <td ><span>&#36;</span>**.**</td>
-              <!-- <td><span>&#36;</span>**.**</td> -->
-
-            </tr>
-            <tr *ngFor="let item of allcoins">
-              <th scope="row"><img [src]="item.image" alt="" /> <strong>{{item.name}}</strong> {{item.symbol}}</th>
-              <td ><span>&#36;</span>{{ addCommasToNumber(item.current_price)}}</td>
-              <td>
-                <span
-                [ngClass]="{'text-success':!isNegative(item.price_change_percentage_24h),
-                'text-danger':isNegative(item.price_change_percentage_24h)}"><i class="icofont-caret-up">{{item.price_change_percentage_24h.toFixed(2)}}%</i></span>
-              </td>
-              <td ><span>&#36;</span>{{addCommasToNumber(item.market_cap)}}</td>
-              <!-- <td><span>&#36;</span>{{addCommasToNumber(item.total_volume)}}</td> -->
-
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-      <div class="tab-pane fade" id="NFT" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-      <div class="tab-pane fade" id="meta" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-      <div class="tab-pane fade" id="polka" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-      <div class="tab-pane fade" id="bnb" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-      <div class="tab-pane fade" id="solana" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-      <div class="tab-pane fade" id="avalanche" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div class="input-group flex-nowrap w-25">
+      <span class="input-group-text bg-primary" id="addon-wrapping"><i
+          class="icofont-search text-light icofont-2x"></i></span>
+      <input [(ngModel)]="searchInput" (ngModelChange)="searchCoin()" type="text" class="form-control fs-5"
+        placeholder="Search coin" />
     </div>
-  </main>
+  </ul>
+  <div style="height: 100vh;" class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">24h(%)</th>
+            <th scope="col">Market Cap</th>
+            <!-- <th scope="col">Total Volume</th> -->
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><img src="assets/WhatsApp Image 2023-04-05 at 13.13.41.png" alt="" />
+              <strong>Nukleon</strong> NUD</th>
+            <td><span>&#36;</span>**.**</td>
+            <td>
+              <span><i class="icofont-caret-up">**.**%</i></span>
+            </td>
+            <td><span>&#36;</span>**.**</td>
+            <!-- <td><span>&#36;</span>**.**</td> -->
+
+          </tr>
+          <tr *ngFor="let item of allcoins">
+            <th scope="row"><img [src]="item.image" alt="" /> <strong>{{item.name}}</strong> {{item.symbol}}</th>
+            <td><span>&#36;</span>{{ addCommasToNumber(item.current_price)}}</td>
+            <td>
+              <span [ngClass]="{'text-success':!isNegative(item.price_change_percentage_24h),
+                'text-danger':isNegative(item.price_change_percentage_24h)}"><i
+                  class="icofont-caret-up">{{item.price_change_percentage_24h.toFixed(2)}}%</i></span>
+            </td>
+            <td><span>&#36;</span>{{addCommasToNumber(item.market_cap)}}</td>
+            <!-- <td><span>&#36;</span>{{addCommasToNumber(item.total_volume)}}</td> -->
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div class="tab-pane fade" id="NFT" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div class="tab-pane fade" id="meta" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div class="tab-pane fade" id="polka" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div class="tab-pane fade" id="bnb" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div class="tab-pane fade" id="solana" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div class="tab-pane fade" id="avalanche" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  </div>
+</main>
