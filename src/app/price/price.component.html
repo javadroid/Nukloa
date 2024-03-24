@@ -120,12 +120,14 @@
           <tbody>
             <tr >
               <th scope="row"><img src="assets/WhatsApp Image 2023-04-05 at 13.13.41.png" alt="" /> <strong>Nukleon</strong> NUKN</th>
-              <td ><span>&#36;</span>**.**</td>
+              <td ><span>&#36;</span>{{addCommasToNumber(5604/1000000)}}</td>
               <td>
                 <span
-               ><i class="icofont-caret-up">**.**%</i></span>
+                [ngClass]="{'text-success':!isNegative(20),
+                'text-danger':isNegative(20)}"><i class="icofont-caret-up">{{20}}%</i></span>
+             
               </td>
-              <td ><span>&#36;</span>**.**</td>
+              <td ><span>&#36;</span>{{addCommasToNumber(1266028)}}</td>
               <!-- <td><span>&#36;</span>**.**</td> -->
 
             </tr>
