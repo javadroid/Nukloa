@@ -559,7 +559,7 @@ export class DappComponent implements OnInit, OnDestroy {
         });
       } else {
         this.toastr.error(
-          ' have a mininum of 16 $NUKN to be eligible for daily claim '
+          ' have a mininum of 16 $NUD to be eligible for daily claim '
         );
       }
     }
