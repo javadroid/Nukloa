@@ -84,6 +84,12 @@ export class ServiceService {
       return this.http.get(`https://api.coingecko.com/api/v3/search/trending`)
     }
 
+    getACoin(id:String){
+
+      //  const res =await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=ngn',{'headers':{'Content-Type':'app'}})
+      //  console.log("testing ", await res)
+        return this.http.get(`https://api.coingecko.com/api/v3/coins/${id}`)
+      }
     openai(data:any):  Observable<any>{
 
       // axios.post('https://whatsappgtp.vercel.app/api/openai',[{"role":"user", "content":"aw are u"}]).then(res=>{

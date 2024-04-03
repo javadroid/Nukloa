@@ -200,7 +200,7 @@
         <button (click)="handleClaim()" class="btn">Withdraw</button>
       </div>
     </div>
-    <div class="buy_card">
+    <div  class="buy_card">
       <p class="card_content text">Total Referrals : {{ refferal }}</p>
       <div class="card_content text">
         Referrals Balance: {{ refferal * 30000 }}
@@ -221,7 +221,7 @@
         background-position: center;
         background-blend-mode: multiply;
         border-radius: 20px;
-        width: 35rem;
+       
         height: 20rem;
         min-height: 20rem;
         max-height: 20rem;
@@ -248,7 +248,7 @@
           font-size: small;
         "
       >
-        {{ amountToBuyVal }} NUKN ~ {{ amountToBuyCal }} ETH
+        {{ amountToBuyCal }} ETH ~ ${{amountToBuyVal}}
       </h3>
     </div>
 
@@ -266,7 +266,7 @@
           background-position: center;
           background-blend-mode: multiply;
           padding: 2rem;
-          width: 35rem;
+         
           height: 20rem;
           min-height: 20rem;
           max-height: 20rem;
@@ -293,7 +293,7 @@
             />
             <button
               [disabled]="getStakeDisble()"
-              (click)="handleStake()"
+              (click)="approve()"
               class="cta"
             >
               Stake
