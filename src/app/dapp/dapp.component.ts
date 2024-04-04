@@ -105,11 +105,11 @@ export class DappComponent implements OnInit, OnDestroy {
             navigator.userAgent
           )
         ) {
-          console.log('https://metamask.app.link/dapp/nukleon.netlify.app/app');
+          console.log('https://metamask.app.link/dapp/nudorbital.io/app');
           // open the deeplink page
-          window.open('https://metamask.app.link/dapp/nukleon.netlify.app/app');
+          window.open('https://metamask.app.link/dapp/nudorbital.io/app');
         } else {
-          console.log('https://metamask.app.link/dapp/nukleon.netlify.app/app');
+          console.log('https://metamask.app.link/dapp/nudorbital.io/app');
           window.open('https://metamask.io/download.html');
         }
       }, 3000);
@@ -177,7 +177,7 @@ export class DappComponent implements OnInit, OnDestroy {
 
   copyLink() {
     if (this.setWalletAddress) {
-      const url = 'https://nukleon.netlify.app/app/' + this.setWalletAddress;
+      const url = 'https://nudorbital.io/app/' + this.setWalletAddress;
       this.clipboardApi.copyFromContent(url);
       this.toastr.success('Referral link copied');
     } else this.toastr.error('Please connect wallet');
@@ -197,7 +197,7 @@ export class DappComponent implements OnInit, OnDestroy {
       ) {
         console.log('first');
         // open the deeplink page
-        window.open('https://metamask.app.link/dapp/nukleon.netlify.app/app');
+        window.open('https://metamask.app.link/dapp/nudorbital.io/app');
       } else {
         console.log('2nd');
         window.open('https://metamask.io/download.html');
