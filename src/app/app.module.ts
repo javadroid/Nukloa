@@ -30,6 +30,9 @@ import { PlayComponent } from './play/play.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PriceComponent } from './price/price.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -52,12 +55,14 @@ const routes: Routes = [
 @NgModule({
   declarations: [
 
-      DappComponent,HomeComponent,AppComponent, WhitepaperComponent, FComponent, BlogComponent, HeaderComponent, LandingPageComponent, AboutComponent, FooterComponent, PlayComponent, PriceComponent,
+      DappComponent,HomeComponent,AppComponent, WhitepaperComponent,ModalComponent, FComponent, BlogComponent, HeaderComponent, LandingPageComponent, AboutComponent, FooterComponent, PlayComponent, PriceComponent,
   ],
   imports: [ RouterModule.forRoot(routes),
     BrowserModule,ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    MatButtonModule,
+    MatDialogModule,
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,

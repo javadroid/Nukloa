@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://api.coingecko.com",
+    "target":[ "https://api.coingecko.com","http://api.nudorbital.io/"],
     "secure": false,
     "changeOrigin": true
   }

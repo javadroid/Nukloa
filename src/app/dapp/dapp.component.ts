@@ -3,10 +3,9 @@ import { NukFirestoreService } from '../core/nuk-firestore.service';
 
 import { ethers, BigNumber, Wallet } from 'ethers';
 
-import sale from '../../public/buytoken.json';
-import buchi from '../../public/coin.json';
-import stake from '../../public/stake.json';
-import claim from '../../public/claim.json';
+
+import abiContract from '../../public/coin.json';
+
 
 import { WinRefService } from '../core/win-ref.service';
 import { FormControl } from '@angular/forms';
@@ -22,6 +21,8 @@ import {
 } from '@angular/fire/firestore';
 import { ServiceService } from '../share/service.service';
 import { gsap } from 'gsap';
+import { ModalComponent } from '../modal/modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dapp',
@@ -38,7 +39,7 @@ export class DappComponent implements OnInit, OnDestroy {
   setBalanceInfo: any = [];
   setContractInfo: any = [];
   user = [] as any;
-
+  emailAddress = new FormControl("");
   amountToBuy = new FormControl(1);
   amountTowithdraw = new FormControl(0);
   amountToStake = new FormControl(16);
@@ -48,6 +49,7 @@ export class DappComponent implements OnInit, OnDestroy {
   ready = true;
   dailyClaim = 0;
   coinRate = 0;
+  showemail = true;
   amountToBuyCal!:number;
   amountToBuyVal!:number;
   refferal = 0;
@@ -59,13 +61,13 @@ export class DappComponent implements OnInit, OnDestroy {
   ethprice=0
   constructor(
     private readonly api: ServiceService,
-    private db: FirestoreModule,
+  
     private toastr: ToastrService,
     private clipboardApi: ClipboardService,
     private store: NukFirestoreService,
     private route: ActivatedRoute,
     private winRef: WinRefService,
-    private http:ServiceService
+    private http:ServiceService,public dialog: MatDialog
   ) {}
 
   ngOnDestroy() {
@@ -73,8 +75,19 @@ export class DappComponent implements OnInit, OnDestroy {
       display: 'block',
     });
   }
-
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(ModalComponent, {
+      data:{
+        animal:"pas"
+      },
+      width: '70vw',
+      height:"50%",
+      // enterAnimationDuration,
+      // exitAnimationDuration,
+    });
+  }
   async ngOnInit(): Promise<void> {
+    
     (await this.http.getACoin("ethereum")).subscribe((e: any)=>{
 
       this.ethprice=e.market_data.current_price.usd
@@ -88,13 +101,14 @@ export class DappComponent implements OnInit, OnDestroy {
       this.isConnected = true;
       console.log('thisaccount', thisaccount);
       this.switchN();
+      this.contranDetails()
     }
   }
 
   async connect() {
     const provider = this.winRef.window.ethereum;
     const binanceTestChainId = '0x61';
-
+  
     if (!provider) {
       this.isConnected = true;
       this.toastr.error('Download and connect a desired software wallet.');
@@ -139,16 +153,9 @@ export class DappComponent implements OnInit, OnDestroy {
     this.amountToBuyCal = Number((Number(this.amountToBuy.value!) * this.coinRate).toFixed(8));
     this.amountToBuyVal = Number(this.ethprice)*this.amountToBuyCal;
   }
-  // CONTRACTADDRESS = '0x0b4Df0E7328Fb58657b3fb050691f224aFe6FafF'
-  // SALECONTRACTADDRESS = '0x8F1DE9Cb0D06c9D6338aB2db15B82816b92E028f'
-  // STAKECONTRACTADDRESS = '0xb25442Fe97Ff696Bb9A7AC0107FC6a12B2E43D8d'
-  // CLAIMCONTRACTADDRESS = '0x5d7cE23d67309b8E8b5e2F5a7317E245E6a3A57E'
-
-  CONTRACTADDRESS = '0x4C595Bab04954dD41116D991C0a45A69D32776F7';
-  SALECONTRACTADDRESS = '0x4FC18d5FCa3125E98E51aFff08f92C477E0Db219';
-  STAKECONTRACTADDRESS = '0x9b2d5047813A1dC3666039648d2aF28e44Dc15F6';
-  CLAIMCONTRACTADDRESS = '0x5d7cE23d67309b8E8b5e2F5a7317E245E6a3A57E';
-
+ 
+  CONTRACTADDRESS = '0x48e5F6c68162716041BB2898C08620B92001cd58';
+  
   date = new Date('2019-01-26T00:00:00');
   isConnected = false;
 
@@ -280,41 +287,41 @@ export class DappComponent implements OnInit, OnDestroy {
   }
   async check() {
     this.api
-      .findAny('users', 'walletAddress', this.account[0])
+      .findOne( this.account[0])
       .subscribe((res) => {
         console.log('walletAddress', res);
-        this.dailyClaim = res[0].dailyBonus;
+        // this.dailyClaim = res[0].dailyBonus;
 
-        this.current = new Date(this.newTimestamp);
-        const oldTime = this.timestamp - res[0].start;
-        const ExpetedTimestamp = res[0].start + 1000 * 60 * 60 * 12;
-        const givenTimestamop = res[0].start + oldTime;
+        // this.current = new Date(this.newTimestamp);
+        // const oldTime = this.timestamp - res[0].start;
+        // const ExpetedTimestamp = res[0].start + 1000 * 60 * 60 * 12;
+        // const givenTimestamop = res[0].start + oldTime;
 
-        const displayTime = ExpetedTimestamp - givenTimestamop;
+        // const displayTime = ExpetedTimestamp - givenTimestamop;
 
-        const min = displayTime / 1000;
-        const hour = displayTime / (60 * 60 * 1000);
-        if (this.timestamp >= ExpetedTimestamp) {
-          this.ready = false;
-          this.config = { leftTime: 0, format: 'mm:ss:ms' };
-          return;
-        } else {
-          this.ready = true;
-          console.log('display', Math.round(min));
-          this.config = { leftTime: Math.round(min), format: 'hh:mm:ss' };
-        }
+        // const min = displayTime / 1000;
+        // const hour = displayTime / (60 * 60 * 1000);
+        // if (this.timestamp >= ExpetedTimestamp) {
+        //   this.ready = false;
+        //   this.config = { leftTime: 0, format: 'mm:ss:ms' };
+        //   return;
+        // } else {
+        //   this.ready = true;
+        //   console.log('display', Math.round(min));
+        //   this.config = { leftTime: Math.round(min), format: 'hh:mm:ss' };
+        // }
 
-        console.log('test', res[0]);
-        return;
+        // console.log('test', res[0]);
+        // return;
       });
-    this.api
-      .findAny('users', 'referredby', this.account[0])
-      .subscribe((res) => {
-        console.log('referredby', res);
-        this.refferal = res.length;
+    // this.api
+    //   .findAny('users', 'referredby', this.account[0])
+    //   .subscribe((res) => {
+    //     console.log('referredby', res);
+    //     this.refferal = res.length;
 
-        this.amountToClaim.setValue(this.refferal * 30000);
-      });
+    //     this.amountToClaim.setValue(this.refferal * 30000);
+    //   });
   }
 
   async contranDetails() {
@@ -325,17 +332,14 @@ export class DappComponent implements OnInit, OnDestroy {
         );
         const erc20 = new ethers.Contract(
           this.CONTRACTADDRESS,
-          buchi,
+          abiContract,
           provider
         );
-        const saleErc20 = new ethers.Contract(
-          this.SALECONTRACTADDRESS,
-          sale,
-          provider
-        );
-        const coinrate=await saleErc20['getRate']()
-        
+        console.log("object", this.CONTRACTADDRESS,provider)
+        const coinrate=await erc20['getTokenRate']()
+        console.log("this.coinRate",coinrate)
         this.coinRate= Number((1/Number(coinrate.toString())).toFixed(8))
+        
         
         this.amountToBuyCal= Number((1/Number(coinrate.toString())).toFixed(8))
         this.amountToBuyVal=this.amountToBuyCal*this.ethprice
@@ -365,6 +369,7 @@ export class DappComponent implements OnInit, OnDestroy {
             walletAddress: this.account[0],
             referredby: ids[0].id,
             start: 0,
+            email:this.emailAddress.value,
             referredBonus: 0,
             dailyBonus: 0,
           };
@@ -372,6 +377,7 @@ export class DappComponent implements OnInit, OnDestroy {
           this.user = {
             walletAddress: this.account[0],
             referredby: 'null',
+            email:this.emailAddress.value,
             start: 0,
             referredBonus: 0,
             dailyBonus: 0,
@@ -380,24 +386,37 @@ export class DappComponent implements OnInit, OnDestroy {
         console.log('id', this.user);
 
         this.api
-          .findAny('users', 'walletAddress', this.account[0])
+          .findOne( this.account[0])
           .subscribe((res) => {
-            if (res[0]) {
-              this.getWalletBalance();
-              this.getStakeDetails();
-              this.check();
-            } else {
-              this.api.create('users', this.user).subscribe((res) => {
-                console.log('create', res);
-              });
-              this.getWalletBalance();
-              this.getStakeDetails();
-              this.check();
+            console.log("res",res)
+            // if (res[0]) {
+            //   this.getWalletBalance();
+            //   this.getStakeDetails();
+            //   this.check();
+            // } else {
+            //   this.api.create('users', this.user).subscribe((res) => {
+            //     console.log('create', res);
+            //   });
+            //   this.getWalletBalance();
+            //   this.getStakeDetails();
+            //   this.check();
+            // }
+          },
+          (error) => {
+            
+            if(error.error.message.includes("not found")){
+              console.error("Error occurred:", error.error.message);
+              this.api.create(this.user).subscribe((res) => {
+                    console.log('create', res);
+                  });
             }
-          });
+            
+          }
+          );
       } catch (error:any) {
         console.error('contranDetails', error);
         this.toastr.error(error!.error.data.message);
+        
       }
     } else {
       this.isConnected = false;
@@ -431,8 +450,8 @@ export class DappComponent implements OnInit, OnDestroy {
           this.winRef.window.ethereum
         );
         const erc20 = new ethers.Contract(
-          this.STAKECONTRACTADDRESS,
-          stake,
+          this.CONTRACTADDRESS,
+          abiContract,
           provider
         );
 
@@ -459,8 +478,8 @@ export class DappComponent implements OnInit, OnDestroy {
 
       const signer = await provider.getSigner(this.account[0]);
       const erc20 = new ethers.Contract(
-        this.STAKECONTRACTADDRESS,
-        stake,
+        this.CONTRACTADDRESS,
+        abiContract,
         signer
       );
       await erc20.connect(signer);
@@ -487,8 +506,8 @@ export class DappComponent implements OnInit, OnDestroy {
 
       const signer = await provider.getSigner(this.account[0]);
       const erc20 = new ethers.Contract(
-        this.STAKECONTRACTADDRESS,
-        stake,
+        this.CONTRACTADDRESS,
+        abiContract,
         signer
       );
       await erc20.connect(signer);
@@ -512,14 +531,14 @@ export class DappComponent implements OnInit, OnDestroy {
       await provider.send('eth_requestAccounts', []);
 
       const signer = await provider.getSigner(this.account[0]);
-      const erc20 = new ethers.Contract(this.CONTRACTADDRESS, buchi, signer);
+      const erc20 = new ethers.Contract(this.CONTRACTADDRESS, abiContract, signer);
       await erc20.connect(signer);
      
         const a: number = this.amountToStake.value! * 10000000;
         console.log('a', a);
         const amountToBuy = ethers.utils.parseEther(String(a));
 
-        const waits =   await erc20['approve'](this.STAKECONTRACTADDRESS, amountToBuy);
+        const waits =   await erc20['approve'](this.CONTRACTADDRESS, amountToBuy);
         const receipt = await waits.wait();
 
         if (receipt) {
@@ -575,7 +594,7 @@ export class DappComponent implements OnInit, OnDestroy {
       });
       // console.log(provider)
       const signer = await provider.getSigner(this.account[0]);
-      const Erc20 = new ethers.Contract(this.SALECONTRACTADDRESS, sale, signer);
+      const Erc20 = new ethers.Contract(this.CONTRACTADDRESS, abiContract, signer);
       await Erc20.connect(signer);
       const atb = (Number(this.amountToBuy.value!) * this.coinRate).toString();
       
@@ -608,7 +627,7 @@ export class DappComponent implements OnInit, OnDestroy {
     //     const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
     //     await provider.send("eth_requestAccounts", [])
     //     const signer = await provider.getSigner(this.account[0])
-    //     const Erc20 = new ethers.Contract(this.CLAIMCONTRACTADDRESS, claim, signer)
+    //     const Erc20 = new ethers.Contract(this.CONTRACTADDRESS, claim, signer)
     //     await Erc20.connect(signer)
     //     console.log(this.amountToClaim.value)
     //     const amountToBuy = ethers.utils.parseEther(this.amountToClaim.value!)
@@ -632,8 +651,8 @@ export class DappComponent implements OnInit, OnDestroy {
       await provider.send('eth_requestAccounts', []);
       const signer = await provider.getSigner(this.account[0]);
       const Erc20 = new ethers.Contract(
-        this.STAKECONTRACTADDRESS,
-        stake,
+        this.CONTRACTADDRESS,
+        abiContract,
         signer
       );
 

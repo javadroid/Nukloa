@@ -17,3 +17,6 @@
   font-family: medium-content-sans-serif-font;
   src: url(assets/fonts/marat-sans-400-normal.woff) format("woff");
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
