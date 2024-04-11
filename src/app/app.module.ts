@@ -22,7 +22,6 @@ import { BlogComponent } from './blog/blog.component';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AboutComponent } from './about/about.component';
-import { FooterComponent } from './share/footer/footer.component';
 import { HeaderComponent } from './share/header/header.component';
 import { ServiceService } from './share/service.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -55,7 +54,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
 
-      DappComponent,HomeComponent,AppComponent, WhitepaperComponent,ModalComponent, FComponent, BlogComponent, HeaderComponent, LandingPageComponent, AboutComponent, FooterComponent, PlayComponent, PriceComponent,
+      DappComponent,HomeComponent,AppComponent, WhitepaperComponent,ModalComponent, FComponent, BlogComponent, HeaderComponent, LandingPageComponent, AboutComponent,  PlayComponent, PriceComponent,
   ],
   imports: [ RouterModule.forRoot(routes),
     BrowserModule,ReactiveFormsModule,

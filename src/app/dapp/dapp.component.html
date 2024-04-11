@@ -131,11 +131,11 @@
           Rewards: {{ setearnd }} {{ setContractInfo.tokenSymbol }}
         </h4>
         <h4>
-          <span style="color: rgba(189, 185, 185, 0.753); font-size: 1.4rem"
+          <span style="color: rgba(189, 185, 185, 0.753); font-size: 1.5rem"
             >NOTE:</span
           >
-          <span style="color: rgba(189, 185, 185, 0.753); font-size: 1.4rem">
-            Minimum stake 104 $NUD ~ $10</span
+          <span style="color: rgba(189, 185, 185, 0.753); font-size: 1.5rem">
+            Minimum stake 1000 $NUD</span
           >
         </h4>
 
@@ -187,7 +187,8 @@
           flex-direction: column;
         "
       >
-      <div style="color: azure; font-size: x-large;">Email</div>
+      <div *ngIf="emailcheck">
+        <div style="color: azure; font-size: x-large;">Email</div>
         <input
         
           [formControl]="emailAddress"
@@ -196,9 +197,11 @@
           name=""
           placeholder="Enter your email"
         />
-        <button   (click)="!isNetwork?switchNetwork():connect()" style="padding: 15px; font-size: large; margin: 20px;"
+      </div>
+      
+        <button   (click)="!isNetwork?switchNetwork():emailcheck? submit():connect()" style="padding: 15px; font-size: large; margin: 20px;"
         [class]="!isNetwork ? 'btn btn-danger' : 'btn btn-primary'">
-          {{ !isConnected ? "Connect Wallet" : !isNetwork?"Switch Network" : "Submit" }}
+          {{ !isConnected ? "Connect Wallet" : !isNetwork?"Switch Network" :emailcheck? "Submit":"Connected" }}
         </button>
       </div>
     

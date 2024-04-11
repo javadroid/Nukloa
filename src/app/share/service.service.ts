@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
 
 // const apiUrl ='https://api.mrssms.com/api'
-const apiUrl  ='https://api.nudorbital.io/api'
+const apiUrl  ='https://nukapi.onrender.com/api'
 // const apiUrl  ='https://api-mrssms.up.railway.app/api'
 
 @Injectable({
@@ -28,16 +28,16 @@ export class ServiceService {
     );
   }
 
-  findOne( id: string): Observable<any> {
-    return this.http.get(`${apiUrl}/users/${id}`);
+  findOne(model: string, id: string): Observable<any> {
+    return this.http.get(`${apiUrl}/${model}/${id}`);
   }
 
   update(model: string, id: string, update: any): Observable<any> {
     return this.http.post(`${apiUrl}/${model}/${id}`, update);
   }
 
-  create( body: any): Observable<any> {
-    return this.http.post(`${apiUrl}/users`, body);
+  create(model: string, create: any): Observable<any> {
+    return this.http.post(`${apiUrl}/${model}`, create);
   }
 
   upload(file: any): Observable<any> {

@@ -39,7 +39,7 @@ export class DappComponent implements OnInit, OnDestroy {
   setBalanceInfo: any = [];
   setContractInfo: any = [];
   user = [] as any;
-  emailAddress = new FormControl("");
+
   amountToBuy = new FormControl(1);
   amountTowithdraw = new FormControl(0);
   amountToStake = new FormControl(16);
@@ -53,6 +53,8 @@ export class DappComponent implements OnInit, OnDestroy {
   amountToBuyCal!:number;
   amountToBuyVal!:number;
   refferal = 0;
+  emailcheck=false
+  emailAddress = new FormControl("");
   isNetwork = true;
   current = new Date();
   timestamp = this.current.getTime();
@@ -61,7 +63,7 @@ export class DappComponent implements OnInit, OnDestroy {
   ethprice=0
   constructor(
     private readonly api: ServiceService,
-  
+    private db: FirestoreModule,
     private toastr: ToastrService,
     private clipboardApi: ClipboardService,
     private store: NukFirestoreService,
@@ -97,6 +99,7 @@ export class DappComponent implements OnInit, OnDestroy {
     
     const thisaccount = localStorage.getItem('this.account');
     if (thisaccount) {
+     this.check()
       this.account = JSON.parse(thisaccount);
       this.isConnected = true;
       console.log('thisaccount', thisaccount);
@@ -107,7 +110,7 @@ export class DappComponent implements OnInit, OnDestroy {
 
   async connect() {
     const provider = this.winRef.window.ethereum;
-    const binanceTestChainId = '0x61';
+    const binanceTestChainId = '0x144';
   
     if (!provider) {
       this.isConnected = true;
@@ -154,7 +157,7 @@ export class DappComponent implements OnInit, OnDestroy {
     this.amountToBuyVal = Number(this.ethprice)*this.amountToBuyCal;
   }
  
-  CONTRACTADDRESS = '0x48e5F6c68162716041BB2898C08620B92001cd58';
+  CONTRACTADDRESS = '0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17';
   
   date = new Date('2019-01-26T00:00:00');
   isConnected = false;
@@ -192,7 +195,7 @@ export class DappComponent implements OnInit, OnDestroy {
 
   async switchN() {
     const provider = this.winRef.window.ethereum;
-    const binanceTestChainId = '0x61';
+    const binanceTestChainId = '0x144';
 
     if (!provider) {
       this.isConnected = true;
@@ -212,7 +215,7 @@ export class DappComponent implements OnInit, OnDestroy {
     } else {
       const chainId = await provider.request({ method: 'eth_chainId' });
 
-      if (chainId === '0x12c') {
+      if (chainId === '0x144') {
         this.contranDetails();
         this.getWalletBalance();
         this.getStakeDetails();
@@ -225,7 +228,7 @@ export class DappComponent implements OnInit, OnDestroy {
         try {
           await provider.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: '0x12c' }],
+            params: [{ chainId: '0x144' }],
           });
           this.isNetwork = true;
           this.contranDetails();
@@ -252,10 +255,10 @@ export class DappComponent implements OnInit, OnDestroy {
         method: 'wallet_addEthereumChain',
         params: [
           {
-            chainId: '0x12c',
-            chainName: 'zkSync Era Testnet',
-            rpcUrls: ['https://testnet.era.zksync.dev'],
-            blockExplorerUrls: ['https://sepolia.era.zksync.dev/'],
+            chainId: '0x144',
+            chainName: 'zkSync era',
+            rpcUrls: ['https://zksync.drpc.org'],
+            blockExplorerUrls: ['https://explorer.zksync.io/'],
             nativeCurrency: {
               symbol: 'ETH', // 2-6 characters long
               decimals: 18,
@@ -265,10 +268,10 @@ export class DappComponent implements OnInit, OnDestroy {
       });
       this.isNetwork = true;
       const chainId = await provider.request({ method: 'eth_chainId' });
-      if (chainId !== '0x12c') {
+      if (chainId !== '0x144') {
         await provider.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x12c' }],
+          params: [{ chainId: '0x144' }],
         });
         this.isNetwork = true;
         this.contranDetails();
@@ -287,41 +290,41 @@ export class DappComponent implements OnInit, OnDestroy {
   }
   async check() {
     this.api
-      .findOne( this.account[0])
+      .findAny('users', 'walletAddress', this.account[0])
       .subscribe((res) => {
         console.log('walletAddress', res);
-        // this.dailyClaim = res[0].dailyBonus;
+        this.dailyClaim = res[0].dailyBonus;
 
-        // this.current = new Date(this.newTimestamp);
-        // const oldTime = this.timestamp - res[0].start;
-        // const ExpetedTimestamp = res[0].start + 1000 * 60 * 60 * 12;
-        // const givenTimestamop = res[0].start + oldTime;
+        this.current = new Date(this.newTimestamp);
+        const oldTime = this.timestamp - res[0].start;
+        const ExpetedTimestamp = res[0].start + 1000 * 60 * 60 * 12;
+        const givenTimestamop = res[0].start + oldTime;
 
-        // const displayTime = ExpetedTimestamp - givenTimestamop;
+        const displayTime = ExpetedTimestamp - givenTimestamop;
 
-        // const min = displayTime / 1000;
-        // const hour = displayTime / (60 * 60 * 1000);
-        // if (this.timestamp >= ExpetedTimestamp) {
-        //   this.ready = false;
-        //   this.config = { leftTime: 0, format: 'mm:ss:ms' };
-        //   return;
-        // } else {
-        //   this.ready = true;
-        //   console.log('display', Math.round(min));
-        //   this.config = { leftTime: Math.round(min), format: 'hh:mm:ss' };
-        // }
+        const min = displayTime / 1000;
+        const hour = displayTime / (60 * 60 * 1000);
+        if (this.timestamp >= ExpetedTimestamp) {
+          this.ready = false;
+          this.config = { leftTime: 0, format: 'mm:ss:ms' };
+          return;
+        } else {
+          this.ready = true;
+          console.log('display', Math.round(min));
+          this.config = { leftTime: Math.round(min), format: 'hh:mm:ss' };
+        }
 
-        // console.log('test', res[0]);
-        // return;
+        console.log('test', res[0]);
+        return;
       });
-    // this.api
-    //   .findAny('users', 'referredby', this.account[0])
-    //   .subscribe((res) => {
-    //     console.log('referredby', res);
-    //     this.refferal = res.length;
+    this.api
+      .findAny('users', 'referredby', this.account[0])
+      .subscribe((res) => {
+        console.log('referredby', res);
+        this.refferal = res.length;
 
-    //     this.amountToClaim.setValue(this.refferal * 30000);
-    //   });
+        this.amountToClaim.setValue(this.refferal * 30000);
+      });
   }
 
   async contranDetails() {
@@ -356,6 +359,7 @@ export class DappComponent implements OnInit, OnDestroy {
           address: this.CONTRACTADDRESS,
           tokenName,
           tokenSymbol,
+          
           totalSupply: totalSupply / 10 ** 18,
           decimals,
         };
@@ -377,8 +381,8 @@ export class DappComponent implements OnInit, OnDestroy {
           this.user = {
             walletAddress: this.account[0],
             referredby: 'null',
-            email:this.emailAddress.value,
             start: 0,
+            email:this.emailAddress.value,
             referredBonus: 0,
             dailyBonus: 0,
           };
@@ -386,37 +390,32 @@ export class DappComponent implements OnInit, OnDestroy {
         console.log('id', this.user);
 
         this.api
-          .findOne( this.account[0])
+          .findAny('users', 'walletAddress', this.account[0])
           .subscribe((res) => {
-            console.log("res",res)
-            // if (res[0]) {
-            //   this.getWalletBalance();
-            //   this.getStakeDetails();
-            //   this.check();
-            // } else {
-            //   this.api.create('users', this.user).subscribe((res) => {
-            //     console.log('create', res);
-            //   });
-            //   this.getWalletBalance();
-            //   this.getStakeDetails();
-            //   this.check();
-            // }
-          },
-          (error) => {
-            
-            if(error.error.message.includes("not found")){
-              console.error("Error occurred:", error.error.message);
-              this.api.create(this.user).subscribe((res) => {
-                    console.log('create', res);
-                  });
+            console.log("user details",res[0])
+            localStorage.setItem("userdetails",res[0])
+         
+         if(res[0].email){
+          this.emailcheck=false
+         }else{
+          this.emailcheck=true
+         }
+            if (res[0]) {
+              this.getWalletBalance();
+              this.getStakeDetails();
+              this.check();
+            } else {
+              this.api.create('users', this.user).subscribe((res) => {
+                console.log('create', res);
+              });
+              this.getWalletBalance();
+              this.getStakeDetails();
+              this.check();
             }
-            
-          }
-          );
+          });
       } catch (error:any) {
         console.error('contranDetails', error);
         this.toastr.error(error!.error.data.message);
-        
       }
     } else {
       this.isConnected = false;
@@ -687,6 +686,19 @@ export class DappComponent implements OnInit, OnDestroy {
   }
 
   getStakeDisble() {
-    return Number(this.amountToStake.value!) < 16;
+
+    return Number(this.amountToStake.value!) < 100;
+  }
+
+  submit(){
+    this.user = {
+      email: this.emailAddress.value,
+
+     
+    };
+    this.api.update('users', localStorage.getItem('id')!, this.user).subscribe((res) => {
+      console.log('update', res);
+      this.check();
+    });
   }
 }
