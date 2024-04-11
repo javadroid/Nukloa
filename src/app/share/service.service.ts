@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
 
 // const apiUrl ='https://api.mrssms.com/api'
-const apiUrl  ='https://api.nudorbital.io'
+const apiUrl  ='https://api.nudorbital.io/api'
 // const apiUrl  ='https://api-mrssms.up.railway.app/api'
 
 @Injectable({

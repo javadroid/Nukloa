@@ -197,7 +197,7 @@
           placeholder="Enter your email"
         />
         <button   (click)="!isNetwork?switchNetwork():connect()" style="padding: 15px; font-size: large; margin: 20px;"
-        [class]="isNetwork ? 'btn btn-danger' : 'btn btn-primary'">
+        [class]="!isNetwork ? 'btn btn-danger' : 'btn btn-primary'">
           {{ !isConnected ? "Connect Wallet" : !isNetwork?"Switch Network" : "Submit" }}
         </button>
       </div>
