@@ -110,7 +110,7 @@ export class DappComponent implements OnInit, OnDestroy {
 
   async connect() {
     const provider = this.winRef.window.ethereum;
-    const binanceTestChainId = '0x144';
+    const binanceTestChainId = '0x61';
   
     if (!provider) {
       this.isConnected = true;
@@ -157,8 +157,8 @@ export class DappComponent implements OnInit, OnDestroy {
     this.amountToBuyVal = Number(this.ethprice)*this.amountToBuyCal;
   }
  
-  CONTRACTADDRESS = '0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17';
-  
+  // CONTRACTADDRESS = '0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17';
+  CONTRACTADDRESS = '0x4ED2E4341194cfe6A6e3F9dE85E8913CF3efFE1e';
   date = new Date('2019-01-26T00:00:00');
   isConnected = false;
 
@@ -195,7 +195,7 @@ export class DappComponent implements OnInit, OnDestroy {
 
   async switchN() {
     const provider = this.winRef.window.ethereum;
-    const binanceTestChainId = '0x144';
+    const binanceTestChainId = '0x61';
 
     if (!provider) {
       this.isConnected = true;
@@ -215,7 +215,7 @@ export class DappComponent implements OnInit, OnDestroy {
     } else {
       const chainId = await provider.request({ method: 'eth_chainId' });
 
-      if (chainId === '0x144') {
+      if (chainId === '0x61') {
         this.contranDetails();
         this.getWalletBalance();
         this.getStakeDetails();
@@ -228,7 +228,7 @@ export class DappComponent implements OnInit, OnDestroy {
         try {
           await provider.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: '0x144' }],
+            params: [{ chainId: '0x61' }],
           });
           this.isNetwork = true;
           this.contranDetails();
@@ -255,8 +255,8 @@ export class DappComponent implements OnInit, OnDestroy {
         method: 'wallet_addEthereumChain',
         params: [
           {
-            chainId: '0x144',
-            chainName: 'zkSync era',
+            chainId: '0x61',
+            chainName: 'zkSync testnet era',
             rpcUrls: ['https://zksync.drpc.org'],
             blockExplorerUrls: ['https://explorer.zksync.io/'],
             nativeCurrency: {
@@ -268,10 +268,10 @@ export class DappComponent implements OnInit, OnDestroy {
       });
       this.isNetwork = true;
       const chainId = await provider.request({ method: 'eth_chainId' });
-      if (chainId !== '0x144') {
+      if (chainId !== '0x61') {
         await provider.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x144' }],
+          params: [{ chainId: '0x61' }],
         });
         this.isNetwork = true;
         this.contranDetails();
