@@ -157,7 +157,6 @@ export class DappComponent implements OnInit, OnDestroy {
     this.amountToBuyVal = Number(this.ethprice)*this.amountToBuyCal;
   }
  
-  // CONTRACTADDRESS = '0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17';
   CONTRACTADDRESS = '0x4ED2E4341194cfe6A6e3F9dE85E8913CF3efFE1e';
   date = new Date('2019-01-26T00:00:00');
   isConnected = false;
