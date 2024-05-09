@@ -66,6 +66,7 @@ export class DappComponent implements OnInit, OnDestroy {
     id:0,
     chainName:"zkSync era ETH",
     chainId:"0x144",
+    coin:"ethereum",
     contractaddress:"0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17",
     rpcUrls: ['https://zksync.drpc.org'],
     blockExplorerUrls: ['https://explorer.zksync.io/'],
@@ -75,6 +76,7 @@ export class DappComponent implements OnInit, OnDestroy {
     // BNB Smart Chain Mainnet
     chainName:"Binance BNB",
     chainId:"0x38",
+    coin:"bnb",
     contractaddress:"0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17",
     rpcUrls: ['https://bsc.drpc.org'],
     blockExplorerUrls: ['https://bscscan.com/'],
@@ -82,8 +84,9 @@ export class DappComponent implements OnInit, OnDestroy {
     id:2,
     // BNB Smart Chain Mainnet
     chainName:"Fantom Opera FTM",
+    coin:"fantom",
     chainId:"0xfa",
-    contractaddress:"0xfCF077A710A9C30dBe0798A912cFf0F6Cc1e20bE",
+    contractaddress:"0x389e5faf4651080FB016a408C25Dffa65D0b2c62",
     rpcUrls: ['https://fantom.drpc.org'],
     blockExplorerUrls: ['https://ftmscan.com/'],
   }
@@ -136,10 +139,10 @@ export class DappComponent implements OnInit, OnDestroy {
   
   async ngOnInit(): Promise<void> {
     this.currentChain=this.ChainIDs[0];
+const q=localStorage.getItem("currentChain")
+    this.hideDiv()
 
-    this.hideDiv();
-
-    (await this.http.getACoin("ethereum")).subscribe((e: any)=>{
+     this.http.getACoin(q||this.currentChain.coin).subscribe((e: any)=>{
 
       this.ethprice=e.market_data.current_price.usd
       
@@ -148,6 +151,7 @@ export class DappComponent implements OnInit, OnDestroy {
     
     const thisaccount = localStorage.getItem('this.account');
     if (thisaccount) {
+      this.hideDiv()
      this.check()
       this.account = JSON.parse(thisaccount);
       this.isConnected = true;
@@ -240,12 +244,20 @@ export class DappComponent implements OnInit, OnDestroy {
       
     
   }
-  changeChain(i:any){
+   changeChain(i:any){
 
     this.currentChain=this.ChainIDs[i]
+    localStorage.setItem("currentChain",this.currentChain.coin)
     this.hideDiv();
 
-    this.switchN()
+    this.switchN();
+
+     this.http.getACoin(this.currentChain.coin).subscribe((e: any)=>{
+
+      this.ethprice=e.market_data.current_price.usd
+      
+        console.log("coin prices",e.market_data.current_price.usd)
+      })
   }
   copyLink() {
     if (this.setWalletAddress) {
