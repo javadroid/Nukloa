@@ -75,3 +75,46 @@
     border-radius: 38% 62% 66% 34% / 53% 57% 43% 47% !important;
   }
 }
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.textbox {
+  padding: 10px;
+
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.checkmark {
+  display: inline-block;
+  padding: 10px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  /* border: 2px solid green; */
+ 
+}
+.cdk-overlay-pane{
+  top: 1;
+  bottom: 1;
+  background: rgb(7, 7, 7);
+}
+@media only screen and (max-width: 600px) {
+  .textbox {
+    width: 90%; /* Adjust width as needed for mobile */
+  }
+  .trd{
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+  }
+}
+
+.trd{
+  flex-direction: row;
+  display: flex;
+}

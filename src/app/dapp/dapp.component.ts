@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NukFirestoreService } from '../core/nuk-firestore.service';
 
 import { ethers, BigNumber, Wallet } from 'ethers';
@@ -8,7 +8,7 @@ import abiContract from '../../public/coin.json';
 
 
 import { WinRefService } from '../core/win-ref.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { ClipboardService } from 'ngx-clipboard';
 import { ToastrService } from 'ngx-toastr';
@@ -23,6 +23,7 @@ import { ServiceService } from '../share/service.service';
 import { gsap } from 'gsap';
 import { ModalComponent } from '../modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-dapp',
@@ -61,6 +62,40 @@ export class DappComponent implements OnInit, OnDestroy {
   newTimestamp = 0;
   account = null as any;
   ethprice=0
+  ChainIDs=[{
+    id:0,
+    chainName:"zkSync era ETH",
+    chainId:"0x144",
+    contractaddress:"0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17",
+    rpcUrls: ['https://zksync.drpc.org'],
+    blockExplorerUrls: ['https://explorer.zksync.io/'],
+  },
+  {
+    id:1,
+    // BNB Smart Chain Mainnet
+    chainName:"Binance BNB",
+    chainId:"0x38",
+    contractaddress:"0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17",
+    rpcUrls: ['https://bsc.drpc.org'],
+    blockExplorerUrls: ['https://bscscan.com/'],
+  },{
+    id:2,
+    // BNB Smart Chain Mainnet
+    chainName:"Fantom Opera FTM",
+    chainId:"0xfa",
+    contractaddress:"0xfCF077A710A9C30dBe0798A912cFf0F6Cc1e20bE",
+    rpcUrls: ['https://fantom.drpc.org'],
+    blockExplorerUrls: ['https://ftmscan.com/'],
+  }
+
+]
+  
+  currentChain=this.ChainIDs[0]
+  selected = new FormControl(0, [Validators.required, ]);
+  @ViewChild('currencySelect') currencySelect!: MatSelect;
+  // @ViewChild('mat-select-0"') matselect!: MatSelect;
+  selectFormControl = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
+  showForm = false;
   constructor(
     private readonly api: ServiceService,
     private db: FirestoreModule,
@@ -69,6 +104,7 @@ export class DappComponent implements OnInit, OnDestroy {
     private store: NukFirestoreService,
     private route: ActivatedRoute,
     private winRef: WinRefService,
+    private elementRef: ElementRef,
     private http:ServiceService,public dialog: MatDialog
   ) {}
 
@@ -76,6 +112,14 @@ export class DappComponent implements OnInit, OnDestroy {
     gsap.to('.headerPlay_button', {
       display: 'block',
     });
+  }
+
+  hideDiv() {
+    const divElement: HTMLElement = this.elementRef.nativeElement.querySelector('#mat-select-0');
+    if (divElement) {
+      console.log(divElement)
+      divElement.style.display = 'none';
+    }
   }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ModalComponent, {
@@ -88,8 +132,13 @@ export class DappComponent implements OnInit, OnDestroy {
       // exitAnimationDuration,
     });
   }
+
+  
   async ngOnInit(): Promise<void> {
-    
+    this.currentChain=this.ChainIDs[0];
+
+    this.hideDiv();
+
     (await this.http.getACoin("ethereum")).subscribe((e: any)=>{
 
       this.ethprice=e.market_data.current_price.usd
@@ -110,7 +159,7 @@ export class DappComponent implements OnInit, OnDestroy {
 
   async connect() {
     const provider = this.winRef.window.ethereum;
-    const binanceTestChainId = '0x61';
+    const binanceTestChainId = this.currentChain.chainId;
   
     if (!provider) {
       this.isConnected = true;
@@ -157,7 +206,8 @@ export class DappComponent implements OnInit, OnDestroy {
     this.amountToBuyVal = Number(this.ethprice)*this.amountToBuyCal;
   }
  
-  CONTRACTADDRESS = '0x4ED2E4341194cfe6A6e3F9dE85E8913CF3efFE1e';
+  // this.currentChain.contractaddress = '0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17';
+  
   date = new Date('2019-01-26T00:00:00');
   isConnected = false;
 
@@ -183,7 +233,20 @@ export class DappComponent implements OnInit, OnDestroy {
       },
     });
   }
+  toggleForm() {
+   
+    
+      this.currencySelect.open();
+      
+    
+  }
+  changeChain(i:any){
 
+    this.currentChain=this.ChainIDs[i]
+    this.hideDiv();
+
+    this.switchN()
+  }
   copyLink() {
     if (this.setWalletAddress) {
       const url = 'https://nudorbital.io/app/' + this.setWalletAddress;
@@ -192,10 +255,10 @@ export class DappComponent implements OnInit, OnDestroy {
     } else this.toastr.error('Please connect wallet');
   }
 
+
   async switchN() {
     const provider = this.winRef.window.ethereum;
-    const binanceTestChainId = '0x61';
-
+    
     if (!provider) {
       this.isConnected = true;
       this.toastr.error('Download and connect a desired software wallet.');
@@ -214,7 +277,7 @@ export class DappComponent implements OnInit, OnDestroy {
     } else {
       const chainId = await provider.request({ method: 'eth_chainId' });
 
-      if (chainId === '0x61') {
+      if (chainId === this.currentChain.chainId) {
         this.contranDetails();
         this.getWalletBalance();
         this.getStakeDetails();
@@ -227,7 +290,7 @@ export class DappComponent implements OnInit, OnDestroy {
         try {
           await provider.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: '0x61' }],
+            params: [{ chainId: this.currentChain.chainId }],
           });
           this.isNetwork = true;
           this.contranDetails();
@@ -254,10 +317,10 @@ export class DappComponent implements OnInit, OnDestroy {
         method: 'wallet_addEthereumChain',
         params: [
           {
-            chainId: '0x61',
-            chainName: 'zkSync testnet era',
-            rpcUrls: ['https://zksync.drpc.org'],
-            blockExplorerUrls: ['https://explorer.zksync.io/'],
+            chainId: this.currentChain.chainId,
+            chainName: this.currentChain.chainName,
+            rpcUrls:this.currentChain.rpcUrls,
+            blockExplorerUrls: this.currentChain.blockExplorerUrls,
             nativeCurrency: {
               symbol: 'ETH', // 2-6 characters long
               decimals: 18,
@@ -267,10 +330,10 @@ export class DappComponent implements OnInit, OnDestroy {
       });
       this.isNetwork = true;
       const chainId = await provider.request({ method: 'eth_chainId' });
-      if (chainId !== '0x61') {
+      if (chainId !==this.currentChain.chainId) {
         await provider.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x61' }],
+          params: [{ chainId: this.currentChain.chainId }],
         });
         this.isNetwork = true;
         this.contranDetails();
@@ -333,11 +396,11 @@ export class DappComponent implements OnInit, OnDestroy {
           this.winRef.window.ethereum
         );
         const erc20 = new ethers.Contract(
-          this.CONTRACTADDRESS,
+          this.currentChain.contractaddress,
           abiContract,
           provider
         );
-        console.log("object", this.CONTRACTADDRESS,provider)
+        console.log("object", this.currentChain.contractaddress,provider)
         const coinrate=await erc20['getTokenRate']()
         console.log("this.coinRate",coinrate)
         this.coinRate= Number((1/Number(coinrate.toString())).toFixed(8))
@@ -355,7 +418,7 @@ export class DappComponent implements OnInit, OnDestroy {
           balance: Math.round(balance / 10 ** 18),
         };
         this.setContractInfo = {
-          address: this.CONTRACTADDRESS,
+          address: this.currentChain.contractaddress,
           tokenName,
           tokenSymbol,
           
@@ -448,7 +511,7 @@ export class DappComponent implements OnInit, OnDestroy {
           this.winRef.window.ethereum
         );
         const erc20 = new ethers.Contract(
-          this.CONTRACTADDRESS,
+          this.currentChain.contractaddress,
           abiContract,
           provider
         );
@@ -476,7 +539,7 @@ export class DappComponent implements OnInit, OnDestroy {
 
       const signer = await provider.getSigner(this.account[0]);
       const erc20 = new ethers.Contract(
-        this.CONTRACTADDRESS,
+        this.currentChain.contractaddress,
         abiContract,
         signer
       );
@@ -504,7 +567,7 @@ export class DappComponent implements OnInit, OnDestroy {
 
       const signer = await provider.getSigner(this.account[0]);
       const erc20 = new ethers.Contract(
-        this.CONTRACTADDRESS,
+        this.currentChain.contractaddress,
         abiContract,
         signer
       );
@@ -529,14 +592,14 @@ export class DappComponent implements OnInit, OnDestroy {
       await provider.send('eth_requestAccounts', []);
 
       const signer = await provider.getSigner(this.account[0]);
-      const erc20 = new ethers.Contract(this.CONTRACTADDRESS, abiContract, signer);
+      const erc20 = new ethers.Contract(this.currentChain.contractaddress, abiContract, signer);
       await erc20.connect(signer);
      
         const a: number = this.amountToStake.value! * 10000000;
         console.log('a', a);
         const amountToBuy = ethers.utils.parseEther(String(a));
 
-        const waits =   await erc20['approve'](this.CONTRACTADDRESS, amountToBuy);
+        const waits =   await erc20['approve'](this.currentChain.contractaddress, amountToBuy);
         const receipt = await waits.wait();
 
         if (receipt) {
@@ -592,7 +655,7 @@ export class DappComponent implements OnInit, OnDestroy {
       });
       // console.log(provider)
       const signer = await provider.getSigner(this.account[0]);
-      const Erc20 = new ethers.Contract(this.CONTRACTADDRESS, abiContract, signer);
+      const Erc20 = new ethers.Contract(this.currentChain.contractaddress, abiContract, signer);
       await Erc20.connect(signer);
       const atb = (Number(this.amountToBuy.value!) * this.coinRate).toString();
       
@@ -625,7 +688,7 @@ export class DappComponent implements OnInit, OnDestroy {
     //     const provider = new ethers.providers.Web3Provider(this.winRef.window.ethereum)
     //     await provider.send("eth_requestAccounts", [])
     //     const signer = await provider.getSigner(this.account[0])
-    //     const Erc20 = new ethers.Contract(this.CONTRACTADDRESS, claim, signer)
+    //     const Erc20 = new ethers.Contract(this.currentChain.contractaddress, claim, signer)
     //     await Erc20.connect(signer)
     //     console.log(this.amountToClaim.value)
     //     const amountToBuy = ethers.utils.parseEther(this.amountToClaim.value!)
@@ -649,7 +712,7 @@ export class DappComponent implements OnInit, OnDestroy {
       await provider.send('eth_requestAccounts', []);
       const signer = await provider.getSigner(this.account[0]);
       const Erc20 = new ethers.Contract(
-        this.CONTRACTADDRESS,
+        this.currentChain.contractaddress,
         abiContract,
         signer
       );

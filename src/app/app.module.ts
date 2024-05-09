@@ -33,7 +33,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
 
-
+import {ErrorStateMatcher} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -61,6 +64,7 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
+    MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatInputModule,
     MatDialogModule,
     HttpClientModule,
     FormsModule,

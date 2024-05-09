@@ -52,6 +52,9 @@ input[type=number] {
   padding-top: 60px;
 }
 
+.mat-select-min-line{
+  display: none;
+}
 /* Modal content */
 .modal-content {
   background-color: #fefefe;

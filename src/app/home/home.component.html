@@ -7,6 +7,29 @@
         Let's create a universal internet where Contributors are rewarded for distributing their storage and
         bandwidth on the NUKLEON, which is made up of "storage nodes" that are used to store data for others.
       </h6>
+      <br><br>
+     
+      <h6 class="sub_caption">
+        Get started by
+ <br> 
+        Sending {{currentChain.chainName}} Eth to the Contract Address  
+ </h6>
+ <h6 (click)="toggleForm(1)" style=" " class="sub_caption  trd">
+
+  
+    <div class="textbox" style="z-index: 600; width: 50%; overflow: hidden; text-overflow: ellipsis;" aria-disabled="true" type="text" id="textbox">{{ currentChain?.contractaddress }}</div>
+    <button   [class]="Copied?'btn-success checkmark' :'btn-primary checkmark'">{{Copied?"Copied":"Copy"}}</button>
+
+    <mat-form-field style="z-index: -800; align-self: center; position: absolute; top: 1; bottom: 1; left: 1; right: 1;" >
+      <mat-select #currencySelect (selectionChange)="copyLink(selected.value)"  [formControl]="selected">
+       
+        
+        <mat-option  *ngFor="let item of ChainIDs" [value]="item.id">{{item.chainName}}</mat-option>
+        
+      </mat-select>
+    </mat-form-field>
+  </h6>
+
 
       <div class="btn_container">
         <button  (click)="openApp()" class="btn btn-primary">Buy Now</button>
@@ -67,13 +90,34 @@
       <h3 class="card_title">HOW TO BUY</h3>
       <p class="card_detail">
         1. Go to app store and download Metamask.<br><br>
-        2. Purchase ZKSync ETH from  <a href="https://okx.com/"
+        2. Purchase {{currentChain.chainName}}  from  <a href="https://okx.com/"
         target="_blank">OKX Exchange</a> or <a href="https://bybit.com"
         target="_blank">Bybit Exchange</a> <br><br>
-        3. Send ZKSync ETH to your metamask wallet 
+        3. Send {{currentChain.chainName}}  to your metamask wallet 
         <!-- Proceed to the browser and paste the link 👉 <a href="https://bridge.zksync.io/"
           target="_blank">bridge.zksync.io/</a> and bridge your eth to zksync eth --><br><br>
-        4. Still on your metamask browser, Proceed to <a routerLink="/app" target="_blank"> nudorbital.io/app</a> to buy
+        4. Send {{currentChain.chainName}} to this address 
+      </p>
+      <h6 (click)="toggleForm(2)" style="display: flex;flex-direction: row; z-index: 10000;" class="">
+
+  
+        <div (click)="toggleForm(2)" class="textbox" style="color: white; z-index: 600; width: 50%; overflow: hidden; text-overflow: ellipsis;" aria-disabled="true" type="text" id="textbox">{{ currentChain?.contractaddress }}</div>
+        <button (click)="toggleForm(2)"  [class]="Copied?'btn-success checkmark' :'btn-primary checkmark'">{{Copied?"Copied":"Copy"}}</button>
+    
+        <mat-form-field style="z-index: -800; align-self: center; position: absolute; top: 1; bottom: 1; left: 1; right: 1;" >
+          <mat-select #currencySelect2 (selectionChange)="copyLink(selected.value)"  [formControl]="selected">
+           
+            
+            <mat-option  *ngFor="let item of ChainIDs" [value]="item.id">{{item.chainName}}</mat-option>
+            
+          </mat-select>
+        </mat-form-field>
+      </h6>
+      <p class="card_detail">
+        <br><br>
+        <b>Advance user!</b>
+        <br> 
+        5. Still on your metamask browser, Proceed to <a routerLink="/app" target="_blank"> nudorbital.io/app</a> to buy
         $NUD.
       </p>
     </div>

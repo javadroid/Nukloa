@@ -20,11 +20,17 @@
     Add Nukleon to Wallect
   </button>
   <div>
+    <mat-select style="z-index: -90;" #currencySelect (selectionChange)="changeChain(selected.value)"  [formControl]="selected">
+       
+        
+      <mat-option  *ngFor="let item of ChainIDs" [value]="item.id">{{item.chainName}}</mat-option>
+      
+    </mat-select>
     <button
-      (click)="connect()"
+      (click)="!isConnected?connect():toggleForm()"
       [class]="!isConnected ? 'nuk btn btn-primary' : 'btn text-light'"
     >
-      {{ !isConnected ? "Connect Wallet" : "Refresh Page" }}
+      {{ !isConnected ? "Connect Wallet" : currentChain.chainName }}
     </button>
   </div>
   <button
