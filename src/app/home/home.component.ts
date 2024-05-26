@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     id:0,
     chainName:"zkSync era ETH",
     chainId:"0x144",
+    symbol:"Eth",
     contractaddress:"0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17",
     rpcUrls: ['https://zksync.drpc.org'],
     blockExplorerUrls: ['https://explorer.zksync.io/'],
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit {
     // BNB Smart Chain Mainnet
     chainName:"Binance BNB",
     chainId:"0x38",
+    symbol:"BNB",
     contractaddress:"0xb4e2bbb46aa7B5d9e007a96CAe1FbFa9D5f58e6d",
     rpcUrls: ['https://bsc.drpc.org'],
     blockExplorerUrls: ['https://bscscan.com/'],
@@ -40,6 +42,7 @@ export class HomeComponent implements OnInit {
     // BNB Smart Chain Mainnet
     chainName:"Fantom Opera FTM",
     chainId:"0xfa",
+    symbol:"FTM",
     contractaddress:"0xfCF077A710A9C30dBe0798A912cFf0F6Cc1e20bE",
     rpcUrls: ['https://fantom.drpc.org'],
     blockExplorerUrls: ['https://ftmscan.com/'],

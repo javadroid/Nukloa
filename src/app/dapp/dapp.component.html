@@ -12,7 +12,7 @@
         {{ setContractInfo.tokenSymbol }}: {{ setBalanceInfo.balance }}
       </button>
       <button (click)="connect()" class="btn text-light">
-        ETH: {{ setwalletBalance }}
+        {{currentChain.symbol}}: {{ setwalletBalance }}
       </button>
     </div>
   </div>
@@ -108,7 +108,7 @@
           font-size: small;
         "
       >
-        {{ amountToBuyCal }} ETH ~ ${{ amountToBuyVal?.toFixed(4) }}
+        {{ amountToBuyCal }} {{currentChain.symbol}} ~ ${{ amountToBuyVal?.toFixed(4) }}
       </h3>
     </div>
 
