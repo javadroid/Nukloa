@@ -143,6 +143,10 @@ export class DappComponent implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     this.currentChain=this.ChainIDs[0];
 const q=localStorage.getItem("currentChain")
+if(q){
+  this.currentChain=JSON.parse(q)
+}
+
     this.hideDiv()
 
      this.http.getACoin(q||this.currentChain.coin).subscribe((e: any)=>{
@@ -250,7 +254,7 @@ const q=localStorage.getItem("currentChain")
    changeChain(i:any){
 
     this.currentChain=this.ChainIDs[i]
-    localStorage.setItem("currentChain",this.currentChain.coin)
+    localStorage.setItem("currentChain",JSON.stringify(this.currentChain.coin))
     this.hideDiv();
 
     this.switchN();
