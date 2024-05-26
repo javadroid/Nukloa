@@ -64,7 +64,7 @@ export class DappComponent implements OnInit, OnDestroy {
   ethprice=0
   ChainIDs=[{
     id:0,
-    chainName:"zkSync era ETH",
+    chainName:"zkSync era",
     chainId:"0x144",
     coin:"ethereum",
     contractaddress:"0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17",
@@ -74,7 +74,7 @@ export class DappComponent implements OnInit, OnDestroy {
   {
     id:1,
     // BNB Smart Chain Mainnet
-    chainName:"Binance BNB",
+    chainName:"Binance",
     chainId:"0x38",
     coin:"bnb",
     contractaddress:"0xb4e2bbb46aa7B5d9e007a96CAe1FbFa9D5f58e6d",
@@ -83,7 +83,7 @@ export class DappComponent implements OnInit, OnDestroy {
   },{
     id:2,
     // BNB Smart Chain Mainnet
-    chainName:"Fantom Opera FTM",
+    chainName:"Fantom Opera",
     coin:"fantom",
     chainId:"0xfa",
     contractaddress:"0x389e5faf4651080FB016a408C25Dffa65D0b2c62",
