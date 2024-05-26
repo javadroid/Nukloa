@@ -67,6 +67,7 @@ export class DappComponent implements OnInit, OnDestroy {
     chainName:"zkSync era",
     chainId:"0x144",
     coin:"ethereum",
+    symbol:"ETH",
     contractaddress:"0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17",
     rpcUrls: ['https://zksync.drpc.org'],
     blockExplorerUrls: ['https://explorer.zksync.io/'],
@@ -77,6 +78,7 @@ export class DappComponent implements OnInit, OnDestroy {
     chainName:"Binance",
     chainId:"0x38",
     coin:"bnb",
+    symbol:"BNB",
     contractaddress:"0xb4e2bbb46aa7B5d9e007a96CAe1FbFa9D5f58e6d",
     rpcUrls: ['https://bsc.drpc.org'],
     blockExplorerUrls: ['https://bscscan.com/'],
@@ -86,6 +88,7 @@ export class DappComponent implements OnInit, OnDestroy {
     chainName:"Fantom Opera",
     coin:"fantom",
     chainId:"0xfa",
+    symbol:"FTM",
     contractaddress:"0x389e5faf4651080FB016a408C25Dffa65D0b2c62",
     rpcUrls: ['https://fantom.drpc.org'],
     blockExplorerUrls: ['https://ftmscan.com/'],
@@ -334,7 +337,7 @@ const q=localStorage.getItem("currentChain")
             rpcUrls:this.currentChain.rpcUrls,
             blockExplorerUrls: this.currentChain.blockExplorerUrls,
             nativeCurrency: {
-              symbol: 'ETH', // 2-6 characters long
+              symbol: this.currentChain.symbol, // 2-6 characters long
               decimals: 18,
             },
           },
