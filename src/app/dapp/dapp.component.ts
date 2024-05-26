@@ -144,6 +144,7 @@ export class DappComponent implements OnInit, OnDestroy {
     this.currentChain=this.ChainIDs[0];
 const q=localStorage.getItem("currentChain")
 if(q){
+  console.log({q})
   this.currentChain=JSON.parse(q)
 }
 
@@ -254,7 +255,7 @@ if(q){
    changeChain(i:any){
 
     this.currentChain=this.ChainIDs[i]
-    localStorage.setItem("currentChain",JSON.stringify(this.currentChain.coin))
+    localStorage.setItem("currentChain",JSON.stringify(this.currentChain))
     this.hideDiv();
 
     this.switchN();
