@@ -77,7 +77,7 @@ export class DappComponent implements OnInit, OnDestroy {
     chainName:"Binance BNB",
     chainId:"0x38",
     coin:"bnb",
-    contractaddress:"0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17",
+    contractaddress:"0xb4e2bbb46aa7B5d9e007a96CAe1FbFa9D5f58e6d",
     rpcUrls: ['https://bsc.drpc.org'],
     blockExplorerUrls: ['https://bscscan.com/'],
   },{
