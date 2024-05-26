@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
     this.currentChain=this.ChainIDs[i]
     console.log(i,this.currentChain)
     this.Copied=true
-      const url = "0xfE668A8202f49c9B0bAD051b2E20F2f7FFEAca17";
+      const url = this.currentChain.contractaddress;
       this.clipboardApi.copyFromContent(url);
       this.toastr.success('Contract Address Copied');
    
